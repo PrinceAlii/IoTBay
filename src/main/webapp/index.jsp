@@ -10,8 +10,8 @@
         <title>Home Page</title>
     </head>
 
-    <body>
-        <div id="navigation">
+        <body >
+
             <ul>
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="login.jsp">Login</a></li>
