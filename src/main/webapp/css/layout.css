@@ -1,65 +1,40 @@
-body{ /*center center fixed; */
-    /*
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;  
-    */
-    width:200px;
-    height:200px;
-    background-size:contain;
-    border-radius:50%;
-    letter-spacing: 4px;
-    font-family: Arial, Helvetica, sans-serif;
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: #333333;
+    font-style: normal;
 }
 
-#bar{
-    position: fixed;
-    background-color: #134c5b;
-    padding: 10px 5px 6px 15px;
+#navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  #navigation li {
+    float: left;
+  }
+  
+  #navigation li a {
+    display: block;
     color: white;
-    font-size: 30px;
-    font-weight: bold;
-    top: 0;
-    left:0;
-    right: 0;
-    opacity: 0.7;
-}
-
-#links{
-    font-size: 18px;
-    padding: 5px;
-    word-spacing: 2px;
-    float: right;    
-}
-
-a:link, a:visited{
-    color:#3ffb09;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 12px;    
-}
-a:hover, a:active{
-    background-color: green;
-    color: white;
-}
-
-.footer{
-    position: fixed;
-    background-color: #134c5b;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    font-size: 36px;
-    color: #afeb00;
-    padding: 3px;
     text-align: center;
-    opacity: 0.7;
-}
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  #navigation li a:hover {
+    background-color: #111;
+  }
+  
+  #loginHeader h1 {
+    text-align: center;
+  }
 
-.message{
-    color: #4CAF50;
-    font-weight: bold;
-    font-size: 20px;
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
-
