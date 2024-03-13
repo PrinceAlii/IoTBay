@@ -10,8 +10,7 @@
             <title>Home Page</title>
         </head>
 
-        <body >
-
+        <body>
             <ul>
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="login.jsp">Login</a></li>
