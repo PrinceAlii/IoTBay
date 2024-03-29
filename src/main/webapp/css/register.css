@@ -1,71 +1,48 @@
+html,
 body {
-	background: url('feit.jpg') no-repeat center center; /*center center fixed; */
-	/*
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;  
-    */
-	width: 200px;
-	height: 200px;
-	background-size: contain;
-	border-radius: 50%;
-	letter-spacing: 4px;
-	font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#bar {
-	position: fixed;
-	background-color: #134c5b;
-	padding: 10px 5px 6px 15px;
-	color: white;
-	font-size: 30px;
-	font-weight: bold;
-	top: 0;
-	left: 0;
-	right: 0;
-	opacity: 0.7;
+form {
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
 }
 
-#links {
-	font-size: 18px;
-	padding: 5px;
-	word-spacing: 2px;
-	float: right;
+label,
+input,
+select {
+  width: 100%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
 }
 
-a:link,
-a:visited {
-	color: #3ffb09;
-	padding: 10px 20px;
-	text-decoration: none;
-	border-radius: 12px;
-}
-a:hover,
-a:active {
-	background-color: green;
-	color: white;
+input[type="text"],
+select {
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.footer {
-	position: fixed;
-	background-color: #134c5b;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	font-size: 36px;
-	color: #afeb00;
-	padding: 3px;
-	text-align: center;
-	opacity: 0.7;
+input[type="submit"] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.message {
-	color: #4caf50;
-	font-weight: bold;
-	font-size: 20px;
+input[type="submit"]:hover {
+  background-color: #45a049;
+
 }
 
-input {
-	margin-bottom: 16px;
+#cancel {
+  text-decoration: none;
 }

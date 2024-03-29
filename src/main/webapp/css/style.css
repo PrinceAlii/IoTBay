@@ -1,0 +1,12 @@
+a#welcome:link, a#welcome:visited {
+    background-color: #061bc0;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a#welcome:hover, a#welcome:active {
+    background-color: #0a24ee;
+  }

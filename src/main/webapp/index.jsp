@@ -4,11 +4,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!--<link rel="stylesheet" href="css/layout.css">-->
+        <link rel="stylesheet" href="css/layout.css">
         <script type="text/javascript" src="js/index.js"></script>
         <title>Home Page</title>
     </head>
-    <body onload="startTime()" >
+    <body>
         <h1>Home Page</h1>
         <a href="/register.jsp">Register an Account</a>
     </body>
