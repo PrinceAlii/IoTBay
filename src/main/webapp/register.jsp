@@ -14,13 +14,10 @@
             String name = request.getParameter("name");
             String password = request.getParameter("password");
             String phone = request.getParameter("phone");
-            String favCol = request.getParameter("favcol");
-            String gender = request.getParameter("gender");
-            String tos = request.getParameter("tos");
             String submitted = request.getParameter("submitted");
 
             if (submitted != null){
-                User user = new User(email, name, phone, password, gender, favCol);
+                User user = new User(email, name, phone, password);
                 session.setAttribute("user", user);
                 response.sendRedirect("welcome.jsp");
 

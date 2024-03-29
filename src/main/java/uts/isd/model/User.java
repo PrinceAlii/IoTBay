@@ -21,23 +21,29 @@ public class User implements Serializable {
   public User() {
   }
 
-  public User(String _email, String _name, String _phone, String _password, int _userID, String _userType,
-              String _userAccount, boolean _userStatus, int _userVerificationCode, String _userPosition,
-              String _logAccessTimestamp, String _paymentID, String _orderID) {
+  public User(String _email, String _name, String _phone, String _password) {
     this.userEmail = _email;
-    this.userName = _name;
+    this.userName =  _name;
     this.userContactNumber = _phone;
     this.userPassword = _password;
-    this.userID = _userID;
-    this.userType = _userType;
-    this.userAccount = _userAccount;
-    this.userStatus = _userStatus;
-    this.userVerificationCode = _userVerificationCode;
-    this.userPosition = _userPosition;
-    this.logAccessTimestamp = _logAccessTimestamp;
-    this.PaymentID = _paymentID;
-    this.OrderID = _orderID;
   }
+  // public User(String _email, String _name, String _phone, String _password, int _userID, String _userType,
+  //             String _userAccount, boolean _userStatus, int _userVerificationCode, String _userPosition,
+  //             String _logAccessTimestamp, String _paymentID, String _orderID) {
+  //   this.userEmail = _email;
+  //   this.userName = _name;
+  //   this.userContactNumber = _phone;
+  //   this.userPassword = _password;
+  //   this.userID = _userID;
+  //   this.userType = _userType;
+  //   this.userAccount = _userAccount;
+  //   this.userStatus = _userStatus;
+  //   this.userVerificationCode = _userVerificationCode;
+  //   this.userPosition = _userPosition;
+  //   this.logAccessTimestamp = _logAccessTimestamp;
+  //   this.PaymentID = _paymentID;
+  //   this.OrderID = _orderID;
+  // }
 
   // getters
 
