@@ -4,14 +4,16 @@
             <!DOCTYPE html>
             <html>
             <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <link rel="stylesheet" href="css/layout.css">
+                <link rel="stylesheet" href="css/register.css">
                 <script type="text/javascript" src="js/index.js"></script>
                 <title>Login</title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             </head>
 
-            <body>
-            <%
+            <body class="text-center">
+            <%-- <%
                 
                 User user1 = (User) session.getAttribute("user");
 
@@ -27,15 +29,21 @@
                     
                     out.println("User object does not exist in the session.");
                 }
-            %>
+            %> --%>
+
             <form action="login.jsp" method="post">
                 <label for="email">Email:</label>
                 <input type="email" name="email" id="email" placeholder="email" required/>
+                <br>
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" placeholder="password" required/>
                 <br/>
                 <input type="hidden" name="submitted" id="submitted" value="true" />
+                <br>
                 <button type="submit">Login</button>
+                  <form action="index.jsp" method="post">
+                <button type="submit">Cancel Login</button>
+        </form>
             </form>
 
              <%
@@ -54,6 +62,7 @@
                 }
                      %>
 
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
             </body>
 
             </html>
