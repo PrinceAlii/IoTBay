@@ -18,7 +18,9 @@
 
             if (submitted != null){
                 User user = new User(email, name, phone, password);
+
                 session.setAttribute("user", user);
+
                 response.sendRedirect("welcome.jsp");
 
             } else { %>

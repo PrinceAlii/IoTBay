@@ -16,6 +16,9 @@
         <form action="logout.jsp" method="post">
             <button type="submit">Logout</button>
         </form>
+        <form action="index.jsp" method="post">
+            <button type="submit">Return to the home page</button>
+        </form>
 
         <% if(user == null) { %>
             <h1>You have not registered, please register first!</h1>

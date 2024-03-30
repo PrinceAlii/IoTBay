@@ -45,8 +45,6 @@ public class User implements Serializable {
   //   this.OrderID = _orderID;
   // }
 
-  // getters
-
   public String getEmail() {
     return this.userEmail;
   }
@@ -66,8 +64,6 @@ public class User implements Serializable {
   public String getPhone() {
     return this.userContactNumber;
   }
-
-  // setters
 
   public void setPhone(String value) {
     this.userContactNumber = value;
