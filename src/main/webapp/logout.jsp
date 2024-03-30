@@ -13,8 +13,10 @@
            
         %>
 
-        <h1>You have successfully been logged out. </h1>
-        <h2>You will automatically be redirected after 5 seconds</h2>
+        <div class="container d-flex flex-column align-items-center justify-content-center h-100">
+            <h1>You have successfully been logged out.</h1>
+            <h2>You will automatically be redirected after 5 seconds</h2>
+        </div>
 
         <script>
 

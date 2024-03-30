@@ -6,61 +6,74 @@
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <link rel="stylesheet" href="css/register.css">
                 <script type="text/javascript" src="js/index.js"></script>
                 <title>Login</title>
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             </head>
 
             <body class="text-center">
-            <%-- <%
-                
-                User user1 = (User) session.getAttribute("user");
+                <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="index.jsp">IotBay</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            </ul>
 
-                
-                if (user1 != null) {
-                    
-                    out.println("User object exists in the session.");
-                    
-                    out.println("User Email: " + user1.getEmail());
-                    out.println("User Name: " + user1.getName());
-                    
-                } else {
-                    
-                    out.println("User object does not exist in the session.");
-                }
-            %> --%>
+                        </div>
+                    </div>
+                </nav>
 
-            <form action="login.jsp" method="post">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="email" required/>
-                <br>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" placeholder="password" required/>
-                <br/>
+
+            <%
+            String email = request.getParameter("email");
+            String name = "John Smith";
+            String password = request.getParameter("password");
+            String submitted = request.getParameter("submitted");
+
+            if (submitted != null){
+                User user = new User(email,password, name);
+
+                session.setAttribute("user", user);
+
+                response.sendRedirect("welcome.jsp");
+
+            } else { %>
+
+        <h1>Login</h1>
+        <br>
+        <div class="container-sm d-flex justify-content-center" >
+
+            <form action="login.jsp" method="post" style="width: 20%;">
+            <div class="mb-3">
+                <div class="row justify-content-start">
+                    <div class="col-3">
+                        <label class="form-label" style="font-weight: bold;" for="email">Email:</label>
+                        </div>
+                    </div>
+                <input class="form-control" type="email" name="email" id="email" placeholder="email" required/>
+            </div>
+            <br>
+            <div class="mb-3">
+                <div class="row justify-content-start">
+                    <div class="col-3">
+                        <label class="form-label" style="font-weight: bold;" for="password">Password:</label>
+                    </div>
+            </div>
+                <input class="form-control" type="password" name="password" id="password" placeholder="password" required/>
+            </div>
+            <br/>
+            <div class="mb-3">
                 <input type="hidden" name="submitted" id="submitted" value="true" />
-                <br>
-                <button type="submit">Login</button>
-                  <form action="index.jsp" method="post">
-                <button type="submit">Cancel Login</button>
-        </form>
+            </div>
+                <button class="btn btn-primary" type="submit">Login</button>
+                <a class="btn btn-outline-secondary"  id="cancel" href="index.jsp">Cancel Login</a>
             </form>
+        </div>
 
-             <%
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
-                String submitted = request.getParameter("submitted");
-
-                if (submitted != null) {
-                    User user = (User) session.getAttribute("user");
-
-                    if (user != null && user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                        response.sendRedirect("main.jsp");
-                    } else { %> 
-                        <h1>Incorrect email or password!</h1>
-                    <% }
-                }
-                     %>
+            <% } %>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
             </body>
