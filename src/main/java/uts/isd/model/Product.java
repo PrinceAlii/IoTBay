@@ -24,7 +24,6 @@ public class Product implements Serializable {
     this.productQuantity = _productQuantity;
   }
 
-  // Getters and setters (same format as existing ones)
 
   public String getProductID() {
     return productID;
