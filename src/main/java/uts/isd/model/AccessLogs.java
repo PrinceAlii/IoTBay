@@ -26,7 +26,7 @@ public class AccessLogs implements Serializable {
     this.logAccessTimestamp = logAccessTimestamp;
   }
 
-  public int getUserID() {
+  public int getUserID(String name) {
     return userID;
   }
 
