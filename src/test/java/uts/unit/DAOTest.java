@@ -35,4 +35,6 @@ public class DAOTest {
         ArrayList<User> users = userDAO.fetchUsers();
         assertEquals(users.size(), 2);
     }
+
+    
 }
