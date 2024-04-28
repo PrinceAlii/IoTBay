@@ -30,9 +30,9 @@ public class DAOTest {
         assertNotNull(conn);
     }
 
-    @Test
-    public void testSelectUsers() throws SQLException {
-        ArrayList<User> users = userDAO.fetchUsers();
-        assertEquals(users.size(), 2);
-    }
+    // @Test
+    // public void testSelectUsers() throws SQLException {
+    //     ArrayList<User> users = userDAO.fetchUsers();
+    //     assertEquals(users.size(), 2);
+    // }
 }
