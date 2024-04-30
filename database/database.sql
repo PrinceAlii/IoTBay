@@ -5,7 +5,7 @@ CREATE TABLE `PaymentDetails` (
   `paymentMethod` varchar(100) NOT NULL,
   `paymentCardDetails` varchar(200) NOT NULL,
   `savedPaymentDetails` tinyint(1) NOT NULL,
-  PRIMARY KEY (`paymentID`) 
+  PRIMARY KEY (`paymentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
