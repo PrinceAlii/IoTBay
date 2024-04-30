@@ -26,8 +26,8 @@ CREATE TABLE `Product` (
 
 CREATE TABLE `User` (
   `userID` int NOT NULL AUTO_INCREMENT,
-  `userType` varchar(100) NOT NULL,
-  `userAccount` varchar(100) NOT NULL,
+  `userType` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `userAccount` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `userName` varchar(100) NOT NULL,
   `userEmail` varchar(300) NOT NULL,
   `userContactNumber` int NOT NULL,
@@ -38,7 +38,19 @@ CREATE TABLE `User` (
   PRIMARY KEY (`userID`),
   KEY `User_PaymentDetails_FK` (`paymentID`),
   CONSTRAINT `User_PaymentDetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `PaymentDetails` (`paymentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1234567891 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1234567892 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- IOTBAY.AccessLog definition
+
+CREATE TABLE `AccessLog` (
+  `logAccessTimestamp` datetime NOT NULL,
+  `logStatus` tinyint(1) NOT NULL,
+  `userID` int DEFAULT NULL,
+  PRIMARY KEY (`logAccessTimestamp`),
+  KEY `AccessLog_User_FK` (`userID`),
+  CONSTRAINT `AccessLog_User_FK` FOREIGN KEY (`userID`) REFERENCES `User` (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.`Order` definition
@@ -68,18 +80,6 @@ CREATE TABLE `Invoice` (
   PRIMARY KEY (`invoiceID`),
   KEY `Invoice_Order_FK` (`orderID`),
   CONSTRAINT `Invoice_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
--- IOTBAY.AccessLog definition
-
-CREATE TABLE `AccessLog` (
-  `logAccessTimestamp` datetime NOT NULL,
-  `logStatus` tinyint(1) NOT NULL,
-  `userID` int DEFAULT NULL,
-  PRIMARY KEY (`logAccessTimestamp`),
-  KEY `AccessLog_User_FK` (`userID`),
-  CONSTRAINT `AccessLog_User_FK` FOREIGN KEY (`userID`) REFERENCES `User` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
