@@ -13,7 +13,7 @@ public class UserDAO {
     
     private Statement st;
     private PreparedStatement readSt;
-    private String readQuery = "SELECT * FROM account";
+    private String readQuery = "SELECT * FROM user";
 
     public UserDAO (Connection connection) throws SQLException {
         connection.setAutoCommit(true);
@@ -27,16 +27,16 @@ public class UserDAO {
         ArrayList<User> users = new ArrayList<User>();
 
         while(rs.next()) {
-            String firstName = rs.getString(1);
-            String lastName = rs.getString(2);
+            String name = rs.getString(4);
+            String email = rs.getString(5);
             User u = new User();
-            u.setName(firstName + " " + lastName);
+            u.setName(name + " " + email);
 
             System.out.println(u.getName());
             
             users.add(u);
         }
-      
+        
         return users;
     }
 
