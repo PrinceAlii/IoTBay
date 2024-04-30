@@ -69,11 +69,7 @@ public class UserDAO {
         }
         return false;
     }
-
-
 }
-
-
 
     // public ArrayList<User> fetchUsers() throws SQLException {
     //     ResultSet rs = readSt.executeQuery();
