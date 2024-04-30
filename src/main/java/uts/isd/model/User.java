@@ -6,13 +6,12 @@ public class User implements Serializable {
 
   private String userEmail;
   private String userName;
-  private String userContactNumber;
+  private int userContactNumber;
   private String userPassword;
   private int userID;
   private String userType;
   private String userAccount;
   private boolean userStatus;
-  private int userVerificationCode;
   private String userPosition;
   private String logAccessTimestamp;
   private String PaymentID;
@@ -21,11 +20,12 @@ public class User implements Serializable {
   public User() {
   }
 
-  public User(String _email, String _name, String _phone, String _password) {
+  public User(String _email, String _name, int _phone, String _password, int _userID) {
     this.userEmail = _email;
     this.userName = _name;
     this.userContactNumber = _phone;
     this.userPassword = _password;
+    this.userID = _userID;
 
   }
 
@@ -34,7 +34,8 @@ public class User implements Serializable {
     this.userName = _name;
     this.userPassword = _password;
   }
-  // public User(String _email, String _name, String _phone, String _password, int
+  
+  // public User(String _email, String _name, int _phone, String _password, int
   // _userID, String _userType,
   // String _userAccount, boolean _userStatus, int _userVerificationCode, String
   // _userPosition,
@@ -47,7 +48,6 @@ public class User implements Serializable {
   // this.userType = _userType;
   // this.userAccount = _userAccount;
   // this.userStatus = _userStatus;
-  // this.userVerificationCode = _userVerificationCode;
   // this.userPosition = _userPosition;
   // this.logAccessTimestamp = _logAccessTimestamp;
   // this.PaymentID = _paymentID;
@@ -70,11 +70,11 @@ public class User implements Serializable {
     this.userName = value;
   }
 
-  public String getPhone() {
+  public int getPhone() {
     return this.userContactNumber;
   }
 
-  public void setPhone(String value) {
+  public void setPhone(int value) {
     this.userContactNumber = value;
   }
 
@@ -116,14 +116,6 @@ public class User implements Serializable {
 
   public void setUserStatus(boolean userStatus) {
     this.userStatus = userStatus;
-  }
-
-  public int getUserVerificationCode() {
-    return userVerificationCode;
-  }
-
-  public void setUserVerificationCode(int userVerificationCode) {
-    this.userVerificationCode = userVerificationCode;
   }
 
   public String getUserPosition() {
