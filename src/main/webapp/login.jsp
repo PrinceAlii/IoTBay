@@ -34,7 +34,7 @@
             String submitted = request.getParameter("submitted");
 
             if (submitted != null){
-                User user = new User(email,password, name);
+                User user = new User(email, password, name);
 
                 session.setAttribute("user", user);
 
