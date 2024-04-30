@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import uts.isd.model.User;
 
-//create user, find user based off username or email, check password  
 
 public class UserDAO {
  
