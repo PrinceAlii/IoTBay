@@ -33,6 +33,6 @@ public class DAOTest {
     @Test
     public void testSelectUsers() throws SQLException {
         ArrayList<User> users = userDAO.fetchUsers();
-        assertEquals(users.size(), 2);
+        assertEquals(users.size(), 1);
     }
 }

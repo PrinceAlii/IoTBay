@@ -13,7 +13,7 @@ public class UserDAO {
     
     private Statement st;
     private PreparedStatement readSt;
-    private String readQuery = "SELECT * FROM account";
+    private String readQuery = "SELECT * FROM user";
 
     public UserDAO (Connection connection) throws SQLException {
         connection.setAutoCommit(true);
