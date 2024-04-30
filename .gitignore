@@ -22,3 +22,4 @@ target/
 ehthumbs.db
 Thumbs.db
 /src/main/java/uts/isd/model/dao/DB.java
+src/main/java/uts/isd/model/dao/DB.java
