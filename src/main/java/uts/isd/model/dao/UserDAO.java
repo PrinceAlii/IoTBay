@@ -9,6 +9,12 @@ import java.util.ArrayList;
 
 import uts.isd.model.User;
 
+//create user, find user based off username or email, check password  
+
+//QUESTIONs
+//write test cases for each of USERDAO functions (look at video)
+//There are multiple constructures for user. Need to change it to just one
+//create a registerServlet, login servlet
 
 public class UserDAO {
  
