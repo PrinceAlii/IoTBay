@@ -9,12 +9,6 @@ import java.util.ArrayList;
 
 import uts.isd.model.User;
 
-//create user, find user based off username or email, check password  
-
-//QUESTIONs
-//write test cases for each of USERDAO functions (look at video)
-//There are multiple constructures for user. Need to change it to just one
-//create a registerServlet, login servlet
 
 public class UserDAO {
  
@@ -39,12 +33,17 @@ public class UserDAO {
                 String userName = rs.getString(4);
                 int userID = rs.getInt(1);
                 int userContactNumber = rs.getInt(6);
-                return new User(userEmail, userName, userContactNumber, userPassword, userID); 
+                String userType = rs.getString(2);
+                String userAccount = rs.getString(3);
+                boolean userStatus = rs.getBoolean(7);
+                String userPosition = rs.getString(9);
+                String PaymentID = rs.getString(10);
+                return new User(userID,userName, userEmail, userPassword, userContactNumber, userType, userAccount, userStatus,
+                userPosition, PaymentID); 
             }
         }
         return null;
     }
-
 
     //add a user-data into the database
     public void addUser(String name, String email, String password, int contactNumber) throws SQLException {
@@ -54,14 +53,14 @@ public class UserDAO {
     //update a user-data into the database
     public void updateUser(String name, String email, String password, int contactNumber) throws SQLException {
         st.executeUpdate("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + contactNumber + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userEmail ='"+ email +"'" );
-        }
+    }
 
     //delete a user-data from the database
     public void deleteUser(String email) throws SQLException {
         st.executeUpdate("DELETE FROM IOTBAY.User WHERE userEmail='" + email + "'" );
-        }
+    }
 
-    public boolean checkUser(String email, String password) throws SQLException {
+    public User checkUser(String email, String password) throws SQLException {
         String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "' AND userPassword='" + password + "'";
         ResultSet rs = readSt.executeQuery(fetch);
 
@@ -69,30 +68,42 @@ public class UserDAO {
             String userEmail = rs.getString(5);
             String userPassword = rs.getString(8);
             if (userEmail.equals(email) && userPassword.equals(password)){
-                return true;
+                String userName = rs.getString(4);
+                int userID = rs.getInt(1);
+                int userContactNumber = rs.getInt(6);
+                String userType = rs.getString(2);
+                String userAccount = rs.getString(3);
+                boolean userStatus = rs.getBoolean(7);
+                String userPosition = rs.getString(9);
+                String PaymentID = rs.getString(10);
+                return new User(userID,userName, userEmail, userPassword, userContactNumber, userType, userAccount, userStatus,
+                userPosition, PaymentID);
             }
         }
-        return false;
+    return null;
+    }
+
+    public ArrayList<User> fetchUsers() throws SQLException {
+        String fetch = "SELECT * FROM IOTBAY.User";
+        ResultSet rs = readSt.executeQuery(fetch);
+        ArrayList<User> users = new ArrayList();
+
+        while(rs.next()) {
+            String userEmail = rs.getString(5);
+            String userName = rs.getString(4);
+            String userPassword = rs.getString(8);
+            int userID = rs.getInt(1);
+            int userContactNumber = rs.getInt(6);
+            String userType = rs.getString(2);
+            String userAccount = rs.getString(3);
+            boolean userStatus = rs.getBoolean(7);
+            String userPosition = rs.getString(9);
+            String PaymentID = rs.getString(10);
+            users.add(new User(userID,userName, userEmail, userPassword, userContactNumber, userType, userAccount, userStatus,
+            userPosition, PaymentID));
+        }
+        return users;
     }
 }
-
-    // public ArrayList<User> fetchUsers() throws SQLException {
-    //     ResultSet rs = readSt.executeQuery();
-
-    //     ArrayList<User> users = new ArrayList<User>();
-
-    //     while(rs.next()) {
-    //         String firstName = rs.getString(1);
-    //         String lastName = rs.getString(2);
-    //         User u = new User();
-    //         u.setName(firstName + " " + lastName);
-
-    //         System.out.println(u.getName());
-            
-    //         users.add(u);
-    //     }
-      
-    //     return users;
-    // }
 
 

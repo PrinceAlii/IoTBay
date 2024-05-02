@@ -13,6 +13,7 @@
         </head>
 
         <body class="text-center">
+        
             <% User user=(User) session.getAttribute("user"); %>
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                     <div class="container-fluid">
