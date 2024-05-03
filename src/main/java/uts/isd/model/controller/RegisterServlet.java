@@ -17,12 +17,14 @@ public class RegisterServlet extends HttpServlet {
     @Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+
 		Validator validator = new Validator();
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String phoneStr = request.getParameter("phone");
         int phone = Integer.parseInt(phoneStr);
+
 		UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
 		validator.clear(session);
 
@@ -36,24 +38,24 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("passErr", "Error: Password format incorrect");
             request.getRequestDispatcher("register.jsp").include(request,response);
         }else {
-			try {
-				User exist = userDAO.findUser(email, password);
-				if(exist != null){
-					session.setAttribute("existErr", "User already exists in the Database!");
-                    request.getRequestDispatcher("login.jsp").include(request,response);
-				}else {
-					userDAO.addUser(name, email, password, phone);
-					User user = new User();
-					session.setAttribute("user", user);
-					request.getRequestDispatcher("welcome.jsp").include(request, response);
-				}
+			// try {
+			// 	User exist = userDAO.findUser(email, password);
+			// 	if(exist != null){
+			// 		session.setAttribute("existErr", "User already exists in the Database!");
+            //         request.getRequestDispatcher("login.jsp").include(request,response);
+			// 	}else {
+			// 		userDAO.addUser(name, email, password, phone);
+			// 		User user = new User();
+			// 		session.setAttribute("user", user);
+			// 		request.getRequestDispatcher("welcome.jsp").include(request, response);
+			// 	}
 			}catch (SQLException | NullPointerException ex) {
 				System.out.println(ex.getMessage() == null ? "User does not exist" : "welcome");
 			}
 		}	
+	} 
+}  
 
-    }   
-}
 
     
 

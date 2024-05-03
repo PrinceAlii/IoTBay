@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="css/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <title>Register</title>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body class="text-center">
         <%-- Navagation bar style --%>
@@ -25,16 +24,23 @@
             </div>
         </nav>
 
+        <%
+            //Check if user has already logged in
+            User user = (User)session.getAttribute("user");
+            if(user != null){
+            response.sendRedirect("main.jsp");
+            }
+        %>
+
+
+
         <%-- Registration form --%>
         <br>
         <h1>Account registration</h1>
         <br>
         <br>
-        <%
-        String nameErr = (String) session.getAttribute("nameErr");
-        %>
         <div class="container-sm d-flex justify-content-center">
-            <form method="POST" action="/RegisterServlet" style="width: 30%;">
+            <form method="POST" action="RegisterServlet" style="width: 30%;">
                 <div class="mb-3">
                     <div class="row justify-content-start">
                         <div class="col-2">

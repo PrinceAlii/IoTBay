@@ -26,13 +26,7 @@
             </div>
         </nav>
 
-        <%
-            String existErr = (String) session.getAttribute("existErr");
-            String emailErr = (String) session.getAttribute("emailErr");
-            String passErr = (String) session.getAttribute("passErr");
-        %>
-
-        <h1>Login <%=(existErr != null ? existErr : "")%></h1>
+        <h1>Login</h1>
         <br>
         <div class="container-sm d-flex justify-content-center" >
 
@@ -58,7 +52,7 @@
             <div class="mb-3">
                 <input type="hidden" name="submitted" id="submitted" value="true" />
             </div>
-                <button class="btn btn-primary" type="submit">Login</button>
+                <button class="btn btn-primary" href="welcome.jsp" type="submit">Login</button>
                 <a class="btn btn-outline-secondary"  id="cancel" href="index.jsp">Cancel Login</a>
             </form>
         </div>

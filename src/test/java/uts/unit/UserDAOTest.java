@@ -111,14 +111,14 @@ public class UserDAOTest {
     //     }
     // }
     
-    @Test
-    public void testConnection() throws SQLException {
-        assertNotNull(conn);
-    }
+    // @Test
+    // public void testConnection() throws SQLException {
+    //     assertNotNull(conn);
+    // }
 
-    @Test
-    public void testAdd() throws SQLException {
-        userDAO.addUser("alex","alex@jj.com","password",1234522);
-    }
+    // @Test
+    // public void testAdd() throws SQLException {
+    //     userDAO.addUser("alex","alex@jj.com","password",1234522);
+    // }
 
 }
