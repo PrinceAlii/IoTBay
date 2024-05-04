@@ -51,7 +51,7 @@ public class UserDAO {
             String userPassword = rs.getString(8);
             String userName = rs.getString(4);
             int userID = rs.getInt(1);
-            String userContactNumber = rs.getString(6);
+            int userContactNumber = rs.getInt(6);
             String userType = rs.getString(2);
             String userAccount = rs.getString(3);
             boolean userStatus = rs.getBoolean(7);
@@ -102,5 +102,6 @@ public class UserDAO {
     //     return users;
     // }
 }
+
 
 

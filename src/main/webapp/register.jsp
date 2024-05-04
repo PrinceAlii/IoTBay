@@ -28,7 +28,7 @@
             //Check if user has already logged in
             User user = (User)session.getAttribute("user");
             if(user != null){
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("main.jsp");
             }
         %>
 

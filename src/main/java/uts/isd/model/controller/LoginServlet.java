@@ -64,4 +64,3 @@ public class LoginServlet extends HttpServlet {
 		// 		System.out.println(ex.getMessage() == null ? "User does not exist" : "welcome");
 		// 	    }
         // }
-

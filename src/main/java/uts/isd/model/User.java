@@ -9,7 +9,7 @@ public class User implements Serializable {
   private String userName;
   private String userEmail;
   private String userPassword;
-  private String userContactNumber;
+  private int userContactNumber;
   private String userType;
   private String userAccount;
   private boolean userStatus;
@@ -20,7 +20,7 @@ public class User implements Serializable {
   public User() {
   }
 
-  public User(int _userID, String _userName, String _userEmail, String _userPassword, String _userContactNumber, 
+  public User(int _userID, String _userName, String _userEmail, String _userPassword, int _userContactNumber, 
               String _userType, String _userAccount, boolean userStatus, String _userPosition,
               String _PaymentID) {
                 this.userID = _userID;
@@ -52,11 +52,11 @@ public class User implements Serializable {
     this.userName = value;
   }
 
-  public String getPhone() {
+  public int getPhone() {
     return this.userContactNumber;
   }
 
-  public void setPhone(String phone) {
+  public void setPhone(int phone) {
     this.userContactNumber = phone;
   }
 
