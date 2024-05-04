@@ -2,6 +2,8 @@ package uts.isd.model.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,43 +20,38 @@ public class RegisterServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		Validator validator = new Validator();
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String phoneStr = request.getParameter("phone");
         int phone = Integer.parseInt(phoneStr);
+		response.setContentType("text/html;charset=UTF-8");
 
 		UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
-		validator.clear(session);
 
-		if (!validator.validateEmail(email)){
-            session.setAttribute("emailErr", "Error: Email format incorrect");
-            request.getRequestDispatcher("register.jsp").include(request,response);
-        } else if (!validator.validateName(name)) {
-            session.setAttribute("nameErr", "Error: Name format incorrect");
-            request.getRequestDispatcher("register.jsp").include(request,response);
-        }else if (!validator.validatePassword(password)) {
-            session.setAttribute("passErr", "Error: Password format incorrect");
-            request.getRequestDispatcher("register.jsp").include(request,response);
-        }else {
-			// try {
-			// 	User exist = userDAO.findUser(email, password);
-			// 	if(exist != null){
-			// 		session.setAttribute("existErr", "User already exists in the Database!");
-            //         request.getRequestDispatcher("login.jsp").include(request,response);
-			// 	}else {
-			// 		userDAO.addUser(name, email, password, phone);
-			// 		User user = new User();
-			// 		session.setAttribute("user", user);
-			// 		request.getRequestDispatcher("welcome.jsp").include(request, response);
-			// 	}
-			}catch (SQLException | NullPointerException ex) {
-				System.out.println(ex.getMessage() == null ? "User does not exist" : "welcome");
-			}
-		}	
-	} 
-}  
+
+		if (name.length() <= 5) {
+			session.setAttribute("nameErr", "The name provided was not long enough!");
+			request.getRequestDispatcher("register.jsp").include(request, response);
+		} else {
+			try {
+				userDAO.addUser(name, email, password, phone);
+
+				User user = new User();
+				user.setName(name);
+				user.setEmail(email);
+				user.setPassword(password);
+				user.setPhone(phone);
+				session.setAttribute("user", user);
+
+				request.getRequestDispatcher("welcome.jsp").include(request, response);
+			} catch (SQLException ex) {
+           	Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        	}
+		}
+	}
+}
+
 
     
 

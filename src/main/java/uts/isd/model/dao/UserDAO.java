@@ -65,10 +65,15 @@ public class UserDAO {
         return null;
     }
 
-    // //add a user-data into the database
-    // public void addUser(String name, String email, String password, int contactNumber) throws SQLException {
-    //     st.executeUpdate("INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber)" + "VALUES('" + name + "', '" + email + "', '" + password + "', '" + contactNumber + "')");
-    // }
+    //add a user-data into the database
+    public void addUser(String name, String email, String password, int contactNumber) throws SQLException {
+        // System.out.println(name);
+        // System.out.println(email);
+        // System.out.println(password);
+        // System.out.println(contactNumber);
+
+        st.executeUpdate("INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber)" + "VALUES('" + name + "', '" + email + "', '" + password + "', '" + contactNumber + "')");
+    }
 
     // //update a user-data into the database
     // public void updateUser(String name, String email, String password, int contactNumber) throws SQLException {
