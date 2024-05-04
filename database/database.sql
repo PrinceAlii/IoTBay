@@ -84,4 +84,3 @@ CREATE TABLE `Invoice` (
 
 INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
 	 ('User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
-
