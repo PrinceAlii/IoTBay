@@ -24,7 +24,7 @@
                 <div class="text-center">
                         <h1>Welcome, <%= user.getName() %>!</h1>
                     <br>
-                    <a id="welcome" href="main.jsp" class="btn btn-success">Click here to continue</a>
+                    <a id="welcome" href="index.jsp" class="btn btn-success">Click here to continue</a>
                 </div>
             </div>
 
