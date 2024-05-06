@@ -12,7 +12,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.1/js/bootstrap.min.js"></script>
         </head>
 
-        <body class="text-center" >
+        <body class="text-center">
         
             <% User user=(User) session.getAttribute("user"); %>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,9 +25,8 @@
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             </ul>
                             <ul class="navbar-nav ms-auto" style="padding-right: 30px;">
-                                <% if (user != null) { %>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Welcome, <%= user.getName() %>!</a>
+                                        <a class="nav-link" href="main.jsp">Home</a>
                                     </li>
                                     <li class="nav-item dropdown" style="padding-right: 40px;">
                                         <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,25 +39,53 @@
                                             <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
                                         </ul>
                                     </li>
-                                <% } else { %>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="login.jsp">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="register.jsp">Register</a>
-                                    </li>
-                                <% } %>
                             </ul>
                         </div>
                     </div>
                 </nav>
-                <br>
-                <br>
-                <br>
-                <br>
 
-                <p>Products products products</p>
-                               
+            <%
+                String name = request.getParameter("name");
+                String email = request.getParameter("email");
+                String password = request.getParameter("password");
+                String phone = request.getParameter("phone");  
+            %>
+
+            <div class="container d-flex h-100 align-items-center justify-content-center">
+                <div class="text-center">
+                <br>
+                <br>
+                    <h1>Registration Details</h1>
+                    <br>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="row" style="text-align: left;">Name:</th>
+                                <td style="text-align: left;"><%= user.getName() %></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" style="text-align: left;">Email:</th>
+                                <td style="text-align: left;"><%= user.getEmail() %></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" style="text-align: left;">Password:</th>
+                                <td style="text-align: left;"><%= user.getPassword() %></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" style="text-align: left;">Contact Number:</th>
+                                <td style="text-align: left;"><%= user.getPhone() %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div>
+                        <a id="updateRegistration" href="updateAccDetails.jsp" class="btn btn-success">Update</a>
+                        <a id="deleteRegistration" href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+
+
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         </body>
 
