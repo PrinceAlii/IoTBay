@@ -20,10 +20,8 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
-        Validator validator = new Validator();
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-        validator.clear(session);
         response.setContentType("text/html;charset=UTF-8");
 
         try {

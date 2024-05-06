@@ -26,7 +26,7 @@
                             </ul>
                             <ul class="navbar-nav ms-auto" style="padding-right: 30px;">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Welcome, <%= user.getName() %>!</a>
+                                        <a class="nav-link" href="main.jsp">Home</a>
                                     </li>
                                     <li class="nav-item dropdown" style="padding-right: 40px;">
                                         <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

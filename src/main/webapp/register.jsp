@@ -31,12 +31,25 @@
             response.sendRedirect("main.jsp");
             }
         %>
-
-
+        <%
+            //error checking
+            String emailUsed = (String) session.getAttribute("emailUsed");
+            String inputtedNameErr = (String) session.getAttribute("inputtedNameErr");
+            String inputtedPassErr = (String) session.getAttribute("inputtedPassErr");
+            String inputtedPhoneErr = (String) session.getAttribute("inputtedPhoneErr");
+        %>
 
         <%-- Registration form --%>
         <br>
         <h1>Account registration</h1>
+        <br>
+        <label style="color: red;"><%= (emailUsed != null ? emailUsed : "") %></label>
+         <br>
+        <label style="color: red;"><%= (inputtedNameErr != null ? inputtedNameErr : "") %></label>
+         <br>
+        <label style="color: red;"><%= (inputtedPassErr != null ? inputtedPassErr : "") %></label>
+         <br>
+        <label style="color: red;"><%= (inputtedPhoneErr != null ? inputtedPhoneErr : "") %></label>
         <br>
         <br>
         <div class="container-sm d-flex justify-content-center">
@@ -47,7 +60,7 @@
                             <label for="email" style="font-weight: bold;" class="form-label">Email:</label>
                         </div>
                     </div>
-                    <input class="form-control" type="email" name="email" id="email" placeholder="email" required/>
+                    <input class="form-control" type="email" name="email" id="email" placeholder="e.g. johnsmith@gmail.com" required/>
                 </div>
                 <div class="mb-3">
                     <div class="row justify-content-start">
@@ -55,7 +68,7 @@
                             <label for="name" style="font-weight: bold;" class="form-label">Name:</label>
                         </div>
                     </div>
-                    <input class="form-control" name="name" id="name" placeholder="name" required/>
+                    <input class="form-control" name="name" id="name" placeholder="e.g. John Smith"  required/>
                 </div>
                 <div class="mb-3">
                     <div class="row justify-content-start">
@@ -63,7 +76,7 @@
                             <label for="password" style="font-weight: bold;" class="form-label">Password:</label>
                         </div>
                     </div>
-                    <input class="form-control" type="password" name="password" id="password" placeholder="password" required/>
+                    <input class="form-control" type="password" name="password" id="password" required/>
                 </div>
                 <div class="mb-3">
                     <div class="row justify-content-start">
@@ -71,7 +84,7 @@
                             <label for="phone" style="font-weight: bold;" class="form-label">Phone:</label>
                         </div>
                     </div>
-                    <input class="form-control" type="tel" name="phone" id="phone" placeholder="Phone" required/>
+                    <input class="form-control" type="tel" name="phone" id="phone" placeholder="e.g. 0423746893"  required/>
                 </div>
                 <br/>
                 <input type="hidden" name="submitted" id="submitted" value="true" />
