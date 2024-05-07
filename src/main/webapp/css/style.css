@@ -1,0 +1,6 @@
+.footer {
+    position: sticky;
+    bottom: 0;
+    background-color: #303235;
+    padding: 1rem; 
+}
