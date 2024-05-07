@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class AccessLogs implements Serializable {
 
+  
   private String logAccessTimestamp;
   private int userID;
   private boolean logStatus; 
