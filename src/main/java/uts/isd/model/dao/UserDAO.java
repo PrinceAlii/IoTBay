@@ -13,6 +13,11 @@ public class UserDAO {
  
     private Statement st;
 
+//acess logs login/logout
+//access logs search
+//update and delete
+//test cases for all userDAO that have an SQL code in it
+// staff
 
 
     public UserDAO (Connection connection) throws SQLException {
@@ -87,15 +92,18 @@ public class UserDAO {
         st.executeUpdate("INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber)" + "VALUES('" + name + "', '" + email + "', '" + password + "', '" + phone + "')");
     }
 
-    // //update a user-data into the database
-    // public void updateUser(String name, String email, String password, int contactNumber) throws SQLException {
-    //     st.executeUpdate("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + contactNumber + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userEmail ='"+ email +"'" );
-    // }
+    //update a user-data into the database
+    public void updateUser(String name, String email, String password, String phone) throws SQLException {
+        // System.out.println(name);
+        // System.out.println(email);
+        // System.out.println(password);
+        st.executeUpdate("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + phone + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userEmail ='"+ email +"'" );
+    }
 
-    // //delete a user-data from the database
-    // public void deleteUser(String email) throws SQLException {
-    //     st.executeUpdate("DELETE FROM IOTBAY.User WHERE userEmail='" + email + "'" );
-    // }
+    //delete a user-data from the database
+    public void deleteUser(String email) throws SQLException {
+        st.executeUpdate("DELETE FROM IOTBAY.User WHERE userEmail='" + email + "'" );
+    }
 
     // public ArrayList<User> fetchUsers() throws SQLException {
     //     String fetch = "SELECT * FROM IOTBAY.User";

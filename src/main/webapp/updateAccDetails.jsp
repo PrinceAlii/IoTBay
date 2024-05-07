@@ -43,37 +43,67 @@
                 String phone = request.getParameter("phone");  
             %>
 
-            <div class="container d-flex h-100 align-items-center justify-content-center">
-                <div class="text-center">
-                <br>
-                <br>
-                    <h1>Registration Details</h1>
-                    <br>
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <%
+            // //error checking
+            // String emailInputtedErr = (String) session.getAttribute("emailInputtedErr");
+            // String inputtedNameErr = (String) session.getAttribute("inputtedNameErr");
+            // String inputtedPassErr = (String) session.getAttribute("inputtedPassErr");
+            // String inputtedPhoneErr = (String) session.getAttribute("inputtedPhoneErr");
+            // %>
+
+            <%-- Update Details form --%>
+            <br>
+            <h1>Account registration</h1>
+            <%-- <br>
+            <label style="color: red;"><%= (emailInputtedErr != null ? emailInputtedErr : "") %></label>
+            <br>
+            <label style="color: red;"><%= (inputtedNameErr != null ? inputtedNameErr : "") %></label>
+            <br>
+            <label style="color: red;"><%= (inputtedPassErr != null ? inputtedPassErr : "") %></label>
+            <br>
+            <label style="color: red;"><%= (inputtedPhoneErr != null ? inputtedPhoneErr : "") %></label> --%>
+            <br>
+            <br>
+            <div class="container-sm d-flex justify-content-center">
+                <form method="POST" action="updateAccDetailsServlet" style="width: 30%;">
+                    <div class="mb-3">
+                        <div class="row justify-content-start">
+                            <div class="col-2">
+                                <label for="email" style="font-weight: bold;" class="form-label">Email:</label>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                    <br>
-                    <div>
-                        <a id="updateRegistration" href="#" class="btn btn-success">Update</a>
-                        <a id="deleteRegistration" href="#" class="btn btn-danger">Delete</a>
+                        <input class="form-control" type="email" name="email" id="email" placeholder=<%= user.getEmail() %> required/>
                     </div>
-                </div>
+                    <div class="mb-3">
+                        <div class="row justify-content-start">
+                            <div class="col-2">
+                                <label for="name" style="font-weight: bold;" class="form-label">Name:</label>
+                            </div>
+                        </div>
+                        <input class="form-control" name="name" id="name" placeholder=<%= user.getName() %>  required/>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row justify-content-start">
+                            <div class="col-2">
+                                <label for="password" style="font-weight: bold;" class="form-label">Password:</label>
+                            </div>
+                        </div>
+                        <input class="form-control" type="password" name="password" id="password" required/>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row justify-content-start">
+                            <div class="col-2">
+                                <label for="phone" style="font-weight: bold;" class="form-label">Phone:</label>
+                            </div>
+                        </div>
+                        <input class="form-control" type="tel" name="phone" id="phone" placeholder=<%= user.getPhone() %>  required/>
+                    </div>
+                    <br/>
+                    <input type="hidden" name="submitted" id="submitted" value="true"/>
+                    <button class="btn btn-primary" type="submit">Update</button>
+                    <a class="btn btn-outline-secondary" id="cancel" href="main.jsp">Cancel</a>
+                </form>
             </div>
-
-
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         </body>
 
