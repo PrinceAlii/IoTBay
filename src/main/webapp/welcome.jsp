@@ -22,12 +22,7 @@
 
             <div class="container d-flex h-100 align-items-center justify-content-center">
                 <div class="text-center">
-                    <% 
-                    if (user.getName() != null) { %>
                         <h1>Welcome, <%= user.getName() %>!</h1>
-                    <% } else { %>
-                        <h1>Welcome, John Smith</h1>
-                    <% } %>
                     <br>
                     <a id="welcome" href="main.jsp" class="btn btn-success">Click here to continue</a>
                 </div>

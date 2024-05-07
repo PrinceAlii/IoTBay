@@ -30,7 +30,7 @@ CREATE TABLE `User` (
   `userAccount` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `userName` varchar(100) NOT NULL,
   `userEmail` varchar(300) NOT NULL,
-  `userContactNumber` int NOT NULL,
+  `userContactNumber` varchar(100) NOT NULL,
   `userStatus` tinyint(1) DEFAULT NULL,
   `userPassword` varchar(200) NOT NULL,
   `userPosition` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `User` (
   PRIMARY KEY (`userID`),
   KEY `User_PaymentDetails_FK` (`paymentID`),
   CONSTRAINT `User_PaymentDetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `PaymentDetails` (`paymentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1234567892 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1234567932 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.AccessLog definition
