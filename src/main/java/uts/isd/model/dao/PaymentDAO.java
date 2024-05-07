@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import uts.isd.model.User;
 import com.mysql.cj.xdevapi.PreparableStatement;
 
-public class PaymentDetails {
+public class PaymentDAO {
 
     private Statement st;
     private PreparableStatement readSt;
 
-    public PaymentDetails (Connection connection) throws SQLException {
+    public PaymentDAO (Connection connection) throws SQLException {
         connection.setAutoCommit(true);
         st = connection.createStatement();
     }
