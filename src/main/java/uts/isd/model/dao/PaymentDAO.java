@@ -29,4 +29,9 @@ public class PaymentDAO {
     public void deletePaymentDetails(int paymentID) throws SQLException {
         st.executeUpdate("DELETE FROM IOTBAY.paymentdetails WHERE paymentID='" + paymentID + "'");
     }
+
+    // update payment details using paymentID
+    public void updatePayment(int paymentID, boolean savedPaymentDetails, String paymentCardDetails, String paymentMethod) throws SQLException {
+        st.executeUpdate("UPDATE IOTBAY.paymentdetails SET savedPaymentDetails='" + savedPaymentDetails + "', paymentCardDetails='" + paymentCardDetails + "' paymentMethod ='" + paymentMethod + "' WHERE paymentID ='" + paymentID + "'");
+    }
 }
