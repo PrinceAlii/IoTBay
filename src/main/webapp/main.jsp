@@ -13,25 +13,34 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.1/js/bootstrap.min.js"></script>
     </head>
 
-    <body class="text-center">
-        <% User user=(User) session.getAttribute("user"); %>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.jsp">IotBay</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <body class="text-center">
+            <% User user=(User) session.getAttribute("user"); %>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.jsp">IotBay</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         </ul>
                     
-                    <ul class="navbar-nav ms-auto"> <% if (user != null) { %>
+                    <ul class="navbar-nav ms-auto" style="padding-right: 30px;"> 
+                    <% if (user != null) { %>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Welcome, <%= user.getName() %>!</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-danger" class ="nav-link" href="logout.jsp">Logout</a>
-                        </li>
+                        <li class="nav-iteitem dropdown" style="padding-right: 40px;">
+                                    <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Profile
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
+                                        <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
+                                    </ul>
+                                </li>
 
                         <% } else { %>
                         <li class="nav-item">
@@ -42,29 +51,29 @@
                         </li>
                         <% } %>
                     </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <div class="row">
-            <div class="col-11 d-flex search-bar-container">  <form class="d-flex" action="main.jsp" method="get">
-                <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-            <div class="col-1 d-flex justify-content-end">  
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Filter
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Table</a>
-                        <a class="dropdown-item" href="#">Chair</a>
-                        <a class="dropdown-item" href="#">Couch</a>
+            <div class="row">
+                <div class="col-11 d-flex search-bar-container">  <form class="d-flex" action="main.jsp" method="get">
+                    <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="col-1 d-flex justify-content-end">  
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Table</a>
+                            <a class="dropdown-item" href="#">Chair</a>
+                            <a class="dropdown-item" href="#">Couch</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         <br>
         <%-- <div class="search-results">
@@ -96,6 +105,7 @@
         <br>                    
         <br>
         <br>
+
 
         <div class="card">
             <div class="footer">   <div class="row">
