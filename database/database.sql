@@ -82,5 +82,12 @@ CREATE TABLE `Invoice` (
   CONSTRAINT `Invoice_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
-	 ('User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
+-- Only do after tables have been created
+
+-- INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+-- 	 ('User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
+-- Stuff ali added 30/04/24
+ALTER TABLE IOTBAY.paymentdetails ADD userID INT NOT NULL;
+
+-- Makes PaymentDetails UserID a foreign key to user table UserID
+ALTER TABLE IOTBAY.paymentdetails ADD CONSTRAINT paymentdetails_user_FK FOREIGN KEY (userID) REFERENCES IOTBAY.`user`(userID);
