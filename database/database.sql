@@ -86,6 +86,7 @@ CREATE TABLE `Invoice` (
 
 -- INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
 -- 	 ('User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
+
 -- Stuff ali added 30/04/24
 ALTER TABLE IOTBAY.paymentdetails ADD userID INT NOT NULL;
 
