@@ -57,7 +57,7 @@ public class UserDAO {
         return false;
     }
 
-    // //find user by email in database, and return that users info
+    // find user by email in database, and return that users info
     public User findUser(String email, String password) throws SQLException {
 
         String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "' AND userPassword='" + password + "'";
