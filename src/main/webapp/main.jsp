@@ -66,42 +66,10 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Filter
                         </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            </ul>
-                            <ul class="navbar-nav ms-auto" style="padding-right: 30px;">
-                                <% if (user != null) { %>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Welcome, <%= user.getName() %>!</a>
-                                    </li>
-                                    <li class="nav-item dropdown" style="padding-right: 40px;">
-                                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Profile
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-dark">
-                                            <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
-                                            <li><a class="dropdown-item" href="paymentDetails">Payment Details</a></li> 
-                                            <li><a class="dropdown-item" href="#">Access Logs</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
-                                        </ul>
-                                    </li>
-                                <% } else { %>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="login.jsp">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="register.jsp">Register</a>
-                                    </li>
-                                <% } %>
-                            </ul>
-
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Table</a>
                             <a class="dropdown-item" href="#">Chair</a>
                             <a class="dropdown-item" href="#">Couch</a>
-
                         </div>
                     </div>
                 </div>
