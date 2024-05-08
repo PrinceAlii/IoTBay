@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@page import="uts.isd.model.*" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
     <html>
 
@@ -11,6 +12,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateSearch() {
+                var searchKeyword = document.getElementById("searchInput").value.trim();
+                if (searchKeyword === "") {
+                    alert("Please enter a search keyword.");
+                    return false; // Prevent form submission
+                }
+                return true; // Allow form submission
+            }
+        </script>
     </head>
 
         <body class="text-center">
@@ -35,7 +46,7 @@
                                         Profile
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
+                                        <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                                         <li><a class="dropdown-item" href="#">Access Logs</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
@@ -56,9 +67,10 @@
             </nav>
 
             <div class="row">
-                <div class="col-11 d-flex search-bar-container">  <form class="d-flex" action="main.jsp" method="get">
-                    <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <div class="col-11 d-flex search-bar-container">  
+                    <form class="d-flex" action="ProductServlet" method="get" onsubmit="return validateSearch()">
+                        <input id="searchInput" class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" name="search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
                 <div class="col-1 d-flex justify-content-end">  
@@ -67,36 +79,47 @@
                             Filter
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Table</a>
+                            <a class="dropdown-item" href="#">Bed</a>
                             <a class="dropdown-item" href="#">Chair</a>
                             <a class="dropdown-item" href="#">Couch</a>
+                            <a class="dropdown-item" href="#">Lamp</a>
+                            <a class="dropdown-item" href="#">Table</a>
                         </div>
                     </div>
                 </div>
             </div>
 
         <br>
-        <%-- <div class="search-results">
-            <% if (searchResults != null && !searchResults.isEmpty()) { %>
-                <ul class="list-group">
-                <% for (Product product : searchResults) { %>
-                    <li class="list-group-item">
-                    <a href="productDetails.jsp?id=<%= product.getProductID() %>">
-                        <%= product.getProductName() %> - $<%= product.getProductPrice() %>
-                    </a>
-                    </li>
-                <% } %>
-                </ul>
-            <% } else { %>
-                <p>No search results found</p>
-            <% } %>
-        </div> --%>
+
+        <div class="container">
+            <div class="row">
+                <% List<Product> products = (List<Product>)request.getAttribute("products");
+                    if(products != null && !products.isEmpty()) {
+                        for(Product product : products) { %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.getProductName() %></h5>
+                            <p class="card-text">Price: $<%= product.getProductPrice() %></p>
+                        </div>
+                    </div>
+                </div>
+                <% }
+                    } else {
+                        // No products found message will only be displayed when the search result is empty and the search keyword is not empty
+                        String searchKeyword = request.getParameter("search");
+                        if(searchKeyword != null && !searchKeyword.isEmpty()) { %>
+                <div class="col-lg-12">
+                    <p>No products found</p>
+                </div>
+                <% }
+                    } %>
+            </div>
+        </div>
+
 
         <br>
         <br>
-
-        <p>Products products products</p>
-
         <br>
         <br>
         <br>
@@ -105,38 +128,46 @@
         <br>                    
         <br>
         <br>
-
-
+        
         <div class="card">
-            <div class="footer">   <div class="row">
-                <div class="col">
-                    <div class="btn-group dropup">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Staff Options
-                    </button>
-                        <div class="dropdown-menu" aria-labelledby="staffDropdown">
-                            <a class="dropdown-item" href="#">Create Product</a>
-                            <a class="dropdown-item" href="#">Update Product</a>
-                            <a class="dropdown-item" href="#">Delete Product</a>
+            <div class="footer">
+                <div class="row">
+                    <div class="col">
+                        <div class="btn-group dropup">
+                            <button class="btn btn-secondary dropdown-toggle 
+                                    <% if (user == null || !user.getUserAccount().equals("Staff")) { %>
+                                        disabled
+                                    <% } %>
+                                    " type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Staff Options
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="staffDropdown">
+                                <a class="dropdown-item" href="createProduct.jsp">Create Product</a>
+                                <a class="dropdown-item" href="updateProduct.jsp">Update Product</a>
+                                <a class="dropdown-item" href="deleteProduct.jsp">Delete Product</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="btn-group dropup">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        System Admin
-                    </button>
-                        <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                            <a class="dropdown-item" href="#">Create User</a>
-                            <a class="dropdown-item" href="#">Update User</a>
-                            <a class="dropdown-item" href="#">Delete User</a>
+                    <div class="col">
+                        <div class="btn-group dropup">
+                            <button class="btn btn-secondary dropdown-toggle 
+                                    <% if (user == null || !user.getUserAccount().equals("System Admin")) { %>
+                                        disabled
+                                    <% } %>
+                                    " type="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                System Admin Options
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                                <a class="dropdown-item" href="#">Create User</a>
+                                <a class="dropdown-item" href="#">Update User</a>
+                                <a class="dropdown-item" href="#">Delete User</a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 
