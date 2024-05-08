@@ -84,3 +84,65 @@ CREATE TABLE `Invoice` (
 
 INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
 	 ('User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
+
+-- Product details
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('101', 'woodenChair', 30, 'chair', 'A wooden chair for dining room', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('102', 'plasticChair', 20, 'chair', 'A plastic chair for outside', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('103', 'metalChair', 35, 'chair', 'A metal chair for inside or outside', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('104', 'smartChair', 50, 'chair', 'A smart chair for study area', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('201', 'epoxyTable', 100, 'table', 'A table made with wood and epoxy', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('202', 'marbleTable', 90, 'table', 'A marble table for dining room', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('203', 'woodenTable', 80, 'table', 'A wooden table for dining room', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('204', 'plasticTable', 60, 'table', 'A plastic table for outside', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('301', 'whiteCouch', 100, 'couch', 'A white couch for living room', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('302', 'greyCouch', 100, 'couch', 'A grey couch for living room', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('303', 'blackCouch', 100, 'couch', 'A black couch for living room', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('304', 'brownCouch', 100, 'couch', 'A brown couch for living room', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('401', 'metalLamp', 15, 'lamp', 'A metal lamp for anywhere', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('402', 'spiralLamp', 30, 'lamp', 'A spiral lamp for living room', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('403', 'epoxyLamp', 20, 'lamp', 'An epoxy lamp for anywhere', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('404', 'marbleLamp', 25, 'lamp', 'A marble lamp for anywhere', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('501', 'blackBed', 400, 'bed', 'A black bed', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('502', 'whiteBed', 400, 'bed', 'A white bed', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('503', 'greyBed', 400, 'bed', 'A grey bed', 30);
+
+INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
+VALUES ('504', 'smartBed', 999, 'bed', 'A smart bed', 30);
