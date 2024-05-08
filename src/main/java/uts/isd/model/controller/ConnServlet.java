@@ -46,7 +46,7 @@ public class ConnServlet extends HttpServlet {
 		session.setAttribute("userDAO", userDAO); // add the user DAO to the session
 	}
 
-    @Override 
+    @Override //Destroy the servlet and release the resources of the application
 	public void destroy() {
 		try {
 			db.closeConnection(); // close the DB connection once the session is terminated
