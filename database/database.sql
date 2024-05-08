@@ -89,3 +89,54 @@ CREATE TABLE `user` (
 -- INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
 -- 	 ('User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
 
+-- Dummy data for user and paymentDetails.
+INSERT INTO User (userID, userType, userAccount, userName, userEmail, userContactNumber, userStatus, userPassword, userPosition)
+VALUES 
+(2, 'User', 'Registered User', 'Jane Smith', 'janesmith@example.com', 420933860, 1, 'password2', NULL),
+(3, 'User', 'Registered User', 'Michael Johnson', 'michaeljohnson@example.com', 0420933861, 1, 'password3', NULL),
+(4, 'User', 'Registered User', 'Emily Brown', 'emilybrown@example.com', 420933862, 1, 'password4', NULL),
+(5, 'User', 'Registered User', 'John Doe', 'johndoe@example.com', 420933863, 1, 'password5', NULL),
+(6, 'User', 'Registered User', 'Alice Johnson', 'alicejohnson@example.com', 420933864, 1, 'password6', NULL),
+(7, 'User', 'Registered User', 'Robert Smith', 'robertsmith@example.com', 420933865, 1, 'password7', NULL),
+(8, 'User', 'Registered User', 'Emma Brown', 'emmabrown@example.com', 420933866, 1, 'password8', NULL),
+(9, 'User', 'Registered User', 'William Johnson', 'williamjohnson@example.com', 420933867, 1, 'password9', NULL),
+(10, 'User', 'Registered User', 'Olivia Smith', 'oliviasmith@example.com', 420933868, 1, 'password10', NULL),
+(11, 'User', 'Registered User', 'James Brown', 'jamesbrown@example.com', 420933869, 1, 'password11', NULL),
+(12, 'User', 'Registered User', 'Charlotte Johnson', 'charlottejohnson@example.com', 420933870, 1, 'password12', NULL),
+(13, 'User', 'Registered User', 'Ethan Smith', 'ethansmith@example.com', 420933871, 1, 'password13', NULL),
+(14, 'User', 'Registered User', 'Mia Brown', 'miabrown@example.com', 420933872, 1, 'password14', NULL),
+(15, 'User', 'Registered User', 'Noah Johnson', 'noahjohnson@example.com', 420933873, 1, 'password15', NULL),
+(16, 'User', 'Registered User', 'Ava Smith', 'avasmith@example.com', 420933874, 1, 'password16', NULL),
+(17, 'User', 'Registered User', 'Liam Brown', 'liambrown@example.com', 420933875, 1, 'password17', NULL),
+(18, 'User', 'Registered User', 'Isabella Johnson', 'isabellajohnson@example.com', 42093386, 1, 'password18', NULL),
+(19, 'User', 'Registered User', 'Benjamin Smith', 'benjaminsmith@example.com', 420933877, 1, 'password19', NULL),
+(20, 'User', 'Registered User', 'Sophia Brown', 'sophiabrown@example.com', 420933878, 1, 'password20', NULL),
+(21, 'User', 'Registered User', 'Lucas Johnson', 'lucasjohnson@example.com', 420933879, 1, 'password21', NULL),
+(22, 'User', 'Registered User', 'Amelia Smith', 'ameliasmith@example.com', 420933880, 1, 'password22', NULL);
+
+
+INSERT INTO paymentDetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES 
+(2, 'MasterCard', 3456, 1, 2),
+(3, 'Visa', 4567, 1, 3),
+(4, 'American Express', 5678, 1, 4),
+(5, 'MasterCard', 6789, 1, 5),
+(6, 'Visa', 5678901234567890, 1, 6),
+(7, 'American Express', 8901, 1, 7),
+(8, 'MasterCard', 9012, 1, 8),
+(9, 'Visa', 0123, 1, 9),
+(10, 'American Express', 1234, 1, 10),
+(11, 'MasterCard', 3456, 1, 11),
+(12, 'Visa', 4567, 1, 12),
+(13, 'American Express', 5678, 1, 13),
+(14, 'MasterCard', 6789, 1, 14),
+(15, 'Visa', 7890, 1, 15),
+(16, 'American Express', 8901, 1, 16),
+(17, 'MasterCard', 9012, 1, 17),
+(18, 'Visa', 0123, 1, 18),
+(19, 'American Express', 1234, 1, 19),
+(20, 'MasterCard', 3456, 1, 20),
+(21, 'Visa', 4567, 1, 21),
+(22, 'American Express', 5678, 1, 22);
+
+
