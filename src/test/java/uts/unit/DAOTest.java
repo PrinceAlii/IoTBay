@@ -31,6 +31,6 @@ public class DAOTest {
 
     @Test
     public void testAddedUsers() throws SQLException {
-        userDAO.addUser("alex","alex@jj.com","password","0420922722");
+        userDAO.addUser("alex","alex@jj.com","password",1234522);
     }
 }
