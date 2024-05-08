@@ -1,15 +1,30 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@page import="uts.isd.model.*" %>
+    <%@page import="java.util.List" %>
         <!DOCTYPE html>
         <html>
 
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>Main Page</title>
+            <title>Order Management</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.1/js/bootstrap.min.js"></script>
+            <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            </style>
         </head>
 
         <body class="text-center">
@@ -17,7 +32,7 @@
             <% User user=(User) session.getAttribute("user"); %>
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="main.jsp">IotBay</a>
+                        <a class="navbar-brand" href="#">IotBay</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -33,10 +48,10 @@
                                             Profile
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-dark">
-                                            <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
+                                            <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                                             <li><a class="dropdown-item" href="paymentDetails">Payment Details</a></li>
                                             <li><a class="dropdown-item" href="#">Access Logs</a></li>
-                                            <li><a class="dropdown-item" href="orderManagement.jsp">Order Details</a></li>
+                                            <li><a class="dropdown-item active" href="orderManagement.jsp">Order Details</a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
                                         </ul>
@@ -45,50 +60,34 @@
                         </div>
                     </div>
                 </nav>
-
-            <%
-                String name = request.getParameter("name");
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
-                String phone = request.getParameter("phone");  
-            %>
-
-            <div class="container d-flex h-100 align-items-center justify-content-center">
-                <div class="text-center">
+            <div style="text-align:center;">
                 <br>
                 <br>
-                    <h1>Registration Details</h1>
-                    <br>
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <th scope="row" style="text-align: left;">Name:</th>
-                                <td style="text-align: left;"><%= user.getName() %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" style="text-align: left;">Email:</th>
-                                <td style="text-align: left;"><%= user.getEmail() %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" style="text-align: left;">Password:</th>
-                                <td style="text-align: left;"><%= user.getPassword() %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" style="text-align: left;">Contact Number:</th>
-                                <td style="text-align: left;"><%= user.getPhone() %></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <div>
-                        <a id="updateRegistration" href="updateAccDetails.jsp" class="btn btn-success">Update</a>
-                        <a id="deleteRegistration" href="#" class="btn btn-danger">Delete</a>
-                    </div>
-                </div>
+                <h1>Order Management</h1>
+                <br>
+                <h4>
+                    <a href="/new">View Saved Orders</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="/list">View All Orders</a>
+                </h4>
             </div>
-
-
+            <div>
+                <table cellpadding="5">
+                    <br>
+                    <h2>List of Orders</h2>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Total Amount</th>
+                        <th>Order Date</th>
+                        <th>Product Quantity</th>
+                        <th>User ID</th>
+                        <th>Product ID</th>
+                        <th>Actions</th>
+                    </tr>
+                    
+                    
+                </table>
+            </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         </body>
-
         </html>
