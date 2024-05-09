@@ -83,4 +83,27 @@ CREATE TABLE `Invoice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
-	 ('User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
+	 ('User','Registered User','John Cena','johncena@gmail.com','0452748618',1,'Passw0rd',NULL,NULL),
+	 ('User','Registered User','Emily Johnson','EmilyJohnson@gmail.com','0412345678',1,'Secure123',NULL,NULL),
+	 ('User','Registered User','Michael Williams','MichaelWilliams@uts.com','0432198765',1,'P@ssw0rd',NULL,NULL),
+	 ('User','Registered User','Emma Jones','EmmaJones@outlook.com','0456781234',0,'1234AbCd',NULL,NULL),
+	 ('User','Registered User','William Brown','WilliamBrown@yahoo.com','0409876543',0,'Pa55w0rd',NULL,NULL),
+	 ('User','Registered User','Olivia Davis','OliviaDavis@protonmail.com','0465432109',0,'Secur3P@ss',NULL,NULL),
+	 ('User','Registered User','James Miller ','JamesMiller@aol.com','0489753102',1,'1q2w3E4r',NULL,NULL),
+	 ('User','Registered User','Sophia Wilson ','SophiaWilson@icloud.com','0498765432',1,'Pass1234',NULL,NULL),
+	 ('User','Registered User','Benjamin Taylor','BenjaminTaylor@zoho.com','0475839201',1,'Te$tP@ss',NULL,NULL),
+	 ('User','Registered User','Isabella Martinez','IsabellaMartinez@yandex.com','0432156897',0,'0n3TwoThre3',NULL,NULL);
+INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+	 ('User','Staff','Alexander Anderson','AlexanderAnderson@fastmail.com','0415983647',0,'P@ssw0rd123','Manager',NULL),
+	 ('User','Staff','Charlotte Jackson','CharlotteJackson@tutanota.com','0487635291',1,'Hello1234','Manager',NULL),
+	 ('User','Staff','Daniel White','DanielWhite@mail.com','0421765489',0,'Qwerty123','Salesperson',NULL),
+	 ('User','Staff','Ava Harris','AvaHarris@inbox.com','0456982731',1,'Abcd1234','Salesperson',NULL),
+	 ('User','Staff','Matthew Lee','MatthewLee@live.com','0479812345',1,'P@ssw0rd!','Salesperson',NULL),
+	 ('User','System Admin','Ethan Garcia','EthanGarcia@yopmail.com','0465987312',0,'Summer2023','Administrator',NULL),
+	 ('User','System Admin','Madison Robinson','MadisonRobinson@mailinator.com','0487593126',0,'Passw0rd123!','Administrator',NULL),
+	 ('User','Registered User','David Clark','DavidClark@protonmail.com','0412375986',1,'P@ssw0rd2024',NULL,NULL),
+	 ('User','Registered User','Harper Rodriguez','HarperRodriguez@yandex.com','0423987165',1,'SecureP@ss1',NULL,NULL);
+INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+	 ('User','Registered User','Olivia Wilson','OliviaWilson@protonmail.com','0432871956',0,'1Password!',NULL,NULL),
+	 ('User','Registered User','Ethan Martinez','EthanMartinez@gmail.com','0459721834',1,'AbCdEfG1234',NULL,NULL),
+	 ('User','Registered User','Dick Smith','DickSmith@email.com','0471986253',0,'P@ssw0rd!2024',NULL,NULL);

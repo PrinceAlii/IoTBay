@@ -28,8 +28,8 @@ public class UserDAO {
 
     //check if user is already in the database. Return if user is already in database
     public boolean checkUser(String email, String password) throws SQLException {
-        System.out.println(email);
-        System.out.println(password);
+        // System.out.println(email);
+        // System.out.println(password);
 
         String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "' AND userPassword='" + password + "'";
 

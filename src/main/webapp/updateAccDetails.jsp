@@ -36,6 +36,7 @@
                     </div>
             </nav>
 
+
             <%
                 String name = request.getParameter("name");
                 String email = request.getParameter("email");
@@ -44,24 +45,24 @@
             %>
 
             <%
-            // //error checking
-            // String emailInputtedErr = (String) session.getAttribute("emailInputtedErr");
-            // String inputtedNameErr = (String) session.getAttribute("inputtedNameErr");
-            // String inputtedPassErr = (String) session.getAttribute("inputtedPassErr");
-            // String inputtedPhoneErr = (String) session.getAttribute("inputtedPhoneErr");
-            // %>
+            //error checking
+            String emailInputtedErr = (String) session.getAttribute("emailInputtedErr");
+            String inputtedNameErr = (String) session.getAttribute("inputtedNameErr");
+            String inputtedPassErr = (String) session.getAttribute("inputtedPassErr");
+            String inputtedPhoneErr = (String) session.getAttribute("inputtedPhoneErr");
+            %>
 
             <%-- Update Details form --%>
             <br>
             <h1>Account registration</h1>
-            <%-- <br>
+            <br>
             <label style="color: red;"><%= (emailInputtedErr != null ? emailInputtedErr : "") %></label>
             <br>
             <label style="color: red;"><%= (inputtedNameErr != null ? inputtedNameErr : "") %></label>
             <br>
             <label style="color: red;"><%= (inputtedPassErr != null ? inputtedPassErr : "") %></label>
             <br>
-            <label style="color: red;"><%= (inputtedPhoneErr != null ? inputtedPhoneErr : "") %></label> --%>
+            <label style="color: red;"><%= (inputtedPhoneErr != null ? inputtedPhoneErr : "") %></label>
             <br>
             <br>
             <div class="container-sm d-flex justify-content-center">

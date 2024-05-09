@@ -38,16 +38,13 @@ public class updateAccDetailsServlet extends HttpServlet {
 		//if there are no errors and all validations return null then add use
 		if((validate.validateEmail(email)==null) && (validate.validateName(name)==null) && (validate.validatePassword(password)==null) 
 			&& (validate.validatePhone(phone)==null)){
-			try { if(!userDAO.checkEmail(email)) {
-
+			try { 
 				userDAO.updateUser(name, email, password, phone);
+				// Fetch updated user details from the database
+				User updatedUser = userDAO.findUser(email, password);
+				session.setAttribute("user", updatedUser);
 				session.setAttribute("update", "the update was successful");
 				request.getRequestDispatcher("accountDetails.jsp").include(request, response);
-
-				}else{
-					session.setAttribute("emailUsed", "Email has already been used please use a different one!");
-					request.getRequestDispatcher("updateAccDetails.jsp").include(request, response);
-				}
 			}catch (SQLException ex) {
 				Logger.getLogger(updateAccDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
 			}
@@ -59,27 +56,14 @@ public class updateAccDetailsServlet extends HttpServlet {
 
 
 
+				// }else{
+				// 	session.setAttribute("emailUsed", "Email has already been used please use a different one!");
+				// 	request.getRequestDispatcher("updateAccDetails.jsp").include(request, response);
+				// }
 
-	// 	if (name.length() <= 5) {
-	// 		session.setAttribute("nameErr", "The name provided was not long enough!");
-	// 		request.getRequestDispatcher("register.jsp").include(request, response);
-	// 	} else {
-	// 		try {
-	// 			userDAO.addUser(name, email, password, phone);
 
-	// 			User user = new User();
-	// 			user.setName(name);
-	// 			user.setEmail(email);
-	// 			user.setPassword(password);
-	// 			user.setPhone(phone);
-	// 			session.setAttribute("user", user);
 
-	// 			request.getRequestDispatcher("welcome.jsp").include(request, response);
-	// 		} catch (SQLException ex) {
-    //        	Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-    //     	}
-	// 	}
-	// }
+
 
 
 
