@@ -46,8 +46,61 @@
         </div>
     </nav>
     
-    <div class="container d-flex h-100 align-items-center justify-content-center">
-            <h1>Test</h1>
+    <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="mt-5 mb-4">Add New Payment Method</h2>
+                    <h5 class="mt-5 mb-4">Card Issuer</h5>
+                    <form>
+
+                        <div class="mb-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="mastercard" value="MasterCard">
+                                <label class="form-check-label" for="mastercard">MasterCard</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="visa" value="Visa">
+                                <label class="form-check-label" for="visa">Visa</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="americanexpress" value="AmericanExpress">
+                                <label class="form-check-label" for="americanexpress">American Express</label>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="mb-3 form-group" style="width: 100%;">
+                            <label for="cardNumber" class="form-label">Card Number</label>
+                            <input type="text" class="form-control" id="cardNumber" placeholder="Enter card number">
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3 form-group" style="width: 100%;">
+                                <label for="expiryDate" class="form-label">Expiry Date</label>
+                                <input type="text" class="form-control" id="expiryDate" placeholder="MM/YYYY">
+                            </div>
+
+
+                            <div class="col-md-6 mb-3 form-group" style="width: 100%;">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cvv" placeholder="CVV">
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <a href="main.jsp" class="btn btn-danger">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
