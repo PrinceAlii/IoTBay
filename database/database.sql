@@ -87,36 +87,33 @@ CREATE TABLE `Invoice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-
 -- STEP TWO. PASTE EVERYTHING BELOW NOW
 
--- sample User details
-INSERT INTO IOTBAY.`User` (userID, userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
-	 (1, 'User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
-INSERT INTO User (userID, userType, userAccount, userName, userEmail, userContactNumber, userStatus, userPassword, userPosition)
-VALUES 
-(2, 'User', 'Registered User', 'Jane Smith', 'janesmith@example.com', 420933860, 1, 'password2', NULL),
-(3, 'User', 'Registered User', 'Michael Johnson', 'michaeljohnson@example.com', 0420933861, 1, 'password3', NULL),
-(4, 'User', 'Registered User', 'Emily Brown', 'emilybrown@example.com', 420933862, 1, 'password4', NULL),
-(5, 'User', 'Registered User', 'John Doe', 'johndoe@example.com', 420933863, 1, 'password5', NULL),
-(6, 'User', 'Registered User', 'Alice Johnson', 'alicejohnson@example.com', 420933864, 1, 'password6', NULL),
-(7, 'User', 'Registered User', 'Robert Smith', 'robertsmith@example.com', 420933865, 1, 'password7', NULL),
-(8, 'User', 'Registered User', 'Emma Brown', 'emmabrown@example.com', 420933866, 1, 'password8', NULL),
-(9, 'User', 'Registered User', 'William Johnson', 'williamjohnson@example.com', 420933867, 1, 'password9', NULL),
-(10, 'User', 'Registered User', 'Olivia Smith', 'oliviasmith@example.com', 420933868, 1, 'password10', NULL),
-(11, 'User', 'Registered User', 'James Brown', 'jamesbrown@example.com', 420933869, 1, 'password11', NULL),
-(12, 'User', 'Registered User', 'Charlotte Johnson', 'charlottejohnson@example.com', 420933870, 1, 'password12', NULL),
-(13, 'User', 'Registered User', 'Ethan Smith', 'ethansmith@example.com', 420933871, 1, 'password13', NULL),
-(14, 'User', 'Registered User', 'Mia Brown', 'miabrown@example.com', 420933872, 1, 'password14', NULL),
-(15, 'User', 'Registered User', 'Noah Johnson', 'noahjohnson@example.com', 420933873, 1, 'password15', NULL),
-(16, 'User', 'Registered User', 'Ava Smith', 'avasmith@example.com', 420933874, 1, 'password16', NULL),
-(17, 'User', 'Registered User', 'Liam Brown', 'liambrown@example.com', 420933875, 1, 'password17', NULL),
-(18, 'User', 'Registered User', 'Isabella Johnson', 'isabellajohnson@example.com', 42093386, 1, 'password18', NULL),
-(19, 'User', 'Registered User', 'Benjamin Smith', 'benjaminsmith@example.com', 420933877, 1, 'password19', NULL),
-(20, 'User', 'Registered User', 'Sophia Brown', 'sophiabrown@example.com', 420933878, 1, 'password20', NULL),
-(21, 'User', 'Registered User', 'Lucas Johnson', 'lucasjohnson@example.com', 420933879, 1, 'password21', NULL),
-(22, 'User', 'Registered User', 'Amelia Smith', 'ameliasmith@example.com', 420933880, 1, 'password22', NULL);
-
+INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+	 ('User','Registered User','John Cena','johncena@gmail.com','0452748618',1,'Passw0rd',NULL,1),
+	 ('User','Registered User','Emily Johnson','EmilyJohnson@gmail.com','0412345678',1,'Secure123',NULL,2),
+	 ('User','Registered User','Michael Williams','MichaelWilliams@uts.com','0432198765',1,'P@ssw0rd',NULL,3),
+	 ('User','Registered User','Emma Jones','EmmaJones@outlook.com','0456781234',0,'1234AbCd',NULL,4),
+	 ('User','Registered User','William Brown','WilliamBrown@yahoo.com','0409876543',0,'Pa55w0rd',NULL,5),
+	 ('User','Registered User','Olivia Davis','OliviaDavis@protonmail.com','0465432109',0,'Secur3P@ss',NULL,6),
+	 ('User','Registered User','James Miller ','JamesMiller@aol.com','0489753102',1,'1q2w3E4r',NULL,7),
+	 ('User','Registered User','Sophia Wilson ','SophiaWilson@icloud.com','0498765432',1,'Pass1234',NULL,8),
+	 ('User','Registered User','Benjamin Taylor','BenjaminTaylor@zoho.com','0475839201',1,'Te$tP@ss',NULL,9),
+	 ('User','Registered User','Isabella Martinez','IsabellaMartinez@yandex.com','0432156897',0,'0n3TwoThre3',NULL,10);
+INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+	 ('User','Staff','Alexander Anderson','AlexanderAnderson@fastmail.com','0415983647',0,'P@ssw0rd123','Manager',11),
+	 ('User','Staff','Charlotte Jackson','CharlotteJackson@tutanota.com','0487635291',1,'Hello1234','Manager',12),
+	 ('User','Staff','Daniel White','DanielWhite@mail.com','0421765489',0,'Qwerty123','Salesperson',13),
+	 ('User','Staff','Ava Harris','AvaHarris@inbox.com','0456982731',1,'Abcd1234','Salesperson',15),
+	 ('User','Staff','Matthew Lee','MatthewLee@live.com','0479812345',1,'P@ssw0rd!','Salesperson',16),
+	 ('User','System Admin','Ethan Garcia','EthanGarcia@yopmail.com','0465987312',0,'Summer2023','Administrator',17),
+	 ('User','System Admin','Madison Robinson','MadisonRobinson@mailinator.com','0487593126',0,'Passw0rd123!','Administrator',NULL),
+	 ('User','Registered User','David Clark','DavidClark@protonmail.com','0412375986',1,'P@ssw0rd2024',NULL,18),
+	 ('User','Registered User','Harper Rodriguez','HarperRodriguez@yandex.com','0423987165',1,'SecureP@ss1',NULL,19);
+INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+	 ('User','Registered User','Olivia Wilson','OliviaWilson@protonmail.com','0432871956',0,'1Password!',NULL,20),
+	 ('User','Registered User','Ethan Martinez','EthanMartinez@gmail.com','0459721834',1,'AbCdEfG1234',NULL,21),
+	 ('User','Registered User','Dick Smith','DickSmith@email.com','0471986253',0,'P@ssw0rd!2024',NULL,22);
 
 -- Sample Payment details
 

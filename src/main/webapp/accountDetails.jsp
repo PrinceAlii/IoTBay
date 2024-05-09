@@ -81,7 +81,7 @@
                     <br>
                     <div>
                         <a id="updateRegistration" href="updateAccDetails.jsp" class="btn btn-success">Update</a>
-                        <a id="deleteRegistration" href="#" class="btn btn-danger">Delete</a>
+                        <a id="deleteRegistration" href="deleteUser.jsp" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
             </div>
