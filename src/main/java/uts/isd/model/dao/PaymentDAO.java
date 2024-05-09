@@ -13,14 +13,11 @@ public class PaymentDAO {
     private Connection conn;
 
     public PaymentDAO() throws ClassNotFoundException, SQLException {
-        // Create a new instance of DBConnector to establish a database connection
         DBConnector dbConnector = new DBConnector();
-        // Open the database connection
+
         conn = dbConnector.openConnection();
     }
 
-    // Add other methods for interacting with the database
-    // ...
 
     public List<PaymentDetails> findPaymentByUser(int userID) throws SQLException {
         List<PaymentDetails> paymentDetailsList = new ArrayList<>();
@@ -40,19 +37,13 @@ public class PaymentDAO {
             PaymentDetails payments = new PaymentDetails(paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userIDDB);
             paymentDetailsList.add(payments);
         }
-    
-        // Print the retrieved payment details to the console for debugging
-        System.out.println("Retrieved Payment Details: " + paymentDetailsList);
+
     
         return paymentDetailsList;
     }
     
 
-    // Add other methods for interacting with the database
-    // ...
-
     public void closeConnection() throws SQLException {
-        // Close the database connection when it's no longer needed
         conn.close();
     }
 }

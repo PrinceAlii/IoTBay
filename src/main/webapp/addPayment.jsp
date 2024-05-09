@@ -7,7 +7,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Payment Details</title>
+    <title>Add Payment</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -47,51 +47,7 @@
     </nav>
     
     <div class="container d-flex h-100 align-items-center justify-content-center">
-        <div class="text-center">
-            <br>
-            <br>
-            <h1>Saved Payment Details</h1>
-            <br>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scop="col">#</th>
-                        <th scope="col">Card Issuer</th>
-                        <th scope="col">Last 4 digits of card number</th>
-                        <th scope="col">Name on card</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% 
-                    List <PaymentDetails> paymentMethods = (List<PaymentDetails>) request.getAttribute("paymentMethods");
-
-                    if (paymentMethods != null && !paymentMethods.isEmpty()) {
-                        for (PaymentDetails payment : paymentMethods) {
-                    %>
-                    <tr>
-                        <th scope="row"><%= payment.getPaymentID() %> </th>
-                        <td><%= payment.getPaymentMethod() %> </td>
-                        <td><%= payment.getPaymentCardDetails() %> </td>
-                        <td><%= user.getName() %> </td>
-                    </tr>
-                    <% 
-                        }
-                    } else {
-                    %> 
-                    <tr>
-                        <td colspan="4">No payment details found.</td>
-                    </tr>
-                    <% } %> 
-                </tbody>
-            </table>
-            
-            <br>
-            <br>
-            <div class="text-center">
-                <a href="addPayment" class="btn btn-success me-2">Add Payment Method</a>
-                <a href="main.jsp" class="btn btn-danger">Remove a Payment Method</a>
-            </div>
-        </div>
+            <h1>Test</h1>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

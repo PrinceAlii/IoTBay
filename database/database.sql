@@ -90,9 +90,9 @@ CREATE TABLE `Invoice` (
 
 -- STEP TWO. PASTE EVERYTHING BELOW NOW
 
-INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
-	 ('User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
-
+-- sample User details
+INSERT INTO IOTBAY.`User` (userID, userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+	 (1, 'User','Registered User','John Cena','johncena@gmail.com',452748618,1,'password',NULL,NULL);
 INSERT INTO User (userID, userType, userAccount, userName, userEmail, userContactNumber, userStatus, userPassword, userPosition)
 VALUES 
 (2, 'User', 'Registered User', 'Jane Smith', 'janesmith@example.com', 420933860, 1, 'password2', NULL),
@@ -118,8 +118,53 @@ VALUES
 (22, 'User', 'Registered User', 'Amelia Smith', 'ameliasmith@example.com', 420933880, 1, 'password22', NULL);
 
 
+-- Sample Payment details
+
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('1', "MasterCard", "2214", '1', '1');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
 VALUES ('2', "MasterCard", "4365", '1', '1');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('3', 'Visa', '7183', '1', '2');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('4', 'MasterCard', '9201', '1', '3');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('5', 'AmericanExpress', '3578', '1', '4');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('6', 'Visa', '6249', '1', '5');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('7', 'MasterCard', '1826', '1', '6');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('8', 'Visa', '4973', '1', '7');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('9', 'AmericanExpress', '8314', '1', '8');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('10', 'MasterCard', '5692', '1', '9');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('11', 'Visa', '7402', '1', '10');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('12', 'AmericanExpress', '3981', '1', '11');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('13', 'MasterCard', '5063', '1', '12');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('14', 'Visa', '2894', '1', '13');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('15', 'AmericanExpress', '6405', '1', '14');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('16', 'MasterCard', '9748', '1', '15');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('17', 'Visa', '1357', '1', '16');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('18', 'AmericanExpress', '8024', '1', '17');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('19', 'MasterCard', '3156', '1', '18');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('20', 'Visa', '4789', '1', '19');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('21', 'AmericanExpress', '9640', '1', '20');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
+VALUES ('22', 'MasterCard', '2019', '1', '21');
+
 
 -- -- Product details
 

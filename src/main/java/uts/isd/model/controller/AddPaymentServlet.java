@@ -16,8 +16,8 @@ import uts.isd.model.PaymentDetails;
 import uts.isd.model.User;
 import uts.isd.model.dao.PaymentDAO;
 
-public class PaymentDetailsServlet extends HttpServlet {
-
+public class AddPaymentServlet extends HttpServlet {
+    
     private PaymentDAO paymentDAO;
 
     @Override
@@ -61,11 +61,9 @@ public class PaymentDetailsServlet extends HttpServlet {
             List<PaymentDetails> paymentMethods = paymentDAO.findPaymentByUser(user.getUserID());
 
     
-            // Set paymentMethods attribute in request
             request.setAttribute("paymentMethods", paymentMethods);
     
-            // Forward to view
-            request.getRequestDispatcher("paymentDetails.jsp").forward(request, response);
+            request.getRequestDispatcher("addPayment.jsp").forward(request, response);
     
         } catch (SQLException ex) {
             Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -73,5 +71,6 @@ public class PaymentDetailsServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment details");
         }
     }
-    
+
+
 }
