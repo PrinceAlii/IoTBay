@@ -21,23 +21,23 @@ public class ConnServlet extends HttpServlet {
 	private UserDAO userDAO;
 	private Connection conn;
 
-    @Override //Create an instance of DBConnector for the deployment session
+    @Override 
 	public void init() {
 		try {
-			db = new DBConnector(); //Create a database connection when the application starts
+			db = new DBConnector(); 
 		} catch (ClassNotFoundException | SQLException ex) {
 			Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null,ex);
 		}
 	}
 
-    @Override //Add the UserDAO instance to the session
+    @Override 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
-		conn = db.openConnection(); // Create a DB connection
+		conn = db.openConnection(); 
 
 		try {
-			userDAO = new UserDAO(conn); // Create a UserDAO 
+			userDAO = new UserDAO(conn);  
 		} catch (SQLException ex) {
 			Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null,ex);
 		}
@@ -49,7 +49,7 @@ public class ConnServlet extends HttpServlet {
     @Override 
 	public void destroy() {
 		try {
-			db.closeConnection(); // close the DB connection once the session is terminated
+			db.closeConnection(); 
 		} catch (SQLException ex) {
 			Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null,ex);
 		}

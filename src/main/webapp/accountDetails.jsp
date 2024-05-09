@@ -15,36 +15,35 @@
         <body class="text-center">
         
             <% User user=(User) session.getAttribute("user"); %>
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="main.jsp">IotBay</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            </ul>
-                            <ul class="navbar-nav ms-auto" style="padding-right: 30px;">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="main.jsp">Home</a>
-                                    </li>
-                                    <li class="nav-item dropdown" style="padding-right: 40px;">
-                                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Profile
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-dark">
-                                            <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
-                                            <li><a class="dropdown-item" href="paymentDetails">Payment Details</a></li>
-                                            <li><a class="dropdown-item" href="#">Access Logs</a></li>
-                                            <li><a class="dropdown-item" href="orderManagement.jsp">Order Details</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
-                                        </ul>
-                                    </li>
-                            </ul>
-                        </div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="main.jsp">IotBay</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        </ul>
+                        <ul class="navbar-nav ms-auto" style="padding-right: 30px;">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="main.jsp">Home</a>
+                                </li>
+                                <li class="nav-item dropdown" style="padding-right: 40px;">
+                                    <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Profile
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
+                                        <li><a class="dropdown-item" href="paymentDetails">Payment Details</a></li>
+                                        <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
+                                    </ul>
+                                </li>
+                        </ul>
                     </div>
-                </nav>
+                </div>
+            </nav>
 
             <%
                 String name = request.getParameter("name");
@@ -82,7 +81,7 @@
                     <br>
                     <div>
                         <a id="updateRegistration" href="updateAccDetails.jsp" class="btn btn-success">Update</a>
-                        <a id="deleteRegistration" href="#" class="btn btn-danger">Delete</a>
+                        <a id="deleteRegistration" href="deleteUser.jsp" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
             </div>
