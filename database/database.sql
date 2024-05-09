@@ -1,8 +1,5 @@
 -- IOTBAY.PaymentDetails definition
 
-
--- STEP ONE, PASTE THE BELOW UNCOMMENTED CODE FIRST 
-
 CREATE TABLE `PaymentDetails` (
   `paymentID` int NOT NULL AUTO_INCREMENT,
   `paymentMethod` varchar(100) NOT NULL,
@@ -10,7 +7,7 @@ CREATE TABLE `PaymentDetails` (
   `savedPaymentDetails` tinyint(1) NOT NULL,
   `userID` int NOT NULL,
   PRIMARY KEY (`paymentID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.Product definition
@@ -23,7 +20,7 @@ CREATE TABLE `Product` (
   `productDescription` varchar(1000) NOT NULL,
   `stockLevel` int NOT NULL,
   PRIMARY KEY (`productID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.`User` definition
@@ -42,7 +39,7 @@ CREATE TABLE `User` (
   PRIMARY KEY (`userID`),
   KEY `User_PaymentDetails_FK` (`paymentID`),
   CONSTRAINT `User_PaymentDetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `PaymentDetails` (`paymentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1234567932 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1234568003 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.AccessLog definition
@@ -89,6 +86,8 @@ CREATE TABLE `Invoice` (
 
 -- STEP TWO. PASTE EVERYTHING BELOW NOW
 
+-- Sample User details
+
 INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
 	 ('User','Registered User','John Cena','johncena@gmail.com','0452748618',1,'Passw0rd',NULL,1),
 	 ('User','Registered User','Emily Johnson','EmilyJohnson@gmail.com','0412345678',1,'Secure123',NULL,2),
@@ -115,113 +114,102 @@ INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNu
 	 ('User','Registered User','Ethan Martinez','EthanMartinez@gmail.com','0459721834',1,'AbCdEfG1234',NULL,21),
 	 ('User','Registered User','Dick Smith','DickSmith@email.com','0471986253',0,'P@ssw0rd!2024',NULL,22);
 
--- Sample Payment details
+
+-- --Sample Payment details
 
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('1', "MasterCard", "2214", '1', '1');
+VALUES ('1', "MasterCard", "2214", '1', '1','1234567890');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('2', "MasterCard", "4365", '1', '1');
+VALUES ('2', "MasterCard", "4365", '1', '1','1234567891');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('3', 'Visa', '7183', '1', '2');
+VALUES ('3', 'Visa', '7183', '1', '2','1234567892');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('4', 'MasterCard', '9201', '1', '3');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('5', 'AmericanExpress', '3578', '1', '4');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('6', 'Visa', '6249', '1', '5');
+VALUES ('4', 'MasterCard', '9201', '1', '3','1234567893');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('7', 'MasterCard', '1826', '1', '6');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('8', 'Visa', '4973', '1', '7');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('9', 'AmericanExpress', '8314', '1', '8');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('10', 'MasterCard', '5692', '1', '9');
+VALUES ('5', 'AmericanExpress', '3578', '1', '4','1234567894');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('11', 'Visa', '7402', '1', '10');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('12', 'AmericanExpress', '3981', '1', '11');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('13', 'MasterCard', '5063', '1', '12');
+VALUES ('6', 'Visa', '6249', '1', '5','1234567895');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('14', 'Visa', '2894', '1', '13');
+VALUES ('7', 'MasterCard', '1826', '1', '6','1234567896');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('15', 'AmericanExpress', '6405', '1', '14');
+VALUES ('8', 'Visa', '4973', '1', '7','1234567897');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('16', 'MasterCard', '9748', '1', '15');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('17', 'Visa', '1357', '1', '16');
+VALUES ('9', 'AmericanExpress', '8314', '1', '8','1234567898');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('18', 'AmericanExpress', '8024', '1', '17');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('19', 'MasterCard', '3156', '1', '18');
+VALUES ('10', 'MasterCard', '5692', '1', '9','1234567899');
 INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
-VALUES ('20', 'Visa', '4789', '1', '19');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('21', 'AmericanExpress', '9640', '1', '20');
-INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID) 
-VALUES ('22', 'MasterCard', '2019', '1', '21');
+VALUES ('11', 'Visa', '7402', '1', '10','1234567900');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('12', 'AmericanExpress', '3981', '1', '11','1234567901');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('13', 'MasterCard', '5063', '1', '12','1234567902');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('14', 'Visa', '2894', '1', '13','1234567903');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('15', 'AmericanExpress', '6405', '1', '14','1234567904');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('16', 'MasterCard', '9748', '1', '15','1234567906');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('17', 'Visa', '1357', '1', '16','1234567907');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('18', 'AmericanExpress', '8024', '1', '17','1234567908');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('19', 'MasterCard', '3156', '1', '18','1234567909');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('20', 'Visa', '4789', '1', '19','1234567910');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('21', 'AmericanExpress', '9640', '1', '20','1234567911');
+INSERT INTO paymentdetails (paymentID, paymentMethod, paymentCardDetails, savedPaymentDetails, userID)
+VALUES ('22', 'MasterCard', '2019', '1', '21','1234567912');
 
 
 -- -- Product details
+INSERT INTO IOTBAY.Product (productName,productPrice,productType,productDescription,stockLevel) VALUES
+	 ('woodenChair',30,'chair','A wooden chair for dining room',30),
+	 ('plasticChair',20,'chair','A plastic chair for outside',30),
+	 ('metalChair',35,'chair','A metal chair for inside or outside',30),
+	 ('smartChair',50,'chair','A smart chair for study area',30),
+	 ('epoxyTable',100,'table','A table made with wood and epoxy',30),
+	 ('marbleTable',90,'table','A marble table for dining room',30),
+	 ('woodenTable',80,'table','A wooden table for dining room',30),
+	 ('plasticTable',60,'table','A plastic table for outside',30),
+	 ('whiteCouch',100,'couch','A white couch for living room',30),
+	 ('greyCouch',100,'couch','A grey couch for living room',30);
+INSERT INTO IOTBAY.Product (productName,productPrice,productType,productDescription,stockLevel) VALUES
+	 ('blackCouch',100,'couch','A black couch for living room',30),
+	 ('brownCouch',100,'couch','A brown couch for living room',30),
+	 ('metalLamp',15,'lamp','A metal lamp for anywhere',30),
+	 ('spiralLamp',30,'lamp','A spiral lamp for living room',30),
+	 ('epoxyLamp',20,'lamp','An epoxy lamp for anywhere',30),
+	 ('marbleLamp',25,'lamp','A marble lamp for anywhere',30),
+	 ('blackBed',400,'bed','A black bed',30),
+	 ('whiteBed',400,'bed','A white bed',30),
+	 ('greyBed',400,'bed','A grey bed',30),
+	 ('smartBed',999,'bed','A smart bed',30);
 
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('101', 'woodenChair', 30, 'chair', 'A wooden chair for dining room', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('102', 'plasticChair', 20, 'chair', 'A plastic chair for outside', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('103', 'metalChair', 35, 'chair', 'A metal chair for inside or outside', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('104', 'smartChair', 50, 'chair', 'A smart chair for study area', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('201', 'epoxyTable', 100, 'table', 'A table made with wood and epoxy', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('202', 'marbleTable', 90, 'table', 'A marble table for dining room', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('203', 'woodenTable', 80, 'table', 'A wooden table for dining room', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('204', 'plasticTable', 60, 'table', 'A plastic table for outside', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('301', 'whiteCouch', 100, 'couch', 'A white couch for living room', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('302', 'greyCouch', 100, 'couch', 'A grey couch for living room', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('303', 'blackCouch', 100, 'couch', 'A black couch for living room', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('304', 'brownCouch', 100, 'couch', 'A brown couch for living room', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('401', 'metalLamp', 15, 'lamp', 'A metal lamp for anywhere', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('402', 'spiralLamp', 30, 'lamp', 'A spiral lamp for living room', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('403', 'epoxyLamp', 20, 'lamp', 'An epoxy lamp for anywhere', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('404', 'marbleLamp', 25, 'lamp', 'A marble lamp for anywhere', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('501', 'blackBed', 400, 'bed', 'A black bed', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('502', 'whiteBed', 400, 'bed', 'A white bed', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('503', 'greyBed', 400, 'bed', 'A grey bed', 30);
-
-INSERT INTO Product (ProductID, productName, productPrice, productType, productDescription, stockLevel)
-VALUES ('504', 'smartBed', 999, 'bed', 'A smart bed', 30);
-
+-- -- Payment details
+INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
+	 ('MasterCard','2214',1,1234567890),
+	 ('MasterCard','4365',1,1234567891),
+	 ('Visa','7183',1,1234567892),
+	 ('MasterCard','9201',1,1234567893),
+	 ('AmericanExpress','3578',1,1234567894),
+	 ('Visa','6249',1,1234567895),
+	 ('MasterCard','1826',1,1234567896),
+	 ('Visa','4973',1,1234567897),
+	 ('AmericanExpress','8314',1,1234567898),
+	 ('MasterCard','5692',1,1234567899);
+INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
+	 ('Visa','7402',1,1234567900),
+	 ('AmericanExpress','3981',1,1234567901),
+	 ('MasterCard','5063',1,1234567902),
+	 ('Visa','2894',1,1234567903),
+	 ('AmericanExpress','6405',1,1234567904),
+	 ('MasterCard','9748',1,1234567906),
+	 ('Visa','1357',1,1234567907),
+	 ('AmericanExpress','8024',1,1234567908),
+	 ('MasterCard','3156',1,1234567909),
+	 ('Visa','4789',1,1234567910);
+INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
+	 ('AmericanExpress','9640',1,1234567911),
+	 ('MasterCard','2019',1,1234567912);
