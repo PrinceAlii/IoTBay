@@ -4,6 +4,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1">
+  
     <servlet>
       <servlet-name>index.jsp</servlet-name>
       <jsp-file>/index.jsp</jsp-file>
@@ -50,19 +51,38 @@
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+      <servlet-name>PaymentDetailsServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.PaymentDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>PaymentDetailsServlet</servlet-name>
+      <url-pattern>/paymentDetails</url-pattern>
+    </servlet-mapping>
+    <servlet>
+      <servlet-name>AddPaymentServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.AddPaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddPaymentServlet</servlet-name>
+        <url-pattern>/addPayment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>uts.isd.model.controller.ProductServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/ProductServlet</url-pattern>
+    </servlet-mapping>
 
-
-
-  <session-config>
+    <session-config>
       <session-timeout>
-      
-      30
-      
+
+        30
+
       </session-timeout>
-    
-  </session-config>
+
+    </session-config>
 
 </web-app>
-
-
