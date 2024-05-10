@@ -50,26 +50,26 @@ public class AddPaymentServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
     
-        // login check
         if (user == null) {
             response.sendRedirect("login.jsp");
             return;
         }
-    
-        try {
-            // get all saved payment methods for user
-            List<PaymentDetails> paymentMethods = paymentDAO.findPaymentByUser(user.getUserID());
 
+        String paymentMethod = request.getParameter("paymentMethod");
+        String cardNumber = request.getParameter("cardNumber");
+
+        try {
+            // Save the payment method to the database
+            // You need to implement this method in your PaymentDAO
+            paymentDAO.addPayment(paymentMethod, cardNumber, user.getUserID());
     
-            request.setAttribute("paymentMethods", paymentMethods);
-    
-            request.getRequestDispatcher("addPayment.jsp").forward(request, response);
-    
+            // Redirect the user to paymentDetails.jsp with a success message
+            response.sendRedirect("paymentDetails?paymentAdded=true");
         } catch (SQLException ex) {
             Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
-            // Handle exception
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment details");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while adding payment details. Please contact our support team.");
         }
+        
     }
 
 

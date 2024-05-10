@@ -52,7 +52,7 @@
                 <div class="col-md-8">
                     <h2 class="mt-5 mb-4">Add New Payment Method</h2>
                     <h5 class="mt-5 mb-4">Card Issuer</h5>
-                    <form>
+                    <form action="addPayment" method="post">
 
                         <div class="mb-3">
                             <div class="form-check form-check-inline">
@@ -73,7 +73,7 @@
 
                         <div class="mb-3 form-group" style="width: 100%;">
                             <label for="cardNumber" class="form-label">Card Number</label>
-                            <input type="text" class="form-control" id="cardNumber" placeholder="Enter card number">
+                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number">
                         </div>
 
 

@@ -22,7 +22,13 @@ public class PaymentDetails implements Serializable {
     this.savedPaymentDetails = _savedPaymentDetails;
   }
 
-  public int getPaymentID() {
+  public PaymentDetails(String paymentMethod, String cardNumber, int userID) {
+    this.paymentMethod = paymentMethod;
+    this.paymentCardDetails = cardNumber;
+    this.userID = userID;
+}
+
+public int getPaymentID() {
     return paymentID;
   }
 
