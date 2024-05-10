@@ -75,17 +75,24 @@
         <h1>Order Details</h1>
         <br>
     </div>
+    <div class="search-orders" style="margin-bottom: 20px; text-align: center;">
+        <form action="OrderServlet" method="post" style="display: inline-block;">
+            <input type="text" name="orderID" placeholder="Order ID" aria-label="Order ID" style="width: 200px; margin-right: 10px; height: 38px; padding: 5px 10px;">
+            <input type="date" name="orderDate" placeholder="Order Date" aria-label="Order Date" style="width: 200px; margin-right: 10px; height: 38px; padding: 5px 10px;">
+            <button type="submit" class="btn btn-outline-success" style="height: 38px; width: 100px;">Search</button>
+        </form>
+    </div>
     <div>
         <table cellpadding="5">
             <br>
-            <h2>List of Orders</h2>
+            <h2>List of Order History</h2>
             <tr>
-                <th>Order ID</th>
-                <th>Total Amount</th>
-                <th>Order Date</th>
-                <th>Product Quantity</th>
                 <th>User ID</th>
+                <th>Order ID</th>
+                <th>Order Date</th>
                 <th>Product ID</th>
+                <th>Product Quantity</th>
+                <th>Total Amount</th>
                 <th>Actions</th>
             </tr>
             <% 
@@ -94,12 +101,12 @@
                 for (Order order : orderDetail) {
             %>
             <tr>
-                <td><%= order.getOrderID() %></td>
-                <td><%= order.getOrderAmount() %></td>
-                <td><%= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(order.getOrderLogTimestamp()) %></td>
-                <td><%= order.getProductQuantity() %></td>
                 <td><%= order.getUserID() %></td>
+                <td><%= order.getOrderID() %></td>
+                <td><%= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(order.getOrderLogTimestamp()) %></td>
                 <td><%= order.getProductID() %></td>
+                <td><%= order.getProductQuantity() %></td>
+                <td><%= "$" + order.getOrderAmount() %></td>
                 <td>
                     <a href="editOrder.jsp?orderID=<%= order.getOrderID() %>">Edit</a>
                     &nbsp;|&nbsp;
