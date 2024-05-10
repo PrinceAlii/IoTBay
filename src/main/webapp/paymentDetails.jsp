@@ -59,12 +59,14 @@
         String paymentAdded = request.getParameter("paymentAdded");
         if (paymentAdded != null && paymentAdded.equals("true")) {
     %>
-    <div class="alert alert-success" role="alert">
-    Payment method has been added successfully.
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        Payment method has been added successfully.
     </div>
     <%
         }
     %>
+
     
     <div class="container d-flex h-100 align-items-center justify-content-center">
         <div class="text-center">
@@ -72,37 +74,39 @@
             <br>
             <h1>Saved Payment Details</h1>
             <br>
-           <table border="1">
-        <thead>
-            <tr>
-                <th>Card Issuer</th>
-                <th>Last 4 digits of card number</th>
-                <th>Name on card</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% 
-            List<PaymentDetails> paymentMethods = (List<PaymentDetails>) request.getAttribute("paymentMethods");
 
-                    if (paymentMethods != null && !paymentMethods.isEmpty()) {
-                        for (PaymentDetails payment : paymentMethods) {
-                    %>
-                    <tr>
-                        <th scope="row"><%= payment.getPaymentID() %> </th>
-                        <td><%= payment.getPaymentMethod() %> </td>
-                        <td><%= payment.getPaymentCardDetails() %> </td>
-                        <td><%= user.getName() %> </td>
-                    </tr>
-                    <% 
-                        }
-                    } else {
-                    %> 
-                    <tr>
-                        <td colspan="4">No payment details found.</td>
-                    </tr>
-                    <% } %> 
-                </tbody>
-            </table>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Payment ID</th>
+                    <th scope="col">Card Issuer</th>
+                    <th scope="col">Last 4 digits of card number</th>
+                    <th scope="col">Name on card</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% 
+                List<PaymentDetails> paymentMethods = (List<PaymentDetails>) request.getAttribute("paymentMethods");
+
+                        if (paymentMethods != null && !paymentMethods.isEmpty()) {
+                            for (PaymentDetails payment : paymentMethods) {
+                        %>
+                        <tr>
+                            <th scope="row"><%= payment.getPaymentID() %> </th>
+                            <td><%= payment.getPaymentMethod() %> </td>
+                            <td><%= payment.getPaymentCardDetails() %> </td>
+                            <td><%= user.getName() %> </td>
+                        </tr>
+                        <% 
+                            }
+                        } else {
+                        %> 
+                        <tr>
+                            <td colspan="4">No payment details found.</td>
+                        </tr>
+                        <% } %> 
+                    </tbody>
+        </table>
             
             <br>
             <br>
@@ -113,6 +117,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
