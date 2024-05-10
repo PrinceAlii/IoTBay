@@ -39,18 +39,17 @@ CREATE TABLE `User` (
   PRIMARY KEY (`userID`),
   KEY `User_PaymentDetails_FK` (`paymentID`),
   CONSTRAINT `User_PaymentDetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `PaymentDetails` (`paymentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1234568003 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1234568013 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
--- IOTBAY.AccessLog definition
+-- IOTBAY.UserAccessLogs definition
 
-CREATE TABLE `AccessLog` (
-  `logAccessTimestamp` datetime NOT NULL,
-  `logStatus` tinyint(1) NOT NULL,
-  `userID` int DEFAULT NULL,
-  PRIMARY KEY (`logAccessTimestamp`),
-  KEY `AccessLog_User_FK` (`userID`),
-  CONSTRAINT `AccessLog_User_FK` FOREIGN KEY (`userID`) REFERENCES `User` (`userID`)
+CREATE TABLE `UserAccessLogs` (
+  `UserID` int DEFAULT NULL,
+  `STATUS` varchar(15) DEFAULT NULL,
+  `CurrentTime` timestamp NULL DEFAULT NULL,
+  KEY `UserID` (`UserID`),
+  CONSTRAINT `useraccesslogs_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `User` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
@@ -83,7 +82,6 @@ CREATE TABLE `Invoice` (
   CONSTRAINT `Invoice_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
 -- STEP TWO. PASTE EVERYTHING BELOW NOW
 
 -- Sample User details
@@ -114,6 +112,33 @@ INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNu
 	 ('User','Registered User','Ethan Martinez','EthanMartinez@gmail.com','0459721834',1,'AbCdEfG1234',NULL,21),
 	 ('User','Registered User','Dick Smith','DickSmith@email.com','0471986253',0,'P@ssw0rd!2024',NULL,22);
 
+
+-- --Sample Access Logs
+
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,CurrentTime) VALUES
+	 (1234567982,'Registered','2024-05-14 15:00:00'),
+	 (1234567983,'Logged Out','2024-05-14 15:00:00'),
+	 (1234567984,'Logged In','2024-05-14 15:00:00'),
+	 (1234567985,'Registered','2024-05-14 15:00:00'),
+	 (1234567986,'Logged Out','2024-05-14 15:00:00'),
+	 (1234567987,'Logged In','2024-05-14 15:00:00'),
+	 (1234567988,'Registered','2024-05-14 15:00:00'),
+	 (1234567989,'Logged Out','2024-05-14 15:00:00'),
+	 (1234567990,'Logged In','2024-05-14 15:00:00'),
+	 (1234567991,'Registered','2024-05-14 15:00:00');
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,CurrentTime) VALUES
+	 (1234567992,'Logged Out','2024-05-14 15:00:00'),
+	 (1234567993,'Logged In','2024-05-14 15:00:00'),
+	 (1234567994,'Registered','2024-05-14 15:00:00'),
+	 (1234567995,'Logged Out','2024-05-14 15:00:00'),
+	 (1234567996,'Logged In','2024-05-14 15:00:00'),
+	 (1234567997,'Registered','2024-05-14 15:00:00'),
+	 (1234567998,'Logged Out','2024-05-14 15:00:00'),
+	 (1234567999,'Logged In','2024-05-14 15:00:00'),
+	 (1234568000,'Registered','2024-05-14 15:00:00'),
+	 (1234568001,'Logged Out','2024-05-14 15:00:00');
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,CurrentTime) VALUES
+	 (1234568002,'Logged In','2024-05-14 15:00:00');
 
 -- --Sample Payment details
 

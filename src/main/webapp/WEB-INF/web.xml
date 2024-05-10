@@ -43,13 +43,29 @@
         <servlet-name>updateAccDetailsServlet</servlet-name>
         <url-pattern>/updateAccDetailsServlet</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>uts.isd.model.controller.DeleteServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>accessLogServlet</servlet-name>
+        <servlet-class>uts.isd.model.controller.accessLogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>accessLogServlet</servlet-name>
+        <url-pattern>/accessLogServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>uts.isd.model.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <servlet>
       <servlet-name>PaymentDetailsServlet</servlet-name>

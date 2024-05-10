@@ -14,34 +14,24 @@ import javax.servlet.http.HttpSession;
 import uts.isd.model.User;
 import uts.isd.model.dao.UserDAO;
 
-public class LoginServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 
     @Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            // check if user login details for User exsists 
-            if(userDAO.checkUser(email,password)){
-
-                User user = userDAO.findUser(email, password);
                 int userID = userDAO.getUserID(email, password);
-                userDAO.addlogslogin(userID);
-                
-                session.setAttribute("user", user);
-                request.getRequestDispatcher("welcome.jsp").include(request,response);
-            }else{
-                //else throws Incorrect Email or Password
-                session.setAttribute("incorrectpass", "Incorrect Email or Password");
-                request.getRequestDispatcher("login.jsp").include(request, response);
-            } 
+                userDAO.addlogslogout(userID);
+                request.getRequestDispatcher("logout.jsp").include(request,response);
         }catch (SQLException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

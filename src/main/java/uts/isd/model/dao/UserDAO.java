@@ -105,6 +105,92 @@ public class UserDAO {
         st.executeUpdate("DELETE FROM IOTBAY.User WHERE userEmail='" + email + "'" );
     }
 
+    //adds a ccount log to the table when logging out
+    public void addlogslogout(int userID) throws SQLException {
+        String logout1 = "Logged Out";
+        String fetch = "INSERT INTO IOTBAY.UserAccessLogs (UserID, STATUS ,CurrentTime) VALUES (" + userID + ",'" + logout1 + "',CURRENT_TIMESTAMP)";
+        st.executeUpdate(fetch);
+    }
+
+    //adds a loging log to the account log table when signing in
+    public void addlogslogin(int userID) throws SQLException {
+        String login1 = "Logged In";
+        String fetch = "INSERT INTO IOTBAY.UserAccessLogs (UserID, STATUS ,CurrentTime) VALUES (" + userID + ",'" + login1 + "',CURRENT_TIMESTAMP)";
+        st.executeUpdate(fetch);
+    }
+
+    //adds a register log ti the account table when registering
+    public void addlogsregister(int userID) throws SQLException {
+        String Register1 = "Registered";
+        String fetch = "INSERT INTO IOTBAY.UserAccessLogs (UserID, STATUS ,CurrentTime) VALUES (" + userID + ",'" + Register1 + "',CURRENT_TIMESTAMP)";
+        st.executeUpdate(fetch);
+    }
+
+     // get userID by email in database
+     public int getUserID(String email, String password) throws SQLException {
+
+        String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "' AND userPassword='" + password + "'";
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()){
+
+            int userID = rs.getInt(1);
+            String userEmail = rs.getString(5);
+            String userPassword = rs.getString(8);
+
+            if (userEmail.equals(email) && userPassword.equals(password)){
+                return userID;
+            }
+        }
+        return 0;
+    }
+
+
+    // get user Status Logs based off userID
+    public ArrayList getStatusLogs(int userID) throws SQLException {
+        
+        ArrayList statuslist = new ArrayList();
+        
+        String fetch = "SELECT * FROM IOTBAY.UserAccessLogs WHERE UserID =" + userID;
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while (rs.next()) {
+            String status = rs.getString(2);
+
+            statuslist.add(status);
+
+        }
+        return statuslist;
+    }
+
+    // Get user time Logs depending on User ID
+    public ArrayList getTimeLogs(int userID) throws SQLException {
+        
+        ArrayList timelist = new ArrayList();
+        
+        String fetch = "SELECT * FROM IOTBAY.UserAccessLogs WHERE UserID =" + userID;
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while (rs.next()) {
+            String timedate = rs.getString(3);
+
+            timelist.add(timedate);
+        }
+        System.out.println(timelist);
+        return timelist;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     // public ArrayList<User> fetchUsers() throws SQLException {
     //     String fetch = "SELECT * FROM IOTBAY.User";
     //     ResultSet rs = readSt.executeQuery(fetch);

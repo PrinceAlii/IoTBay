@@ -47,6 +47,10 @@ public class RegisterServlet extends HttpServlet {
 					user.setEmail(email);
 					user.setPassword(password);
 					user.setPhone(phone);
+
+					int userID = userDAO.getUserID(email, password);
+					userDAO.addlogsregister(userID);
+
 					session.setAttribute("user", user);
 	
 					request.getRequestDispatcher("welcome.jsp").include(request, response);

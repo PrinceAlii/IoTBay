@@ -1,11 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@page import="uts.isd.model.*" %>
+    <%@ page import="java.util.ArrayList" %>
         <!DOCTYPE html>
         <html>
 
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>Account Details</title>
+            <title>Access Logs</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -15,6 +16,7 @@
         <body class="text-center">
         
             <% User user=(User) session.getAttribute("user"); %>
+
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="main.jsp">IotBay</a>
@@ -44,50 +46,36 @@
                     </div>
                 </div>
             </nav>
+                <%
+            ArrayList logs = (ArrayList) session.getAttribute("logs");
+            ArrayList tlogs = (ArrayList) session.getAttribute("tlogs");
+        %>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped mb-0 log-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th> Date and Time </th>
 
-            <%
-                String name = request.getParameter("name");
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
-                String phone = request.getParameter("phone");  
-            %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        for (int i = 0; i < logs.size(); i++) {
+                    %>
+                    <tr>
+                        <td><%= logs.get(i)%></td>
+                        <td> <%= tlogs.get(i)%></td>
 
-            <div class="container d-flex h-100 align-items-center justify-content-center">
-                <div class="text-center">
-                <br>
-                <br>
-                    <h1>Registration Details</h1>
-                    <br>
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <th scope="row" style="text-align: left;">Name:</th>
-                                <td style="text-align: left;"><%= user.getName() %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" style="text-align: left;">Email:</th>
-                                <td style="text-align: left;"><%= user.getEmail() %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" style="text-align: left;">Password:</th>
-                                <td style="text-align: left;"><%= user.getPassword() %></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" style="text-align: left;">Contact Number:</th>
-                                <td style="text-align: left;"><%= user.getPhone() %></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <div>
-                        <a id="updateRegistration" href="updateAccDetails.jsp" class="btn btn-success">Update</a>
-                        <a id="deleteRegistration" href="deleteUser.jsp" class="btn btn-danger">Delete</a>
-                    </div>
-                </div>
-            </div>
+                    </tr>
+                    <%
+                        }
+                    %>
 
 
+                </tbody>
+            </table>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         </body>
 
-        </html>
+    </html>
