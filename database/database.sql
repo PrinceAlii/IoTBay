@@ -97,30 +97,30 @@ CREATE TABLE `Invoice` (
 -- -- Payment details
 
 INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
-	 ('MasterCard','2214',1,1234567890),
-	 ('MasterCard','4365',1,1234567891),
-	 ('Visa','7183',1,1234567892),
-	 ('MasterCard','9201',1,1234567893),
-	 ('AmericanExpress','3578',1,1234567894),
-	 ('Visa','6249',1,1234567895),
-	 ('MasterCard','1826',1,1234567896),
-	 ('Visa','4973',1,1234567897),
-	 ('AmericanExpress','8314',1,1234567898),
-	 ('MasterCard','5692',1,1234567899);
+	 ('MasterCard','2214',1,1),
+	 ('MasterCard','4365',1,2),
+	 ('Visa','7183',1,3),
+	 ('MasterCard','9201',1,4),
+	 ('AmericanExpress','3578',1,5),
+	 ('Visa','6249',1,6),
+	 ('MasterCard','1826',1,7),
+	 ('Visa','4973',1,8),
+	 ('AmericanExpress','8314',1,9),
+	 ('MasterCard','5692',1,10);
 INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
-	 ('Visa','7402',1,1234567900),
-	 ('AmericanExpress','3981',1,1234567901),
-	 ('MasterCard','5063',1,1234567902),
-	 ('Visa','2894',1,1234567903),
-	 ('AmericanExpress','6405',1,1234567904),
-	 ('MasterCard','9748',1,1234567906),
-	 ('Visa','1357',1,1234567907),
-	 ('AmericanExpress','8024',1,1234567908),
-	 ('MasterCard','3156',1,1234567909),
-	 ('Visa','4789',1,1234567910);
+	 ('Visa','7402',1,11),
+	 ('AmericanExpress','3981',1,12),
+	 ('MasterCard','5063',1,13),
+	 ('Visa','2894',1,14),
+	 ('AmericanExpress','6405',1,15),
+	 ('MasterCard','9748',1,16),
+	 ('Visa','1357',1,17),
+	 ('AmericanExpress','8024',1,18),
+	 ('MasterCard','3156',1,19),
+	 ('Visa','4789',1,20);
 INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
-	 ('AmericanExpress','9640',1,1234567911),
-	 ('MasterCard','2019',1,1234567912);
+	 ('AmericanExpress','9640',1,21),
+	 ('MasterCard','2019',1,22);
 
 
 
