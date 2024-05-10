@@ -164,28 +164,29 @@ VALUES ('22', 'MasterCard', '2019', '1', '21','1234567912');
 
 
 -- -- Product details
-INSERT INTO IOTBAY.Product (productName,productPrice,productType,productDescription,stockLevel) VALUES
-	 ('woodenChair',30,'chair','A wooden chair for dining room',30),
-	 ('plasticChair',20,'chair','A plastic chair for outside',30),
-	 ('metalChair',35,'chair','A metal chair for inside or outside',30),
-	 ('smartChair',50,'chair','A smart chair for study area',30),
-	 ('epoxyTable',100,'table','A table made with wood and epoxy',30),
-	 ('marbleTable',90,'table','A marble table for dining room',30),
-	 ('woodenTable',80,'table','A wooden table for dining room',30),
-	 ('plasticTable',60,'table','A plastic table for outside',30),
-	 ('whiteCouch',100,'couch','A white couch for living room',30),
-	 ('greyCouch',100,'couch','A grey couch for living room',30);
-INSERT INTO IOTBAY.Product (productName,productPrice,productType,productDescription,stockLevel) VALUES
-	 ('blackCouch',100,'couch','A black couch for living room',30),
-	 ('brownCouch',100,'couch','A brown couch for living room',30),
-	 ('metalLamp',15,'lamp','A metal lamp for anywhere',30),
-	 ('spiralLamp',30,'lamp','A spiral lamp for living room',30),
-	 ('epoxyLamp',20,'lamp','An epoxy lamp for anywhere',30),
-	 ('marbleLamp',25,'lamp','A marble lamp for anywhere',30),
-	 ('blackBed',400,'bed','A black bed',30),
-	 ('whiteBed',400,'bed','A white bed',30),
-	 ('greyBed',400,'bed','A grey bed',30),
-	 ('smartBed',999,'bed','A smart bed',30);
+INSERT INTO IOTBAY.Product (productID, productName, productPrice, productType, productDescription, stockLevel) VALUES
+	('101', 'Wooden Chair', 30, 'chair', 'A wooden chair for dining room', 30),
+	('102', 'Plastic Chair', 20, 'chair', 'A plastic chair for outside', 30),
+	('103', 'Metal Chair', 35, 'chair', 'A metal chair for inside or outside', 30),
+	('104', 'Smart Chair', 50, 'chair', 'A smart chair for study area', 30),
+	('201', 'Epoxy Table', 100, 'table', 'A table made with wood and epoxy', 30),
+	('202', 'Marble Table', 90, 'table', 'A marble table for dining room', 30),
+	('203', 'Wooden Table', 80, 'table', 'A wooden table for dining room', 30),
+	('204', 'Plastic Table', 60, 'table', 'A plastic table for outside', 30),
+	('301', 'White Couch', 100, 'couch', 'A white couch for living room', 30),
+	('302', 'Grey Couch', 100, 'couch', 'A grey couch for living room', 30);
+
+INSERT INTO IOTBAY.Product (productID, productName, productPrice, productType, productDescription, stockLevel) VALUES
+	('303', 'Black Couch', 100, 'couch', 'A black couch for living room', 30),
+	('304', 'Brown Couch', 100, 'couch', 'A brown couch for living room', 30),
+	('401', 'Metal Lamp', 15, 'lamp', 'A metal lamp for anywhere', 30),
+	('402', 'Spiral Lamp', 30, 'lamp', 'A spiral lamp for living room', 30),
+	('403', 'Epoxy Lamp', 20, 'lamp', 'An epoxy lamp for anywhere', 30),
+	('404', 'Marble Lamp', 25, 'lamp', 'A marble lamp for anywhere', 30),
+	('501', 'Black Bed', 400, 'bed', 'A black bed', 30),
+	('502', 'White Bed', 400, 'bed', 'A white bed', 30),
+	('503', 'Grey Bed', 400, 'bed', 'A grey bed', 30),
+	('504', 'Smart Bed', 999, 'bed', 'A smart bed', 30);
 
 -- -- Payment details
 INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
