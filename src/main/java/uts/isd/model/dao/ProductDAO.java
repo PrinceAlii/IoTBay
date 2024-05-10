@@ -18,7 +18,7 @@ public class ProductDAO {
     // Method to retrieve a list of all products
     public List<Product> getAllProducts() throws SQLException {
         List<Product> products = new ArrayList<>();
-        String query = "SELECT * FROM Products";
+        String query = "SELECT * FROM Product";
         try (PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -56,4 +56,28 @@ public class ProductDAO {
         }
         return products;
     }
+
+    // Method to search products by name and filter
+    public List<Product> searchProductsByKeywordAndFilter(String keyword, String filter) throws SQLException {
+        List<Product> products = new ArrayList<>();
+        String query = "SELECT * FROM Product WHERE productName LIKE ? AND productType = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, "%" + keyword + "%");
+            stmt.setString(2, filter);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Product product = new Product();
+                    product.setProductID(rs.getInt("productID"));
+                    product.setProductName(rs.getString("productName"));
+                    product.setProductPrice(rs.getDouble("productPrice"));
+                    product.setProductType(rs.getString("productType"));
+                    product.setProductDescription(rs.getString("productDescription"));
+                    product.setStockLevel(rs.getInt("stockLevel"));
+                    products.add(product);
+                }
+            }
+        }
+        return products;
+    }
+
 }
