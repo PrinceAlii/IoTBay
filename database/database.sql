@@ -214,3 +214,12 @@ INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPayment
 INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
 	 ('AmericanExpress','9640',1,1234567911),
 	 ('MasterCard','2019',1,1234567912);
+
+--Sample Order details
+INSERT INTO `Order` (orderID, orderAmount, orderLogTimestamp, productQuantity, userID, productID) VALUES
+	(1, 60, '2023-05-01 10:00:00', 2, 1, 101),
+	(2, 20, '2023-05-02 11:30:00', 1, 1, 102),
+	(3, 70, '2023-05-03 15:45:00', 2, 2, 103),
+	(4, 200, '2023-05-04 09:20:00', 4, 2, 104),
+	(5, 60, '2023-05-05 08:15:00', 2, 2, 101);
+	

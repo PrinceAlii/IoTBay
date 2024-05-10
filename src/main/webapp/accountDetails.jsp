@@ -36,6 +36,7 @@
                                         <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
                                         <li><a class="dropdown-item" href="paymentDetails">Payment Details</a></li>
                                         <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                                        <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
                                     </ul>
