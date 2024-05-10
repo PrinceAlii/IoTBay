@@ -10,6 +10,7 @@ public class Product implements Serializable {
   private String productType;
   private String productDescription;
   private int stockLevel;
+  private String imageUrl;
 
   public Product() {
   }
@@ -71,5 +72,13 @@ public class Product implements Serializable {
 
   public void setStockLevel(int stockLevel) {
     this.stockLevel = stockLevel;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+      this.imageUrl = imageUrl;
   }
 }
