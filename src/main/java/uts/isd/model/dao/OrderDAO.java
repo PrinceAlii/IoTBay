@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import uts.isd.model.Order;
 
@@ -16,24 +17,39 @@ public class OrderDAO {
         conn = dbConnector.openConnection();
     }
 
-    public List<Order> findOrderByUser(int userID) throws SQLException {
+    public List<Order> findOrders(int userID, Integer orderID, Date orderDate) throws SQLException {
         List<Order> orderDetailList = new ArrayList<>();
-        String fetch = "SELECT * FROM IOTBAY.Order WHERE userID = ?";
-        PreparedStatement stmt = conn.prepareStatement(fetch);
+        StringBuilder fetchQuery = new StringBuilder("SELECT * FROM IOTBAY.Order WHERE userID = ?");
+
+        if (orderID != null) {
+            fetchQuery.append(" AND orderID = ?");
+        }
+        if (orderDate != null) {
+            fetchQuery.append(" AND CAST(orderLogTimestamp AS DATE) = ?");
+        }
+
+        PreparedStatement stmt = conn.prepareStatement(fetchQuery.toString());
         stmt.setInt(1, userID);
+        int paramIndex = 2;
+
+        if (orderID != null) {
+            stmt.setInt(paramIndex++, orderID);
+        }
+        if (orderDate != null) {
+            stmt.setDate(paramIndex, new java.sql.Date(orderDate.getTime()));
+        }
+
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
-            int orderID = rs.getInt("orderID");
+            int fetchedOrderID = rs.getInt("orderID");
             int productID = rs.getInt("productID");
-            int orderAmount = rs.getInt("orderAMount");
+            int orderAmount = rs.getInt("orderAmount");
             java.sql.Timestamp orderLogTimestamp = rs.getTimestamp("orderLogTimestamp");
             int productQuantity = rs.getInt("productQuantity");
+            Date orderDateFromDB = new Date(orderLogTimestamp.getTime());
 
-            // Converting SQL Timestamp to java.util.Date
-            java.util.Date orderDate = new java.util.Date(orderLogTimestamp.getTime());
-
-            Order order = new Order(orderID, userID, productID, orderAmount, orderDate, productQuantity);
+            Order order = new Order(fetchedOrderID, userID, productID, orderAmount, orderDateFromDB, productQuantity);
             orderDetailList.add(order);
         }
 
