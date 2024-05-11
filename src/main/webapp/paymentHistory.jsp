@@ -71,6 +71,7 @@
                 <th>Order ID</th>
                 <th>Payment ID</th>
                 <th>Order Amount</th>
+                <th>Product ID</th>
                 <th>Order Date</th>
    
             </tr>
@@ -83,7 +84,8 @@
             <tr>
                 <td><%= order.getOrderID() %></td>
                 <td><%= order.getPaymentID() %></td>
-                <td><%= order.getOrderAmount() %></td>
+                <td>$<%= order.getOrderAmount() %></td>
+                <td><%= order.getProductID() %></td>
                 <td><%= order.getOrderLogTimestamp() %></td>
 
             </tr>

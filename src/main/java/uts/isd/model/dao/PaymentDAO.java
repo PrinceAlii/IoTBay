@@ -109,6 +109,7 @@ public class PaymentDAO {
                 order.setOrderAmount(rs.getInt("orderAmount"));
                 order.setPaymentID(rs.getInt("paymentID"));
                 order.setOrderLogTimestamp(rs.getDate("orderLogTimestamp"));
+                order.setProductID(rs.getInt("productID"));
                 
                 orders.add(order);
             }
