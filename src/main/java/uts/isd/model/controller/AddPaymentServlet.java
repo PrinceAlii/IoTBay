@@ -85,7 +85,7 @@ public class AddPaymentServlet extends HttpServlet {
             if (expiryDate == null || expiryDate.isEmpty()) {
                 errors.add("You must enter your cards expiry date.");
             } else if (!isValidExpiryDate(expiryDate)) {
-                errors.add("Invalid expiry date. Must be in the format MM/YYYY or MMYYYY");
+                errors.add("Invalid expiry date. Ensure you enter your expiry date in the format MM/YYYY, otherwise your card may be expired.");
             }
             
             if (cvv == null || cvv.isEmpty()) {
@@ -118,16 +118,29 @@ public class AddPaymentServlet extends HttpServlet {
 
 
     // methods for validation
+    
     private boolean isValidCardNumber(String cardNumber) {
         return cardNumber.matches("\\d{15,16}");
     }
     
 
     private boolean isValidExpiryDate(String expiryDate) {
-        return expiryDate.matches("((0[1-9]|1[0-2])/\\d{4})|(\\d{6})");
+        if (expiryDate.matches("(0[1-9]|1[0-2])/\\d{4}")) {
+    
+            // check if expiry date is before 05/2024
+            String[] parts = expiryDate.split("/");
+            int month = Integer.parseInt(parts[0]);
+            int year = Integer.parseInt(parts[1]);
+            if (year < 2024 || (year == 2024 && month < 5)) {
+                return false;
+            }
+            return true; 
+        }
+        return false; 
     }
     
-    
+  
+
 
     private boolean isValidCVV(String cvv) {
         return cvv.matches("\\d{3}");
