@@ -7,7 +7,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Remove Saved Payment</title>
+    <title>Update Payment</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
@@ -60,14 +60,14 @@
         <div class="text-center">
             <br>
             <br>
-            <h1>Delete a saved payment method</h1>
+            <h1>Update a payment method</h1>
             <br>
 
-            <form action="removePayment" method="post">
+            <form action="updatePayment" method="post">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">Remove</th>
+                            <th scope="col">Update</th>
                             <th scope="col">Payment ID</th>
                             <th scope="col">Card Issuer</th>
                             <th scope="col">Last 4 digits of card number</th>
@@ -77,12 +77,11 @@
                     <tbody>
                         <% 
                         List<PaymentDetails> paymentMethods = (List<PaymentDetails>) request.getAttribute("paymentMethods");
-
                         if (paymentMethods != null && !paymentMethods.isEmpty()) {
                             for (PaymentDetails payment : paymentMethods) {
                         %>
                         <tr>
-                            <td><input type="radio" name="paymentIdToRemove" value="<%= payment.getPaymentID() %>"></td>
+                            <td><input type="radio" name="paymentIdToUpdate" value="<%= payment.getPaymentID() %>"></td>
                             <td><%= payment.getPaymentID() %></td>
                             <td><%= payment.getPaymentMethod() %></td>
                             <td><%= payment.getPaymentCardDetails() %></td>
@@ -99,8 +98,9 @@
                     </tbody>
                 </table>
                 <br>
-                <a href="paymentDetails" class="btn btn-warning">Cancel</a>
-                <button type="submit" class="btn btn-danger">Remove Selected Payment Method</button>
+                <a href="paymentDetails" class="btn btn-secondary me-2">Cancel</a>
+                <%-- <button type="submit" name="action" value="update" class="btn btn-warning me-2">Update selected payment method</button> --%>
+                <button type="submit" name="action" value="setDefault" class="btn btn-info">Make selected payment default</button>
             </form>
 
         </div>
