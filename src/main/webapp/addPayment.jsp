@@ -110,7 +110,7 @@
 
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="main.jsp" class="btn btn-danger">Cancel</a>
+                            <a href="paymentDetails" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>
