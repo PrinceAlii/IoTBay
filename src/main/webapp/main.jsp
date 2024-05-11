@@ -44,6 +44,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Welcome, <%= user.getName() %>!</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.jsp">Cart</a>
+                        </li>
                         <li class="nav-iteitem dropdown" style="padding-right: 40px;">
                             <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
@@ -109,6 +112,7 @@
                             <img src="<%= product.getImageUrl() %>" class="card-img-top" alt="<%= product.getProductName() %>">
                             <h5 class="card-title"><%= product.getProductName() %></h5>
                             <p class="card-text">Price: $<%= product.getProductPrice() %></p>
+                            <a href="CartServlet?action=add&productId=<%= product.getProductID() %>" class="btn btn-primary">Add to Cart</a>
                         </div>
                     </div>
                 </div>
