@@ -41,9 +41,9 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
-                            <li><a class="dropdown-item active" href="paymentDetails.jsp">Payment
-                                    Details</a></li>
+                            <li><a class="dropdown-item active" href="paymentDetails.jsp">PaymentDetails</a></li>                  
                             <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                            <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
