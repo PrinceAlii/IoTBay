@@ -1,74 +1,7 @@
-// package uts.isd.model;
-
-// import java.io.Serializable;
-
-// public class Order implements Serializable {
-
-//   private int orderID;
-//   private int userID;
-//   private int paymentID;
-//   private int orderAmount;
-//   private String orderDate;
-
-//   public Order() {
-//   }
-
-//   public Order(int _orderID, int _userID, int _paymentID, int _orderAmount, String _orderDate) {
-//     this.orderID = _orderID;
-//     this.userID = _userID;
-//     this.paymentID = _paymentID;
-//     this.orderAmount = _orderAmount;
-//     this.orderDate = _orderDate;
-//   }
-
-//   public int getOrderID() {
-//     return orderID;
-//   }
-
-//   public void setOrderID(int orderID) {
-//     this.orderID = orderID;
-//   }
-
-//   public int getUserID() {
-//     return userID;
-//   }
-
-//   public void setUserID(int userID) {
-//     this.userID = userID;
-//   }
-
-//   public int getPaymentID() {
-//     return paymentID;
-//   }
-
-//   public void setPaymentID(int paymentID) {
-//     this.paymentID = paymentID;
-//   }
-
-//   public int getOrderAmount() {
-//     return orderAmount;
-//   }
-
-//   public void setOrderAmount(int orderAmount) {
-//     this.orderAmount = orderAmount;
-//   }
-
-//   public String getOrderDate() {
-//     return orderDate;
-//   }
-
-//   public void setOrderDate(String orderDate) {
-//     this.orderDate = orderDate;
-//   }
-// }
-
-
-//below is code i change to
-
 package uts.isd.model;
 
 import java.io.Serializable;
-import java.util.Date; // Import Date for orderLogTimestamp
+import java.util.Date;
 
 public class Order implements Serializable {
 
@@ -76,7 +9,7 @@ public class Order implements Serializable {
     private int userID;
     private int productID;
     private int orderAmount;
-    private Date orderLogTimestamp; // Changed from String to Date
+    private Date orderLogTimestamp;
     private int productQuantity;
 
     public Order() {
