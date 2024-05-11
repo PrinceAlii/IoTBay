@@ -98,6 +98,8 @@
                         <% } %> 
                     </tbody>
                 </table>
+                <br>
+                <a href="paymentDetails" class="btn btn-warning">Cancel</a>
                 <button type="submit" class="btn btn-danger">Remove Selected Payment Method</button>
             </form>
 
