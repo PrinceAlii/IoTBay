@@ -68,6 +68,14 @@
       <url-pattern>/addPayment</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>RemovePaymentServlet</servlet-name>
+    <servlet-class>uts.isd.model.controller.RemovePaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemovePaymentServlet</servlet-name>
+    <url-pattern>/removePayment</url-pattern>
+  </servlet-mapping>
+  <servlet>
       <servlet-name>ProductServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.ProductServlet</servlet-class>
   </servlet>

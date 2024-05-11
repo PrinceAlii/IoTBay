@@ -56,6 +56,13 @@ public class PaymentDAO {
         st.executeUpdate("INSERT INTO IOTBAY.paymentdetails (paymentMethod, paymentCardDetails, userID, savedPaymentDetails) VALUES ('" +  paymentMethod + "', '" + cardNumberTrimmed + "', " + userID + ", 1)");
     }
     
+    public void deletePayment(int paymentID) throws SQLException {
+
+        st.executeUpdate("UPDATE IOTBAY.user SET paymentID = NULL WHERE paymentID = " + paymentID);
+
+
+        st.executeUpdate("DELETE FROM IOTBAY.paymentdetails WHERE paymentID = " + paymentID);
+    }
     
     
 
