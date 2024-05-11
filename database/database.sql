@@ -64,19 +64,24 @@ CREATE TABLE `AccessLog` (
 
 -- IOTBAY.`Order` definition
 
-CREATE TABLE `Order` (
+-- iotbay.`order` definition
+
+CREATE TABLE `order` (
   `orderID` int NOT NULL AUTO_INCREMENT,
   `orderAmount` int NOT NULL,
   `orderLogTimestamp` datetime NOT NULL,
   `productQuantity` int NOT NULL,
   `userID` int NOT NULL,
   `productID` int NOT NULL,
+  `paymentID` int DEFAULT NULL,
   PRIMARY KEY (`orderID`),
   KEY `Order_User_FK` (`userID`),
   KEY `Order_Product_FK` (`productID`),
-  CONSTRAINT `Order_Product_FK` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`),
-  CONSTRAINT `Order_User_FK` FOREIGN KEY (`userID`) REFERENCES `User` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `order_paymentdetails_FK` (`paymentID`),
+  CONSTRAINT `order_paymentdetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `paymentdetails` (`paymentID`),
+  CONSTRAINT `Order_Product_FK` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
+  CONSTRAINT `Order_User_FK` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.Invoice definition
@@ -106,9 +111,8 @@ INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPayment
 	 ('MasterCard','1826',1,7),
 	 ('Visa','4973',1,8),
 	 ('AmericanExpress','8314',1,9),
-	 ('MasterCard','5692',1,10);
-INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
-	 ('Visa','7402',1,11),
+	 ('MasterCard','5692',1,10),
+   ('Visa','7402',1,11),
 	 ('AmericanExpress','3981',1,12),
 	 ('MasterCard','5063',1,13),
 	 ('Visa','2894',1,14),
@@ -117,9 +121,8 @@ INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPayment
 	 ('Visa','1357',1,17),
 	 ('AmericanExpress','8024',1,18),
 	 ('MasterCard','3156',1,19),
-	 ('Visa','4789',1,20);
-INSERT INTO IOTBAY.PaymentDetails (paymentMethod,paymentCardDetails,savedPaymentDetails,userID) VALUES
-	 ('AmericanExpress','9640',1,21),
+	 ('Visa','4789',1,20),
+   ('AmericanExpress','9640',1,21),
 	 ('MasterCard','2019',1,22);
 
 
@@ -138,8 +141,7 @@ INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNu
 	 ('User','Registered User','James Miller ','JamesMiller@aol.com','0489753102',1,'1q2w3E4r',NULL,7),
 	 ('User','Registered User','Sophia Wilson ','SophiaWilson@icloud.com','0498765432',1,'Pass1234',NULL,8),
 	 ('User','Registered User','Benjamin Taylor','BenjaminTaylor@zoho.com','0475839201',1,'Te$tP@ss',NULL,9),
-	 ('User','Registered User','Isabella Martinez','IsabellaMartinez@yandex.com','0432156897',0,'0n3TwoThre3',NULL,10);
-INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+	 ('User','Registered User','Isabella Martinez','IsabellaMartinez@yandex.com','0432156897',0,'0n3TwoThre3',NULL,10),
 	 ('User','Staff','Alexander Anderson','AlexanderAnderson@fastmail.com','0415983647',0,'P@ssw0rd123','Manager',11),
 	 ('User','Staff','Charlotte Jackson','CharlotteJackson@tutanota.com','0487635291',1,'Hello1234','Manager',12),
 	 ('User','Staff','Daniel White','DanielWhite@mail.com','0421765489',0,'Qwerty123','Salesperson',13),
@@ -148,8 +150,7 @@ INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNu
 	 ('User','System Admin','Ethan Garcia','EthanGarcia@yopmail.com','0465987312',0,'Summer2023','Administrator',17),
 	 ('User','System Admin','Madison Robinson','MadisonRobinson@mailinator.com','0487593126',0,'Passw0rd123!','Administrator',NULL),
 	 ('User','Registered User','David Clark','DavidClark@protonmail.com','0412375986',1,'P@ssw0rd2024',NULL,18),
-	 ('User','Registered User','Harper Rodriguez','HarperRodriguez@yandex.com','0423987165',1,'SecureP@ss1',NULL,19);
-INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNumber,userStatus,userPassword,userPosition,paymentID) VALUES
+	 ('User','Registered User','Harper Rodriguez','HarperRodriguez@yandex.com','0423987165',1,'SecureP@ss1',NULL,19),
 	 ('User','Registered User','Olivia Wilson','OliviaWilson@protonmail.com','0432871956',0,'1Password!',NULL,20),
 	 ('User','Registered User','Ethan Martinez','EthanMartinez@gmail.com','0459721834',1,'AbCdEfG1234',NULL,21),
 	 ('User','Registered User','Dick Smith','DickSmith@email.com','0471986253',0,'P@ssw0rd!2024',NULL,22);
@@ -193,38 +194,36 @@ INSERT INTO `Order` (orderID, orderAmount, orderLogTimestamp, productQuantity, u
 	(2, 20, '2023-05-02 11:30:00', 1, 2, 102),
 	(3, 70, '2023-05-03 15:45:00', 2, 3, 103),
 	(4, 200, '2023-05-04 09:20:00', 4, 4, 104),
-	(5, 60, '2023-05-05 08:15:00', 2, 5, 101);
-
-INSERT INTO `Order` (orderID, orderAmount, orderLogTimestamp, productQuantity, userID, productID) VALUES
-    (6, 100, '2023-05-06 12:10:00', 1, 1, 201),
-    (7, 180, '2023-05-07 14:25:00', 2, 2, 202),
-    (8, 160, '2023-05-08 16:40:00', 2, 3, 203),
-    (9, 120, '2023-05-09 18:55:00', 2, 4, 204),
-    (10, 200, '2023-05-10 13:00:00', 2, 5, 301),
-    (11, 200, '2023-05-11 10:20:00', 2, 5, 302),
-    (12, 200, '2023-05-12 15:30:00', 2, 6, 303),
-    (13, 200, '2023-05-13 17:45:00', 2, 6, 304),
-    (14, 30, '2023-05-14 19:00:00', 2, 7, 401),
-    (15, 60, '2023-05-15 20:15:00', 2, 7, 402),
-    (16, 40, '2023-05-16 21:30:00', 2, 8, 403),
-    (17, 50, '2023-05-17 22:45:00', 2, 8, 404),
-    (18, 800, '2023-05-18 23:50:00', 2, 9, 501),
-    (19, 800, '2023-05-19 01:05:00', 2, 9, 502),
-    (20, 800, '2023-05-20 02:20:00', 2, 10, 503),
-    (21, 1998, '2023-05-21 03:35:00', 2, 10, 504),
-    (27, 100, '2023-05-06 12:10:00', 1, 13, 201),
-    (28, 180, '2023-05-07 14:25:00', 2, 13, 202),
-    (29, 160, '2023-05-08 16:40:00', 2, 14, 203),
-    (30, 120, '2023-05-09 18:55:00', 2, 14, 204),
-    (31, 200, '2023-05-10 13:00:00', 2, 15, 301),
-    (32, 200, '2023-05-11 10:20:00', 2, 15, 302),
-    (33, 200, '2023-05-12 15:30:00', 2, 16, 303),
-    (34, 200, '2023-05-13 17:45:00', 2, 16, 304),
-    (35, 30, '2023-05-14 19:00:00', 2, 17, 401),
-    (36, 60, '2023-05-15 20:15:00', 2, 17, 402),
-    (37, 40, '2023-05-16 21:30:00', 2, 18, 403),
-    (26, 50, '2023-05-17 22:45:00', 2, 18, 404),
-    (25, 800, '2023-05-18 23:50:00', 2, 19, 501),
-    (24, 800, '2023-05-19 01:05:00', 2, 19, 502),
-    (23, 800, '2023-05-20 02:20:00', 2, 11, 503),
-    (22, 1998, '2023-05-21 03:35:00', 2, 11, 504);
+	(5, 60, '2023-05-05 08:15:00', 2, 5, 101),
+  (6, 100, '2023-05-06 12:10:00', 1, 1, 201),
+  (7, 180, '2023-05-07 14:25:00', 2, 2, 202),
+  (8, 160, '2023-05-08 16:40:00', 2, 3, 203),
+  (9, 120, '2023-05-09 18:55:00', 2, 4, 204),
+  (10, 200, '2023-05-10 13:00:00', 2, 5, 301),
+  (11, 200, '2023-05-11 10:20:00', 2, 5, 302),
+  (12, 200, '2023-05-12 15:30:00', 2, 6, 303),
+  (13, 200, '2023-05-13 17:45:00', 2, 6, 304),
+  (14, 30, '2023-05-14 19:00:00', 2, 7, 401),
+  (15, 60, '2023-05-15 20:15:00', 2, 7, 402),
+  (16, 40, '2023-05-16 21:30:00', 2, 8, 403),
+  (17, 50, '2023-05-17 22:45:00', 2, 8, 404),
+  (18, 800, '2023-05-18 23:50:00', 2, 9, 501),
+  (19, 800, '2023-05-19 01:05:00', 2, 9, 502),
+  (20, 800, '2023-05-20 02:20:00', 2, 10, 503),
+  (21, 1998, '2023-05-21 03:35:00', 2, 10, 504),
+  (27, 100, '2023-05-06 12:10:00', 1, 13, 201),
+  (28, 180, '2023-05-07 14:25:00', 2, 13, 202),
+  (29, 160, '2023-05-08 16:40:00', 2, 14, 203),
+  (30, 120, '2023-05-09 18:55:00', 2, 14, 204),
+  (31, 200, '2023-05-10 13:00:00', 2, 15, 301),
+  (32, 200, '2023-05-11 10:20:00', 2, 15, 302),
+  (33, 200, '2023-05-12 15:30:00', 2, 16, 303),
+  (34, 200, '2023-05-13 17:45:00', 2, 16, 304),
+  (35, 30, '2023-05-14 19:00:00', 2, 17, 401),
+  (36, 60, '2023-05-15 20:15:00', 2, 17, 402),
+  (37, 40, '2023-05-16 21:30:00', 2, 18, 403),
+  (26, 50, '2023-05-17 22:45:00', 2, 18, 404),
+  (25, 800, '2023-05-18 23:50:00', 2, 19, 501),
+  (24, 800, '2023-05-19 01:05:00', 2, 19, 502),
+  (23, 800, '2023-05-20 02:20:00', 2, 11, 503),
+  (22, 1998, '2023-05-21 03:35:00', 2, 11, 504);
