@@ -1,6 +1,9 @@
 package uts.isd.model;
 
 import java.io.Serializable;
+import java.sql.SQLException;
+
+import uts.isd.model.dao.PaymentDAO;
 
 public class PaymentDetails implements Serializable {
 
@@ -60,9 +63,19 @@ public int getPaymentID() {
     this.userID = userID;
   }
 
-  public boolean isSavedPaymentDetails() {
-    return savedPaymentDetails;
-  }
+ public boolean isDefaultPaymentForUser(int paymentID, int userID) throws ClassNotFoundException, SQLException {
+
+        PaymentDAO paymentDAO = new PaymentDAO();
+        
+        try {
+            return paymentDAO.isUserDefaultPayment(paymentID, userID);
+        } catch (SQLException ex) {
+
+            ex.printStackTrace();
+            return false; 
+        }
+    }
+
 
   public void setSavedPaymentDetails(boolean savedPaymentDetails) {
     this.savedPaymentDetails = savedPaymentDetails;

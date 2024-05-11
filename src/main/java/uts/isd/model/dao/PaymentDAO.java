@@ -64,9 +64,32 @@ public class PaymentDAO {
         st.executeUpdate("DELETE FROM IOTBAY.paymentdetails WHERE paymentID = " + paymentID);
     }
     
+    public boolean isUserDefaultPayment(int paymentID, int userID) throws SQLException {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean isDefault = false;
+
+        try {
+            String query = "SELECT * FROM IOTBAY.user WHERE paymentID = ? AND userID = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, paymentID);
+            stmt.setInt(2, userID);
+
+            rs = stmt.executeQuery();
+
+            isDefault = rs.next();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+
+        return isDefault;
+    }
     
-
-
 
     public void closeConnection() throws SQLException {
         conn.close();

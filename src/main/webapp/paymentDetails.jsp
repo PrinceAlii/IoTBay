@@ -88,38 +88,42 @@
             <h1>Saved Payment Details</h1>
             <br>
 
-        <table class="table table-bordered">
+       <table class="table table-bordered">
             <thead>
                 <tr>
                     <th scope="col">Payment ID</th>
                     <th scope="col">Card Issuer</th>
                     <th scope="col">Last 4 digits of card number</th>
                     <th scope="col">Name on card</th>
+                    <th scope="col">Status</th> 
                 </tr>
             </thead>
             <tbody>
                 <% 
                 List<PaymentDetails> paymentMethods = (List<PaymentDetails>) request.getAttribute("paymentMethods");
-
-                        if (paymentMethods != null && !paymentMethods.isEmpty()) {
-                            for (PaymentDetails payment : paymentMethods) {
-                        %>
-                        <tr>
-                            <th scope="row"><%= payment.getPaymentID() %> </th>
-                            <td><%= payment.getPaymentMethod() %> </td>
-                            <td><%= payment.getPaymentCardDetails() %> </td>
-                            <td><%= user.getName() %> </td>
-                        </tr>
+                if (paymentMethods != null && !paymentMethods.isEmpty()) {
+                    for (PaymentDetails payment : paymentMethods) {
+                %>
+                <tr>
+                    <td><%= payment.getPaymentID() %></td>
+                    <td><%= payment.getPaymentMethod() %></td>
+                    <td><%= payment.getPaymentCardDetails() %></td>
+                    <td><%= user.getName() %></td>
+                    <td>
                         <% 
-                            }
-                        } else {
-                        %> 
-                        <tr>
-                            <td colspan="4">No payment details found.</td>
-                        </tr>
-                        <% } %> 
-                    </tbody>
+                        if (payment.isDefaultPaymentForUser(payment.getPaymentID(), payment.getUserID())) { %>
+                            <span class="badge bg-success">Default</span>
+                        <% } %>
+                    </td>
+                </tr>
+                <% } } else { %> 
+                <tr>
+                    <td colspan="5">No payment details found.</td>
+                </tr>
+                <% } %> 
+            </tbody>
         </table>
+
             
             <br>
             <br>
