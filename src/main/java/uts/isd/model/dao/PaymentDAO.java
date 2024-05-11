@@ -15,9 +15,7 @@ public class PaymentDAO {
     private Connection conn;
 
     public PaymentDAO() throws ClassNotFoundException, SQLException {
-        // Create a new instance of DBConnector to establish a database connection
         DBConnector dbConnector = new DBConnector();
-        // Open the database connection
         conn = dbConnector.openConnection();
         conn.setAutoCommit(true);
         st = conn.createStatement();
@@ -43,9 +41,6 @@ public class PaymentDAO {
             paymentDetailsList.add(payments);
         }
     
-        // Print the retrieved payment details to the console for debugging
-        System.out.println("Retrieved Payment Details: " + paymentDetailsList);
-    
         return paymentDetailsList;
     }
 
@@ -64,9 +59,32 @@ public class PaymentDAO {
         st.executeUpdate("DELETE FROM IOTBAY.paymentdetails WHERE paymentID = " + paymentID);
     }
     
+    public boolean isUserDefaultPayment(int paymentID, int userID) throws SQLException {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean isDefault = false;
+
+        try {
+            String query = "SELECT * FROM IOTBAY.user WHERE paymentID = ? AND userID = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, paymentID);
+            stmt.setInt(2, userID);
+
+            rs = stmt.executeQuery();
+
+            isDefault = rs.next();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+
+        return isDefault;
+    }
     
-
-
 
     public void closeConnection() throws SQLException {
         conn.close();

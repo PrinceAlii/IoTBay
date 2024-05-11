@@ -31,15 +31,6 @@ public class PaymentDetailsServlet extends HttpServlet {
     }
 
     @Override
-    public void destroy() {
-        try {
-            paymentDAO.closeConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // forward to doPost because something is doing a get request
         doPost(request, response);
