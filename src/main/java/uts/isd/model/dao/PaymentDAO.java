@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import uts.isd.model.Order;
 import uts.isd.model.PaymentDetails;
 
 public class PaymentDAO {
@@ -44,6 +47,7 @@ public class PaymentDAO {
         return paymentDetailsList;
     }
 
+
     public void addPayment(String paymentMethod, String cardNumber, int userID) throws SQLException {
 
         String cardNumberTrimmed = cardNumber.substring(cardNumber.length() - 4);
@@ -51,13 +55,13 @@ public class PaymentDAO {
         st.executeUpdate("INSERT INTO IOTBAY.paymentdetails (paymentMethod, paymentCardDetails, userID, savedPaymentDetails) VALUES ('" +  paymentMethod + "', '" + cardNumberTrimmed + "', " + userID + ", 1)");
     }
     
+
     public void deletePayment(int paymentID) throws SQLException {
 
         st.executeUpdate("UPDATE IOTBAY.user SET paymentID = NULL WHERE paymentID = " + paymentID);
-
-
         st.executeUpdate("DELETE FROM IOTBAY.paymentdetails WHERE paymentID = " + paymentID);
     }
+
     
     public boolean isUserDefaultPayment(int paymentID, int userID) throws SQLException {
         PreparedStatement stmt = null;
@@ -69,20 +73,51 @@ public class PaymentDAO {
             stmt = conn.prepareStatement(query);
             stmt.setInt(1, paymentID);
             stmt.setInt(2, userID);
-
             rs = stmt.executeQuery();
-
             isDefault = rs.next();
+
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
+
         }
 
         return isDefault;
+    }
+    
+
+      public List<Order> getPaymentHistoryUser(int userID) throws SQLException {
+        List<Order> orders = new ArrayList<>();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            String query;
+
+  
+            query = "SELECT * FROM IOTBAY.order WHERE userID = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, userID);
+    
+            rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+
+                Order order = new Order();
+
+                order.setOrderID(rs.getInt("orderID"));
+                order.setUserID(rs.getInt("userID"));
+                order.setPaymentID(rs.getInt("paymentID"));
+                order.setOrderAmount(rs.getInt("orderAmount"));
+                order.setPaymentID(rs.getInt("paymentID"));
+                order.setOrderLogTimestamp(rs.getDate("orderLogTimestamp"));
+                
+                orders.add(order);
+            }
+        } catch (SQLException ex) {
+            throw ex; 
+        } finally {
+        }
+
+        return orders;
     }
     
 
