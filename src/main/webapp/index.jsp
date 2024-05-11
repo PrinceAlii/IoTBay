@@ -32,7 +32,6 @@
 
         <div class="container">
             <br>
-            <h1>Home Page</h1>
             <br>
 
             <% if (user == null) { %>

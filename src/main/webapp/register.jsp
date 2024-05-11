@@ -10,7 +10,6 @@
         <title>Register</title>
     </head>
     <body class="text-center">
-        <%-- Navagation bar style --%>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.jsp">IotBay</a>
@@ -25,7 +24,6 @@
         </nav>
 
         <%
-            //Check if user has already logged in
             User user = (User)session.getAttribute("user");
             if(user != null){
             response.sendRedirect("main.jsp");
@@ -39,7 +37,6 @@
             String inputtedPhoneErr = (String) session.getAttribute("inputtedPhoneErr");
         %>
 
-        <%-- Registration form --%>
         <br>
         <h1>Account registration</h1>
         <br>

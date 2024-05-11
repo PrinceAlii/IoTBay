@@ -12,7 +12,13 @@ import uts.isd.model.User;
 public class UserDAO {
  
     private Statement st;
+    private Connection conn; // (ALI)
 
+//acess logs login/logout
+//access logs search
+//update and delete
+//test cases for all userDAO that have an SQL code in it
+// staff
 
 
     public UserDAO (Connection connection) throws SQLException {
@@ -21,10 +27,19 @@ public class UserDAO {
 
     }
 
+    // (ALI)
+    public UserDAO() throws ClassNotFoundException, SQLException { 
+        DBConnector dbConnector = new DBConnector();
+        conn = dbConnector.openConnection();
+        conn.setAutoCommit(true);
+        st = conn.createStatement();
+    }
+    
+
     //check if user is already in the database. Return if user is already in database
     public boolean checkUser(String email, String password) throws SQLException {
-        System.out.println(email);
-        System.out.println(password);
+        // System.out.println(email);
+        // System.out.println(password);
 
         String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "' AND userPassword='" + password + "'";
 
@@ -57,7 +72,7 @@ public class UserDAO {
         return false;
     }
 
-    // //find user by email in database, and return that users info
+    // find user by email in database, and return that users info
     public User findUser(String email, String password) throws SQLException {
 
         String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "' AND userPassword='" + password + "'";
@@ -87,15 +102,23 @@ public class UserDAO {
         st.executeUpdate("INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber)" + "VALUES('" + name + "', '" + email + "', '" + password + "', '" + phone + "')");
     }
 
-    // //update a user-data into the database
-    // public void updateUser(String name, String email, String password, int contactNumber) throws SQLException {
-    //     st.executeUpdate("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + contactNumber + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userEmail ='"+ email +"'" );
-    // }
+    //update a user-data into the database
+    public void updateUser(String name, String email, String password, String phone) throws SQLException {
+        // System.out.println(name);
+        // System.out.println(email);
+        // System.out.println(password);
+        st.executeUpdate("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + phone + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userEmail ='"+ email +"'" );
+    }
 
-    // //delete a user-data from the database
-    // public void deleteUser(String email) throws SQLException {
-    //     st.executeUpdate("DELETE FROM IOTBAY.User WHERE userEmail='" + email + "'" );
-    // }
+    //delete a user-data from the database
+    public void deleteUser(String email) throws SQLException {
+        st.executeUpdate("DELETE FROM IOTBAY.User WHERE userEmail='" + email + "'" );
+    }
+
+    public void updateUserPaymentID(int userID, int paymentID) throws SQLException {
+        st.executeUpdate("UPDATE user SET paymentID = " + paymentID + " WHERE userID = " + userID);
+        }
+
 
     // public ArrayList<User> fetchUsers() throws SQLException {
     //     String fetch = "SELECT * FROM IOTBAY.User";

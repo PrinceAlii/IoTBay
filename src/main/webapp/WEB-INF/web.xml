@@ -4,45 +4,132 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1">
-    <servlet>
-      <servlet-name>index.jsp</servlet-name>
-      <jsp-file>/index.jsp</jsp-file>
-      <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet>
-      <servlet-name>ConnServlet</servlet-name>
-      <servlet-class>uts.isd.model.controller.ConnServlet</servlet-class>
-      <load-on-startup>0</load-on-startup>
-    </servlet>
-      <servlet-mapping>
-      <servlet-name>ConnServlet</servlet-name>
-      <url-pattern>/ConnServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-      <servlet-name>RegisterServlet</servlet-name>
-      <servlet-class>uts.isd.model.controller.RegisterServlet</servlet-class>
+  
+  <servlet>
+    <servlet-name>index.jsp</servlet-name>
+    <jsp-file>/index.jsp</jsp-file>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>ConnServlet</servlet-name>
+    <servlet-class>uts.isd.model.controller.ConnServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+    <servlet-mapping>
+    <servlet-name>ConnServlet</servlet-name>
+    <url-pattern>/ConnServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>uts.isd.model.controller.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>LoginServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>LoginServlet</servlet-name>
+      <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>updateAccDetailsServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.updateAccDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>updateAccDetailsServlet</servlet-name>
+      <url-pattern>/updateAccDetailsServlet</url-pattern>
+  </servlet-mapping>
+      <servlet>
+      <servlet-name>DeleteServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>DeleteServlet</servlet-name>
+      <url-pattern>/DeleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PaymentDetailsServlet</servlet-name>
+    <servlet-class>uts.isd.model.controller.PaymentDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaymentDetailsServlet</servlet-name>
+    <url-pattern>/paymentDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddPaymentServlet</servlet-name>
+    <servlet-class>uts.isd.model.controller.AddPaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddPaymentServlet</servlet-name>
+      <url-pattern>/addPayment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RemovePaymentServlet</servlet-name>
+    <servlet-class>uts.isd.model.controller.RemovePaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemovePaymentServlet</servlet-name>
+    <url-pattern>/removePayment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdatePaymentServlet</servlet-name>
+    <servlet-class>uts.isd.model.controller.UpdatePaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePaymentServlet</servlet-name>
+    <url-pattern>/updatePayment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>ProductServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.ProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>ProductServlet</servlet-name>
+      <url-pattern>/ProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>CreateProductServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.CreateProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>CreateProductServlet</servlet-name>
+      <url-pattern>/CreateProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>UpdateProductServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.UpdateProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UpdateProductServlet</servlet-name>
+      <url-pattern>/UpdateProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>OrderServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>OrderServlet</servlet-name>
+      <url-pattern>/OrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>CartServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.CartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-      <servlet-name>RegisterServlet</servlet-name>
-      <url-pattern>/RegisterServlet</url-pattern>
+      <servlet-name>CartServlet</servlet-name>
+      <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>uts.isd.model.controller.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
+
   <session-config>
-      <session-timeout>
-      
+    <session-timeout>
+
       30
-      
-      </session-timeout>
-    
+
+    </session-timeout>
   </session-config>
 
 </web-app>
-
-

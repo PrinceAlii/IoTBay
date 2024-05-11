@@ -11,7 +11,7 @@ public class Validator implements Serializable{
 
 
     private String emailPattern= ("^(.+)@(.+)$");
-    private String namePattern = "[a-zA-Z]*";
+    private String namePattern = "[a-zA-Z\\s]*";
     private String passwordPattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{3,20}$"; 
     private String phonePattern = "[0-9]{8,10}";
             
