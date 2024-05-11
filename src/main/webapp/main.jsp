@@ -124,6 +124,10 @@
             </div>
         </div>
         
+        <br>
+        <br>
+        <br>
+
         <div class="footer">
             <div class="row">
                 <div class="col">
@@ -155,6 +159,9 @@
                             <a class="dropdown-item" href="#">Create User</a>
                             <a class="dropdown-item" href="#">Update User</a>
                             <a class="dropdown-item" href="#">Delete User</a>
+                            <a class="dropdown-item" href="#">Create Staff</a>
+                            <a class="dropdown-item" href="#">Update Staff</a>
+                            <a class="dropdown-item" href="#">Delete Staff</a>
                         </div>
                     </div>
                 </div>
