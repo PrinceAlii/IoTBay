@@ -78,6 +78,7 @@ public class Order implements Serializable {
     private int orderAmount;
     private Date orderLogTimestamp; // Changed from String to Date
     private int productQuantity;
+    private int paymentID;
 
     public Order() {
     }
@@ -113,6 +114,15 @@ public class Order implements Serializable {
 
     public void setProductID(int productID) {
         this.productID = productID;
+    }
+
+
+    public void setPaymentID(int paymentID) {
+        this.paymentID = paymentID;
+    }
+
+    public int getPaymentID() {
+        return paymentID;
     }
 
     public int getOrderAmount() {
