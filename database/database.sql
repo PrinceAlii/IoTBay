@@ -41,13 +41,12 @@ CREATE TABLE `User` (
 CREATE TABLE `Product` (
   `productID` int NOT NULL AUTO_INCREMENT,
   `productName` varchar(200) NOT NULL,
-  `productPrice` int NOT NULL,
+  `productPrice` decimal NOT NULL,
   `productType` varchar(200) NOT NULL,
   `productDescription` varchar(1000) NOT NULL,
   `stockLevel` int NOT NULL,
   PRIMARY KEY (`productID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 
 -- IOTBAY.AccessLog definition
