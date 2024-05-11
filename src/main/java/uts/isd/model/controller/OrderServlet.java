@@ -31,7 +31,6 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
-    // forward to doPost
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -42,7 +41,6 @@ public class OrderServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        //check user login
         if (user == null) {
             response.sendRedirect("login.jsp");
             return;
@@ -68,7 +66,6 @@ public class OrderServlet extends HttpServlet {
             }
         }
 
-        // get order detail for the user
         try {
             List<Order> orderDetail = orderDAO.findOrders(user.getUserID(), orderID, orderDate);
             request.setAttribute("orderDetail", orderDetail);

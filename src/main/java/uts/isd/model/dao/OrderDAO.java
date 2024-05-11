@@ -17,7 +17,6 @@ public class OrderDAO {
         conn = dbConnector.openConnection();
     }
 
-    // find orders based on the provided parameters
     public List<Order> findOrders(int userID, Integer orderID, Date orderDate) throws SQLException {
         List<Order> orderDetailList = new ArrayList<>();
         StringBuilder fetchQuery = new StringBuilder("SELECT * FROM IOTBAY.Order WHERE userID = ?");
@@ -50,15 +49,14 @@ public class OrderDAO {
             int productQuantity = rs.getInt("productQuantity");
             Date orderDateFromDB = new Date(orderLogTimestamp.getTime());
 
-            // creating an Order object with the retrieved order details and adding it to the list
             Order order = new Order(fetchedOrderID, userID, productID, orderAmount, orderDateFromDB, productQuantity);
             orderDetailList.add(order);
         }
 
-        return orderDetailList; // returning the list of order detail
+        return orderDetailList;
     }
 
-    public void closeConnection() throws SQLException { // close the database connection
+    public void closeConnection() throws SQLException {
         conn.close();
     }
 }
