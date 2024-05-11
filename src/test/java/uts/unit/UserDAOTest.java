@@ -149,9 +149,4 @@ public class UserDAOTest {
         userDAO.deleteUser("John@jj.com");
     }
 
-
-
-
-
-
 }
