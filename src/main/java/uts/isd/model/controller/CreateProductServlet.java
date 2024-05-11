@@ -65,7 +65,6 @@ public class CreateProductServlet extends HttpServlet {
                 errors.add("Stock level must be a positive integer.");
             }
 
-            // If there are no errors, create the product
             if (errors.isEmpty()) {
                 Product newProduct = new Product(productID, productName, productPrice, productType, productDescription, stockLevel);
                 productDAO.addProduct(newProduct);
@@ -78,10 +77,10 @@ public class CreateProductServlet extends HttpServlet {
             errors.add("Error occurred while creating the product: " + ex.getMessage());
         }
 
-        // Set the list of errors as a request attribute
+
         request.setAttribute("errors", errors);
 
-        // Forward the request to the createProduct.jsp
+
         request.getRequestDispatcher("createProduct.jsp").forward(request, response);
     }
 

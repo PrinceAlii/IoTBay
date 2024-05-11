@@ -76,12 +76,4 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
-    @Override
-    public void destroy() {
-        try {
-            orderDAO.closeConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

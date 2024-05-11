@@ -7,7 +7,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Main Page</title>
+    <title>Update Payment</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
@@ -53,97 +53,56 @@
                 </ul>
             </div>
         </div>
-    </nav> 
+    </nav>
 
-    <%
-        String paymentAdded = request.getParameter("paymentAdded");
-        if (paymentAdded != null && paymentAdded.equals("true")) {
-    %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        Payment method has been saved successfully.
-    </div>
-    <%
-        }
-    %>
-
-    <%
-        String updateDefault = request.getParameter("updateDefault");
-        if (updateDefault != null && updateDefault.equals("true")) {
-    %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        Your selected payment has now been made your default for all new purchses..
-    </div>
-    <%
-        }
-    %>
-
-
-    <% 
-    String action = request.getParameter("action");
-    if (action != null && action.equals("removed")) {
-
-    %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        Saved payment method removed successfully.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-
-    <% } %>
-
-    
+   
     <div class="container d-flex h-100 align-items-center justify-content-center">
         <div class="text-center">
             <br>
             <br>
-            <h1>Saved Payment Details</h1>
+            <h1>Update a payment method</h1>
             <br>
 
-       <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Payment ID</th>
-                    <th scope="col">Card Issuer</th>
-                    <th scope="col">Last 4 digits of card number</th>
-                    <th scope="col">Name on card</th>
-                    <th scope="col">Status</th> 
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                List<PaymentDetails> paymentMethods = (List<PaymentDetails>) request.getAttribute("paymentMethods");
-                if (paymentMethods != null && !paymentMethods.isEmpty()) {
-                    for (PaymentDetails payment : paymentMethods) {
-                %>
-                <tr>
-                    <td><%= payment.getPaymentID() %></td>
-                    <td><%= payment.getPaymentMethod() %></td>
-                    <td><%= payment.getPaymentCardDetails() %></td>
-                    <td><%= user.getName() %></td>
-                    <td>
+            <form action="updatePayment" method="post">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Update</th>
+                            <th scope="col">Payment ID</th>
+                            <th scope="col">Card Issuer</th>
+                            <th scope="col">Last 4 digits of card number</th>
+                            <th scope="col">Name on card</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <% 
-                        if (payment.isDefaultPaymentForUser(payment.getPaymentID(), payment.getUserID())) { %>
-                            <span class="badge bg-success">Default</span>
-                        <% } %>
-                    </td>
-                </tr>
-                <% } } else { %> 
-                <tr>
-                    <td colspan="5">No payment details found.</td>
-                </tr>
-                <% } %> 
-            </tbody>
-        </table>
+                        List<PaymentDetails> paymentMethods = (List<PaymentDetails>) request.getAttribute("paymentMethods");
+                        if (paymentMethods != null && !paymentMethods.isEmpty()) {
+                            for (PaymentDetails payment : paymentMethods) {
+                        %>
+                        <tr>
+                            <td><input type="radio" name="paymentIdToUpdate" value="<%= payment.getPaymentID() %>"></td>
+                            <td><%= payment.getPaymentID() %></td>
+                            <td><%= payment.getPaymentMethod() %></td>
+                            <td><%= payment.getPaymentCardDetails() %></td>
+                            <td><%= user.getName() %></td>
+                        </tr>
+                        <% 
+                            }
+                        } else {
+                        %> 
+                        <tr>
+                            <td colspan="5">No payment details found.</td>
+                        </tr>
+                        <% } %> 
+                    </tbody>
+                </table>
+                <br>
+                <a href="paymentDetails" class="btn btn-secondary me-2">Cancel</a>
+                <%-- <button type="submit" name="action" value="update" class="btn btn-warning me-2">Update selected payment method</button> --%>
+                <button type="submit" name="action" value="setDefault" class="btn btn-info">Make selected payment default</button>
+            </form>
 
-            
-            <br>
-            <br>
-            <div class="text-center">
-                <a href="addPayment.jsp" class="btn btn-success me-2">Add Payment Method</a>
-                <a href="removePayment" class="btn btn-danger me-2"">Remove a Payment Method</a>
-                <a href="updatePayment" class="btn btn-warning">Update a Payment Method</a>
-            </div>
         </div>
     </div>
 

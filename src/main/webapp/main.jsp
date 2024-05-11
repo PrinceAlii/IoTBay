@@ -16,9 +16,9 @@
                 var searchKeyword = document.getElementById("searchInput").value.trim();
                 if (searchKeyword === "") {
                     alert("Please enter a search keyword.");
-                    return false; // Prevent form submission
+                    return false; 
                 }
-                return true; // Allow form submission
+                return true; 
             }
         </script>
         <script>
