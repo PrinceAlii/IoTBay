@@ -28,14 +28,14 @@ public class RegisterServlet extends HttpServlet {
 
 		UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
 
-		//Check if inputted regsitration details are correctly inputted
+
 		Validator validate = new Validator();
         session.setAttribute("emailUsed", validate.validateEmail(email));
         session.setAttribute("inputtedNameErr", validate.validateName(name));
 		session.setAttribute("inputtedPassErr", validate.validatePassword(password));
         session.setAttribute("inputtedPhoneErr", validate.validatePhone(phone));
 
-		//if there are no errors and all validations return null then add use
+
 		if((validate.validateEmail(email)==null) && (validate.validateName(name)==null) && (validate.validatePassword(password)==null) 
 			&& (validate.validatePhone(phone)==null)){
 			try {

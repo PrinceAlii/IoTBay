@@ -31,14 +31,6 @@ public class AddPaymentServlet extends HttpServlet {
         }
     }
 
-    @Override
-    public void destroy() {
-        try {
-            paymentDAO.closeConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -138,10 +130,8 @@ public class AddPaymentServlet extends HttpServlet {
         }
         return false; 
     }
+
     
-  
-
-
     private boolean isValidCVV(String cvv) {
         return cvv.matches("\\d{3}");
     }
