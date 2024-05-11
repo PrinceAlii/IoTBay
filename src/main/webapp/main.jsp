@@ -71,26 +71,24 @@
         </nav>
 
         <div class="row">
-            <div class="col-11 d-flex search-bar-container">
+            <div class="col d-flex search-bar-container">
                 <form id="searchForm" class="d-flex" action="ProductServlet" method="get" onsubmit="return validateSearch()">
-                    <input id="searchInput" class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" name="search">
-                    <input type="hidden" id="filterInput" name="filter" value="">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-            <div class="col-1 d-flex justify-content-end">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Filter
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#" onclick="setFilter('Bed')">Bed</a>
-                        <a class="dropdown-item" href="#" onclick="setFilter('Chair')">Chair</a>
-                        <a class="dropdown-item" href="#" onclick="setFilter('Couch')">Couch</a>
-                        <a class="dropdown-item" href="#" onclick="setFilter('Lamp')">Lamp</a>
-                        <a class="dropdown-item" href="#" onclick="setFilter('Table')">Table</a>
+                    <div class="input-group">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#" onclick="setFilter('Bed')">Bed</a>
+                            <a class="dropdown-item" href="#" onclick="setFilter('Chair')">Chair</a>
+                            <a class="dropdown-item" href="#" onclick="setFilter('Couch')">Couch</a>
+                            <a class="dropdown-item" href="#" onclick="setFilter('Lamp')">Lamp</a>
+                            <a class="dropdown-item" href="#" onclick="setFilter('Table')">Table</a>
+                        </div>
+                        <input id="searchInput" class="form-control" type="search" placeholder="Search" aria-label="Search" name="search" style="width: 1285px;">
+                        <input type="hidden" id="filterInput" name="filter" value="">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -156,9 +154,9 @@
                             System Admin Options
                         </button>
                         <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                            <a class="dropdown-item" href="#">Create User</a>
-                            <a class="dropdown-item" href="#">Update User</a>
-                            <a class="dropdown-item" href="#">Delete User</a>
+                            <a class="dropdown-item" href="createUser.jsp">Create User</a>
+                            <a class="dropdown-item" href="updateUser.jsp">Update User</a>
+                            <a class="dropdown-item" href="deleteUser.jsp">Delete User</a>
                             <a class="dropdown-item" href="#">Create Staff</a>
                             <a class="dropdown-item" href="#">Update Staff</a>
                             <a class="dropdown-item" href="#">Delete Staff</a>

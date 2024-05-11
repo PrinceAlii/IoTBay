@@ -144,4 +144,13 @@ public class ProductDAO {
         }
     }
 
+    // Add method to delete a product by ID
+    public void deleteProduct(int productID) throws SQLException {
+        String query = "DELETE FROM Product WHERE productID = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, productID);
+            stmt.executeUpdate();
+        }
+    }
+
 }

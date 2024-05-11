@@ -50,6 +50,8 @@
 
             <p>Choose a Product's ID then update any value</p>
 
+            <br>
+
             <% if (request.getAttribute("success") != null) { %>
             <div class="alert alert-success" role="alert">
                 <%= request.getAttribute("success") %>
@@ -63,34 +65,40 @@
                 </ul>
             </div>
             <% } %>
-            
+
             <form action="UpdateProductServlet" method="post" class="row g-3">
-                <div class="col-md-6">
-                    <label for="productID" class="form-label">Product ID:</label>
-                    <input type="text" id="productID" name="productID" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="productName" class="form-label">Product Name:</label>
-                    <input type="text" id="productName" name="productName" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="productType" class="form-label">Product Type:</label>
-                    <input type="text" id="productType" name="productType" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="productPrice" class="form-label">Product Price:</label>
-                    <input type="text" id="productPrice" name="productPrice" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="productDescription" class="form-label">Product Description:</label>
-                    <input type="text" id="productDescription" name="productDescription" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="stockLevel" class="form-label">Stock Level:</label>
-                    <input type="text" id="stockLevel" name="stockLevel" class="form-control" required>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Update Product</button>
+                <div class="container d-flex h-100 align-items-center justify-content-center">
+                    <div class="text-center">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th><label for="productID" class="form-label me-2">Product ID:</label></th>
+                                    <td><input type="text" id="productID" name="productID" class="form-control" required></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="productName" class="form-label me-2">Product Name:</label></th>
+                                    <td><input type="text" id="productName" name="productName" class="form-control" required></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="productType" class="form-label me-2">Product Type:</label></th>
+                                    <td><input type="text" id="productType" name="productType" class="form-control" required></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="productPrice" class="form-label me-2">Product Price:</label></th>
+                                    <td><input type="text" id="productPrice" name="productPrice" class="form-control" required></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="productDescription" class="form-label me-2">Product Description:</label></th>
+                                    <td><input type="text" id="productDescription" name="productDescription" class="form-control" required></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="stockLevel" class="form-label me-2">Stock Level:</label></th>
+                                    <td><input type="text" id="stockLevel" name="stockLevel" class="form-control" required></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-4"><button type="submit" class="btn btn-primary">Update Product</button></div>
+                    </div>
                 </div>
             </form>
         </div>
