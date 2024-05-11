@@ -41,13 +41,12 @@ CREATE TABLE `User` (
 CREATE TABLE `Product` (
   `productID` int NOT NULL AUTO_INCREMENT,
   `productName` varchar(200) NOT NULL,
-  `productPrice` int NOT NULL,
+  `productPrice` decimal NOT NULL,
   `productType` varchar(200) NOT NULL,
   `productDescription` varchar(1000) NOT NULL,
   `stockLevel` int NOT NULL,
   PRIMARY KEY (`productID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 
 -- IOTBAY.AccessLog definition
@@ -64,9 +63,7 @@ CREATE TABLE `AccessLog` (
 
 -- IOTBAY.`Order` definition
 
--- iotbay.`order` definition
-
-CREATE TABLE `order` (
+CREATE TABLE `Order` (
   `orderID` int NOT NULL AUTO_INCREMENT,
   `orderAmount` int NOT NULL,
   `orderLogTimestamp` datetime NOT NULL,
@@ -77,8 +74,8 @@ CREATE TABLE `order` (
   PRIMARY KEY (`orderID`),
   KEY `Order_User_FK` (`userID`),
   KEY `Order_Product_FK` (`productID`),
-  KEY `order_paymentdetails_FK` (`paymentID`),
-  CONSTRAINT `order_paymentdetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `paymentdetails` (`paymentID`),
+  KEY `Order_paymentdetails_FK` (`paymentID`),
+  CONSTRAINT `Order_paymentdetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `paymentdetails` (`paymentID`),
   CONSTRAINT `Order_Product_FK` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
   CONSTRAINT `Order_User_FK` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -94,6 +91,20 @@ CREATE TABLE `Invoice` (
   PRIMARY KEY (`invoiceID`),
   KEY `Invoice_Order_FK` (`orderID`),
   CONSTRAINT `Invoice_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- IOTBAY.OrderLineItem definition
+
+CREATE TABLE `OrderLineItem` (
+  `orderLineItemID` int NOT NULL AUTO_INCREMENT,
+  `orderID` int NOT NULL,
+  `productID` int NOT NULL,
+  `productQuantity` int NOT NULL,
+  PRIMARY KEY (`orderLineItemID`),
+  KEY `OrderLineItem_Order_FK` (`orderID`),
+  KEY `OrderLineItem_Product_FK` (`productID`),
+  CONSTRAINT `OrderLineItem_Product_FK` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`),
+  CONSTRAINT `OrderLineItem_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 

@@ -130,4 +130,27 @@ public class ProductDAO {
         return false;
     }
 
+    // Method to update an existing product
+    public void updateProduct(Product product) throws SQLException {
+        String query = "UPDATE Product SET productName = ?, productPrice = ?, productType = ?, productDescription = ?, stockLevel = ? WHERE productID = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, product.getProductName());
+            stmt.setDouble(2, product.getProductPrice());
+            stmt.setString(3, product.getProductType());
+            stmt.setString(4, product.getProductDescription());
+            stmt.setInt(5, product.getStockLevel());
+            stmt.setInt(6, product.getProductID());
+            stmt.executeUpdate();
+        }
+    }
+
+    // Add method to delete a product by ID
+    public void deleteProduct(int productID) throws SQLException {
+        String query = "DELETE FROM Product WHERE productID = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, productID);
+            stmt.executeUpdate();
+        }
+    }
+
 }

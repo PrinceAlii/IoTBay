@@ -1,45 +1,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@page import="uts.isd.model.*" %>
 <%@page import="java.util.List" %>
-<%@page import="java.util.ArrayList" %>
-<%@page import="java.util.Date" %>
-
+<%@page import="uts.isd.model.OrderLineItem" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Order Details</title>
+    <title>Your Cart</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.1/js/bootstrap.min.js"></script>
 
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #DDD;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #D6EEEE;
-        }
-
-    </style>
 </head>
-
-<body class="text-center">
-
-    <% User user=(User) session.getAttribute("user"); %>
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">IotBay</a>
@@ -63,8 +36,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
-                            <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
-                            <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
+                            <li><a class="dropdown-item" href="paymentDetails">Payment Details</a></li>
                             <li><a class="dropdown-item" href="#">Access Logs</a></li>
                             <li><a class="dropdown-item active" href="OrderServlet">Order Details</a></li>
                             <li>
@@ -77,56 +49,47 @@
             </div>
         </div>
     </nav>
-    <div style="text-align:center;">
-        <br>
-        <br>
-        <h1>Order Details</h1>
-        <br>
-    </div>
-    <div class="search-orders" style="margin-bottom: 20px; text-align: center;">
-        <form action="OrderServlet" method="post" style="display: inline-block;">
-            <input type="text" name="orderID" placeholder="Order ID" aria-label="Order ID" style="width: 200px; margin-right: 10px; height: 38px; padding: 5px 10px;">
-            <input type="date" name="orderDate" placeholder="Order Date" aria-label="Order Date" style="width: 200px; margin-right: 10px; height: 38px; padding: 5px 10px;">
-            <button type="submit" class="btn btn-outline-success" style="height: 38px; width: 100px;">Search</button>
-        </form>
-    </div>
-    <div>
-        <table cellpadding="5">
-            <br>
-            <h2>List of Order History</h2>
-            <tr>
-                <th>User ID</th>
-                <th>Order ID</th>
-                <th>Order Date</th>
-                <th>Product ID</th>
-                <th>Product Quantity</th>
-                <th>Total Amount</th>
-            </tr>
-            <% 
-            List<Order> orderDetail = (List<Order>) request.getAttribute("orderDetail");
-            if (orderDetail != null && !orderDetail.isEmpty()) {
-                for (Order order : orderDetail) {
-            %>
-            <tr>
-                <td><%= order.getUserID() %></td>
-                <td><%= order.getOrderID() %></td>
-                <td><%= new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(order.getOrderLogTimestamp()) %></td>
-                <td><%= order.getProductID() %></td>
-                <td><%= order.getProductQuantity() %></td>
-                <td><%= "$" + order.getOrderAmount() %></td>
-            </tr>
-            <% 
-                }
-            } else {
-            %>
-            <tr>
-                <td colspan="7">No orders found.</td>
-            </tr>
-            <% 
-            }
-            %>
-        </table>
+    <div class="container mt-4">
+        <h2>Shopping Cart</h2>
+        <% 
+            List<OrderLineItem> cart = (List<OrderLineItem>) session.getAttribute("cart");
+            if (cart == null || cart.isEmpty()) {
+        %>
+            <p>Your cart is empty.</p>
+        <% } else { %>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (OrderLineItem item : cart) { %>
+                    <tr>
+                        <td><%= item.getProductID() %></td>
+                        <td>
+                            <form action="CartServlet" method="post">
+                                <input type="hidden" name="action" value="update">
+                                <input type="hidden" name="productId" value="<%= item.getProductID() %>">
+                                <input type="number" name="quantity" value="<%= item.getOrderQuantity() %>" min="1">
+                                <button type="submit" class="btn btn-info">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="CartServlet?action=remove&productId=<%= item.getProductID() %>" class="btn btn-danger">Remove</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <a href="CartServlet?action=submit" class="btn btn-success">Submit Order</a>
+            <a href="CartServlet?action=cancel" class="btn btn-warning">Cancel Order</a>
+        <% } %>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+

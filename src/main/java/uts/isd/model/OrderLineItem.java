@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class OrderLineItem implements Serializable {
 
   private int orderLineItemID; 
-  private String orderID;
-  private String productID;
+  private int orderID;
+  private int productID;
   private int orderQuantity;
 
   public OrderLineItem() {
   }
 
-  public OrderLineItem(int _orderLineItemID, String _orderID, String _productID, int _orderQuantity) {
+  public OrderLineItem(int _orderLineItemID, int _orderID, int _productID, int _orderQuantity) {
     this.orderLineItemID = _orderLineItemID;
     this.orderID = _orderID;
     this.productID = _productID;
@@ -28,19 +28,19 @@ public class OrderLineItem implements Serializable {
     this.orderLineItemID = orderLineItemID;
   }
 
-  public String getOrderID() {
+  public int getOrderID() {
     return orderID;
   }
 
-  public void setOrderID(String orderID) {
+  public void setOrderID(int orderID) {
     this.orderID = orderID;
   }
 
-  public String getProductID() {
+  public int getProductID() {
     return productID;
   }
 
-  public void setProductID(String productID) {
+  public void setProductID(int productID) {
     this.productID = productID;
   }
 
