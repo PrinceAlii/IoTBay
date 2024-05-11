@@ -80,4 +80,54 @@ public class ProductDAO {
         return products;
     }
 
+    // Method to add a new product
+    public void addProduct(Product product) throws SQLException {
+        String query = "INSERT INTO Product (productID, productName, productPrice, productType, productDescription, stockLevel) VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, product.getProductID());
+            stmt.setString(2, product.getProductName());
+            stmt.setDouble(3, product.getProductPrice());
+            stmt.setString(4, product.getProductType());
+            stmt.setString(5, product.getProductDescription());
+            stmt.setInt(6, product.getStockLevel());
+            stmt.executeUpdate();
+        }
+    }
+
+    // Method to check if a product with given ID already exists
+    public Product getProductByID(int productID) throws SQLException {
+        String query = "SELECT * FROM Product WHERE productID = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, productID);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Product product = new Product();
+                    product.setProductID(rs.getInt("productID"));
+                    product.setProductName(rs.getString("productName"));
+                    product.setProductPrice(rs.getDouble("productPrice"));
+                    product.setProductType(rs.getString("productType"));
+                    product.setProductDescription(rs.getString("productDescription"));
+                    product.setStockLevel(rs.getInt("stockLevel"));
+                    return product;
+                }
+            }
+        }
+        return null;
+    }
+
+    // Method to check if a product with the given name already exists
+    public boolean checkProductExistsByName(String productName) throws SQLException {
+        String query = "SELECT COUNT(*) FROM Product WHERE productName = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, productName);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    return count > 0;
+                }
+            }
+        }
+        return false;
+    }
+
 }
