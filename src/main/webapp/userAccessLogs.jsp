@@ -1,6 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@page import="uts.isd.model.*" %>
     <%@ page import="java.util.ArrayList" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@page import="java.util.ArrayList"%>
+    <%@page import="java.util.Iterator"%>
         <!DOCTYPE html>
         <html>
 
@@ -46,10 +49,14 @@
                     </div>
                 </div>
             </nav>
-                <%
-            ArrayList logs = (ArrayList) session.getAttribute("logs");
-            ArrayList tlogs = (ArrayList) session.getAttribute("tlogs");
-        %>
+            <%
+            String noLog = (String) session.getAttribute("noLogsFound");
+            %>
+
+        <br>
+            <label style="color: red;"><%= (noLog != null ? noLog : "") %></label>
+        <br>
+
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
             <table class="table table-bordered table-striped mb-0 log-table">
                 <thead>
@@ -60,19 +67,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%
-                        for (int i = 0; i < logs.size(); i++) {
-                    %>
+                <c:catch var="e">
+                <c:if test="${logs != null}">
+                    <c:forEach items="${logs}" var="accessLog">
                     <tr>
-                        <td><%= logs.get(i)%></td>
-                        <td> <%= tlogs.get(i)%></td>
-
+                        <td>${accessLog.getLogAccessTimestamp()}</td>
+                        <td>${accessLog.getLogStatus()}</td>
                     </tr>
-                    <%
-                        }
-                    %>
-
-
+                    </c:forEach>
+                </c:if>
+                </c:catch>
                 </tbody>
             </table>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

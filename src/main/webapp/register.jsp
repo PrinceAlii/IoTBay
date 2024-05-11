@@ -44,7 +44,7 @@
         <h1>Account registration</h1>
         <br>
         <label style="color: red;"><%= (emailUsed != null ? emailUsed : "") %></label>
-         <br>
+        <br>
         <label style="color: red;"><%= (inputtedNameErr != null ? inputtedNameErr : "") %></label>
          <br>
         <label style="color: red;"><%= (inputtedPassErr != null ? inputtedPassErr : "") %></label>

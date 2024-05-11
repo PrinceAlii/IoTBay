@@ -2,17 +2,14 @@ package uts.isd.model;
 
 import java.io.Serializable;
 
-public class AccessLogs implements Serializable {
+public class UserAccessLogs implements Serializable {
 
   
   private String logAccessTimestamp;
   private int userID;
-  private boolean logStatus; 
+  private String logStatus; 
 
-  public AccessLogs() {
-  }
-
-  public AccessLogs(String _logAccessTimestamp, int _userID, boolean _logStatus) {
+  public UserAccessLogs(String _logAccessTimestamp, int _userID, String _logStatus) {
     this.logAccessTimestamp = _logAccessTimestamp;
     this.userID = _userID;
     this.logStatus = _logStatus;
@@ -35,11 +32,11 @@ public class AccessLogs implements Serializable {
     this.userID = userID;
   }
 
-  public boolean isLogStatus() {
+  public String getLogStatus() {
     return logStatus;
   }
 
-  public void setLogStatus(boolean logStatus) {
+  public void setLogStatus(String logStatus) {
     this.logStatus = logStatus;
   }
 }

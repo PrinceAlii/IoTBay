@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import uts.isd.model.UserAccessLogs;
 import uts.isd.model.User;
 
 
@@ -28,8 +30,8 @@ public class UserDAO {
 
     //check if user is already in the database. Return if user is already in database
     public boolean checkUser(String email, String password) throws SQLException {
-        // System.out.println(email);
-        // System.out.println(password);
+        System.out.println(email);
+        System.out.println(password);
 
         String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "' AND userPassword='" + password + "'";
 
@@ -47,7 +49,7 @@ public class UserDAO {
 
     //check if user is already in the database. Return if user is already in database
     public boolean checkEmail(String email) throws SQLException {
-        // System.out.println(email);
+        System.out.println(email);
 
         String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "'";
 
@@ -64,6 +66,7 @@ public class UserDAO {
 
     // find user by email in database, and return that users info
     public User findUser(String email, String password) throws SQLException {
+        System.out.println(email);
 
         String fetch = "SELECT * FROM IOTBAY.User WHERE userEmail = '" + email + "' AND userPassword='" + password + "'";
         ResultSet rs = st.executeQuery(fetch);
@@ -145,39 +148,25 @@ public class UserDAO {
         return 0;
     }
 
-
-    // get user Status Logs based off userID
-    public ArrayList getStatusLogs(int userID) throws SQLException {
+    // Get user time Logs depending on User ID
+    public ArrayList<UserAccessLogs> getLogs(int userID) throws SQLException {
         
-        ArrayList statuslist = new ArrayList();
+        ArrayList<UserAccessLogs> logList = new ArrayList<UserAccessLogs>();
         
         String fetch = "SELECT * FROM IOTBAY.UserAccessLogs WHERE UserID =" + userID;
         ResultSet rs = st.executeQuery(fetch);
         
         while (rs.next()) {
+
+            Timestamp timestamp = rs.getTimestamp(3);
+            int user = rs.getInt(1);
             String status = rs.getString(2);
 
-            statuslist.add(status);
-
+            UserAccessLogs log = new UserAccessLogs(timestamp.toString(), user, status);  
+            logList.add(log);
+            System.out.println("Debug: Log added - " + log.toString()); // Add this line for
         }
-        return statuslist;
-    }
-
-    // Get user time Logs depending on User ID
-    public ArrayList getTimeLogs(int userID) throws SQLException {
-        
-        ArrayList timelist = new ArrayList();
-        
-        String fetch = "SELECT * FROM IOTBAY.UserAccessLogs WHERE UserID =" + userID;
-        ResultSet rs = st.executeQuery(fetch);
-        
-        while (rs.next()) {
-            String timedate = rs.getString(3);
-
-            timelist.add(timedate);
-        }
-        System.out.println(timelist);
-        return timelist;
+        return logList;
     }
 
 

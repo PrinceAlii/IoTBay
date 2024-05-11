@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import uts.isd.model.UserAccessLogs;
 import uts.isd.model.User;
 import uts.isd.model.dao.UserDAO;
 
@@ -21,19 +22,27 @@ public class accessLogServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		response.setContentType("text/html;charset=UTF-8");
 		UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+		request.removeAttribute("noLogsFound");
 
 		User user = (User) session.getAttribute("user");
-		String email = user.getEmail();
-        String password = user.getPassword();
-
+		int userID = user.getUserID();
+		ArrayList<UserAccessLogs> logs = new ArrayList<UserAccessLogs>();
+		
 		try{
-			int userID = userDAO.getUserID(email,password);
-			ArrayList logs = userDAO.getStatusLogs(userID);
-			ArrayList tlogs = userDAO.getTimeLogs(userID);
-			session.setAttribute("logs", logs);
-            session.setAttribute("tlogs", tlogs);
-			request.getRequestDispatcher("userAccessLogs.jsp").include(request, response);
+			logs = userDAO.getLogs(userID);
+			
+		
+			if(!logs.isEmpty()){
+				session.setAttribute("logs", logs);
+				request.getRequestDispatcher("userAccessLogs.jsp").include(request, response);
+			}else{
+                //else throws Incorrect Email or Password
+                session.setAttribute("noLogsFound", "No logs were found");
+                request.getRequestDispatcher("userAccessLogs.jsp").include(request, response);
+            } 
+
 		} catch (SQLException ex) {
 			Logger.getLogger(accessLogServlet.class.getName()).log(Level.SEVERE, null, ex);
 		}	
