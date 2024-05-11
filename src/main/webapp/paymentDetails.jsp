@@ -34,6 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="main.jsp">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.jsp">Cart</a>
+                    </li>
                     <li class="nav-item dropdown" style="padding-right: 40px;">
                         <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -129,7 +132,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 

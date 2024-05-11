@@ -107,6 +107,14 @@
       <servlet-name>OrderServlet</servlet-name>
       <url-pattern>/OrderServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+      <servlet-name>CartServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>CartServlet</servlet-name>
+      <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
 
   <session-config>
     <session-timeout>
