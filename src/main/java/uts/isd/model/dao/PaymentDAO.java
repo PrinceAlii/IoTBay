@@ -50,7 +50,10 @@ public class PaymentDAO {
     }
 
     public void addPayment(String paymentMethod, String cardNumber, int userID) throws SQLException {
-        st.executeUpdate("INSERT INTO IOTBAY.paymentdetails (paymentMethod, paymentCardDetails, userID, savedPaymentDetails) VALUES ('" +  paymentMethod + "', '" + cardNumber + "', " + userID + ", 1)");
+
+        String cardNumberTrimmed = cardNumber.substring(cardNumber.length() - 4);
+
+        st.executeUpdate("INSERT INTO IOTBAY.paymentdetails (paymentMethod, paymentCardDetails, userID, savedPaymentDetails) VALUES ('" +  paymentMethod + "', '" + cardNumberTrimmed + "', " + userID + ", 1)");
     }
     
     
