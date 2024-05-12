@@ -29,4 +29,9 @@ public class SystemAdminDAO {
             ps.executeUpdate();
         }
     }
+
+    public ArrayList<User> fetchUsers(String name, String phone) {
+        throw new UnsupportedOperationException("Unimplemented method 'fetchUsers'");
+    }
+
 }
