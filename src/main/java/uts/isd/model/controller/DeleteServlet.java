@@ -19,11 +19,15 @@ public class DeleteServlet extends HttpServlet {
     @Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		response.setContentType("text/html;charset=UTF-8");
+		User user = (User) session.getAttribute("user");
+		int userID = user.getUserID();
 
 		try{
 			String email = request.getParameter("email");
-			UserDAO user = (UserDAO) session.getAttribute("userDAO");
-			user.deleteUser(email);
+			UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+			userDAO.deleteAllLogs(userID);
+			userDAO.deleteUser(email);
 			request.getRequestDispatcher("logout.jsp").include(request, response);
 		} catch (SQLException ex) {
 			Logger.getLogger(DeleteServlet.class.getName()).log(Level.SEVERE, null, ex);

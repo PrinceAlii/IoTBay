@@ -62,7 +62,7 @@
                     </form>
                     <br>
                     <form action="logout.jsp" method="post">
-                        <button class="btn btn-outline-danger" type="submit">Logout</button>
+                        <button class="btn btn-outline-danger" href="LogoutServlet" type="submit">Logout</button>
                     </form>
                 </div>
             <% } %>

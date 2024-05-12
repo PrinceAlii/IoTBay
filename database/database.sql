@@ -15,6 +15,7 @@ CREATE TABLE `PaymentDetails` (
 
 -- ** THEN PASTE THIS TABLE IN SECOND ** --
 
+
 -- IOTBAY.`User` definition
 
 CREATE TABLE `User` (
@@ -49,16 +50,18 @@ CREATE TABLE `Product` (
 ) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
--- IOTBAY.AccessLog definition
+-- IOTBAY.UserAccessLogs definition
 
-CREATE TABLE `AccessLog` (
-  `logAccessTimestamp` datetime NOT NULL,
-  `logStatus` tinyint(1) NOT NULL,
-  `userID` int DEFAULT NULL,
-  PRIMARY KEY (`logAccessTimestamp`),
-  KEY `AccessLog_User_FK` (`userID`),
-  CONSTRAINT `AccessLog_User_FK` FOREIGN KEY (`userID`) REFERENCES `User` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `UserAccessLogs` (
+  `AccessLogID` int NOT NULL AUTO_INCREMENT,
+  `UserID` int DEFAULT NULL,
+  `STATUS` varchar(15) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `Time` time DEFAULT NULL,
+  PRIMARY KEY (`AccessLogID`),
+  KEY `fk_UserAccessLogs_UserID` (`UserID`),
+  CONSTRAINT `fk_UserAccessLogs_UserID` FOREIGN KEY (`UserID`) REFERENCES `User` (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.`Order` definition
@@ -106,7 +109,6 @@ CREATE TABLE `OrderLineItem` (
   CONSTRAINT `OrderLineItem_Product_FK` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`),
   CONSTRAINT `OrderLineItem_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 -- ** NOW PASTE THIS SEPARATELY **--
 
@@ -187,10 +189,15 @@ INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNu
 	 ('User','Registered User','Ethan Martinez','EthanMartinez@gmail.com','0459721834',1,'AbCdEfG1234',NULL,21),
 	 ('User','Registered User','Dick Smith','DickSmith@email.com','0471986253',0,'P@ssw0rd!2024',NULL,22);
 
-
 -- ** NOW PASTE THIS SEPARATELY **--
 
--- Product details
+-- User Access Logs
+
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,`Date`,`Time`) VALUES
+	 (1,'Registered','2024-05-14','15:00:00');
+
+
+-- ** NOW PASTE THIS SEPARATELY **--
 
 INSERT INTO IOTBAY.Product (productID, productName, productPrice, productType, productDescription, stockLevel) VALUES
     (101, 'Wooden Chair', 30, 'chair', 'A wooden chair for dining room', 30),
@@ -259,3 +266,4 @@ INSERT INTO `Order` (orderID, orderAmount, orderLogTimestamp, productQuantity, u
   (24, 800, '2023-05-19 01:05:00', 2, 13, 502, 35),
   (23, 800, '2023-05-20 02:20:00', 2, 14, 503, 36),
   (22, 1998, '2023-05-21 03:35:00', 2, 15, 504, 37);
+

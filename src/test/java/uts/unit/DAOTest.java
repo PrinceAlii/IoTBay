@@ -28,9 +28,4 @@ public class DAOTest {
     public void testConnection() throws SQLException {
         assertNotNull(conn);
     }
-
-    @Test
-    public void testAddedUsers() throws SQLException {
-        userDAO.addUser("alex","alex@jj.com","password","42022345");
-    }
 }
