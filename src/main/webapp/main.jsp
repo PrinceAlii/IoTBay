@@ -54,7 +54,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark">
 
-                                <li><a class="dropdown-item" href=accountDetails.jsp>Account Details</a></li>
+                                <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                                 <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
                                 <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
                                 <li><a class="dropdown-item" href="/accessLogServlet">Access Logs</a></li>

@@ -23,7 +23,7 @@
     <% User user = (User) session.getAttribute("user");%>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">IotBay</a>
+            <a class="navbar-brand" href="main.jsp">IotBay</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -44,8 +44,8 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                             <li><a class="dropdown-item" href="paymentDetails">PaymentDetails</a></li>  
-                            <li><a class="dropdown-item active" href="paymentHistory">Payment History</a></li>                
-                            <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                            <li><a class="dropdown-item active" href="paymentHistory">Payment History</a></li>  
+                            <li><a class="dropdown-item" href="/accessLogServlet">Access Logs</a></li>              
                             <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                             <li>
                                 <hr class="dropdown-divider">

@@ -121,23 +121,23 @@ public class PaymentDAO {
             if (paymentID != 0) {
                 queryBuilder.append(" AND paymentID = ?");
             }
+
             if (searchDate != null) {
-                queryBuilder.append(" AND orderLogTimestamp >= ? AND orderLogTimestamp < DATE_ADD(?, INTERVAL 1 DAY)");
+                queryBuilder.append(" AND CAST(orderLogTimestamp AS DATE) = ?");
             }
     
             String query = queryBuilder.toString();
             stmt = conn.prepareStatement(query);
             stmt.setInt(1, userID);
-            
+    
             int paramIndex = 2; 
-            
+    
             if (paymentID != 0) {
                 stmt.setInt(paramIndex++, paymentID);
             }
-            
+    
             if (searchDate != null) {
                 stmt.setDate(paramIndex++, new java.sql.Date(searchDate.getTime()));
-                stmt.setDate(paramIndex++, new java.sql.Date(searchDate.getTime())); 
             }
     
             rs = stmt.executeQuery();
@@ -148,6 +148,7 @@ public class PaymentDAO {
         } finally {}
         return orders;
     }
+    
     
     
     
