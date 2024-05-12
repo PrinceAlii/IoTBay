@@ -38,9 +38,8 @@ public class UserDAOTest {
 
     // @Test
     // public void testAdd() throws SQLException {
-    //     userDAO.addUser("John","John@jj.com","Pass123","123452254");
+    //     userDAO.addUser("alex","alex@jj.com","Pass123","123452254");
     // }
-
 
     @Test
     public void testUpdate() throws SQLException {
