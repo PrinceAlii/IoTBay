@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CartServlet extends HttpServlet {
 
+    // forward to doPost
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -28,7 +29,7 @@ public class CartServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         if (action != null) {
-            switch (action) {
+            switch (action) { // use a switch statement to handle different actions
                 case "add":
                     addToCart(request, cart);
                     break;
@@ -46,12 +47,12 @@ public class CartServlet extends HttpServlet {
                     break;
             }
         }
-        response.sendRedirect("cart.jsp"); // Redirect to the cart page to show updated cart
+        response.sendRedirect("cart.jsp"); // redirect to the cart page to show updated cart
     }
 
     private void addToCart(HttpServletRequest request, List<OrderLineItem> cart) {
         int productId = Integer.parseInt(request.getParameter("productId"));
-        int quantity = 1; // Default quantity
+        int quantity = 1; // default quantity
         boolean found = false;
     
         for (OrderLineItem item : cart) {
@@ -84,10 +85,10 @@ public class CartServlet extends HttpServlet {
     }
 
     private void cancelOrder(HttpSession session) {
-        session.removeAttribute("cart"); // Clear the cart by removing it from the session
+        session.removeAttribute("cart"); // clear the cart by removing it from the session
     }
 
     private void submitOrder(HttpSession session, List<OrderLineItem> cart) {
-        session.removeAttribute("cart"); // Clear the cart after submitting
+        session.removeAttribute("cart"); // clear the cart after submitting
     }
 }

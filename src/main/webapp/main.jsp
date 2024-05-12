@@ -48,6 +48,7 @@
                             <a class="nav-link" href="cart.jsp">Cart</a>
                         </li>
                         <li class="nav-iteitem dropdown" style="padding-right: 40px;">
+
                             <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </button>
@@ -56,12 +57,13 @@
                                 <li><a class="dropdown-item" href=accountDetails.jsp">Account Details</a></li>
                                 <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
                                 <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
-                                <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                                <li><a class="dropdown-item" href="/accessLogServlet">Access Logs</a></li>
                                 <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
                             </ul>
                         </li>
+
                         <% } else { %>
                         <li class="nav-item">
                             <a class="nav-link" href="login.jsp">Login</a>
@@ -82,6 +84,7 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Filter
                         </button>
+                      
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#" onclick="setFilter('Bed')">Bed</a>
                             <a class="dropdown-item" href="#" onclick="setFilter('Chair')">Chair</a>
@@ -132,12 +135,14 @@
         <br>
         <br>
 
+
+
         <div class="footer">
             <div class="row">
                 <div class="col">
                     <div class="btn-group dropup">
                         <button class="btn btn-secondary dropdown-toggle 
-                                <% if (user == null || !user.getUserAccount().equals("Staff")) { %>
+                                <% if (user == null || (user.getUserAccount() == null) || !user.getUserAccount().equals("Staff")) { %>
                                     disabled
                                 <% } %>
                                 " type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -153,16 +158,16 @@
                 <div class="col">
                     <div class="btn-group dropup">
                         <button class="btn btn-secondary dropdown-toggle 
-                                <% if (user == null || !user.getUserAccount().equals("System Admin")) { %>
+                                <% if (user == null || (user.getUserAccount() == null) || !user.getUserAccount().equals("System Admin")) { %>
                                     disabled
                                 <% } %>
                                 " type="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             System Admin Options
                         </button>
                         <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                            <a class="dropdown-item" href="createUser.jsp">Create User</a>
-                            <a class="dropdown-item" href="updateUser.jsp">Update User</a>
-                            <a class="dropdown-item" href="deleteUser.jsp">Delete User</a>
+                            <a class="dropdown-item" href="CreateCustomerRecord.jsp">Create User</a>
+                            <a class="dropdown-item" href="UpdateCustomerRecord.jsp">Update User</a>
+                            <a class="dropdown-item" href="DeleteCustomerRecord.jsp">Delete User</a>
                             <a class="dropdown-item" href="#">Create Staff</a>
                             <a class="dropdown-item" href="#">Update Staff</a>
                             <a class="dropdown-item" href="#">Delete Staff</a>
@@ -171,7 +176,6 @@
                 </div>
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

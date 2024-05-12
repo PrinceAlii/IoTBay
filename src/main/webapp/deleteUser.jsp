@@ -13,7 +13,7 @@
         </head>
 
         <body class="text-center">
-        
+
             <% User user=(User) session.getAttribute("user"); %>
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                     <div class="container-fluid">
@@ -23,7 +23,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                            
+
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-iten">
                                     <a class="btn" class ="nav-link" href="main.jsp">Home</a>
@@ -51,7 +51,8 @@
                             <h2 class="text-center">Please confirm</h2>
                             <p class="text-center">Are you sure you want to delete this user?</p>
 
-                            <form method="POST" action="DeleteServlet?email=<%=user.getEmail()%>" class="d-flex justify-content-center">
+                            <form method="POST" action="DeleteServlet" class="d-flex justify-content-center">
+                                <input type="hidden" name="email" value="<%=user.getEmail()%>">
                                 <button type="submit" class="btn btn-danger mx-2">Delete</button>
                                 <a class="btn btn-outline-secondary" href="accountDetails.jsp">Cancel</a>  
                             </form>

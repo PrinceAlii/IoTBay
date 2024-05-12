@@ -5,20 +5,50 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1">
   
-  <servlet>
-    <servlet-name>index.jsp</servlet-name>
-    <jsp-file>/index.jsp</jsp-file>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet>
-    <servlet-name>ConnServlet</servlet-name>
-    <servlet-class>uts.isd.model.controller.ConnServlet</servlet-class>
-    <load-on-startup>0</load-on-startup>
-  </servlet>
+
+    <servlet>
+      <servlet-name>index.jsp</servlet-name>
+      <jsp-file>/index.jsp</jsp-file>
+      <load-on-startup>1</load-on-startup>
+    </servlet>
+  
+    <servlet>
+      <servlet-name>ConnServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.ConnServlet</servlet-class>
+      <load-on-startup>0</load-on-startup>
+    </servlet>
+      <servlet-mapping>
+      <servlet-name>ConnServlet</servlet-name>
+      <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>uts.isd.model.controller.DeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
-    <servlet-name>ConnServlet</servlet-name>
-    <url-pattern>/ConnServlet</url-pattern>
-  </servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+  
+    <servlet>
+        <servlet-name>accessLogServlet</servlet-name>
+        <servlet-class>uts.isd.model.controller.accessLogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>accessLogServlet</servlet-name>
+        <url-pattern>/accessLogServlet</url-pattern>
+    </servlet-mapping>
+  
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>uts.isd.model.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>uts.isd.model.controller.RegisterServlet</servlet-class>
@@ -27,6 +57,7 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
       <servlet-name>LoginServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.LoginServlet</servlet-class>
@@ -35,6 +66,7 @@
       <servlet-name>LoginServlet</servlet-name>
       <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
       <servlet-name>updateAccDetailsServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.updateAccDetailsServlet</servlet-class>
@@ -42,14 +74,6 @@
   <servlet-mapping>
       <servlet-name>updateAccDetailsServlet</servlet-name>
       <url-pattern>/updateAccDetailsServlet</url-pattern>
-  </servlet-mapping>
-      <servlet>
-      <servlet-name>DeleteServlet</servlet-name>
-      <servlet-class>uts.isd.model.controller.DeleteServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>DeleteServlet</servlet-name>
-      <url-pattern>/DeleteServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>PaymentDetailsServlet</servlet-name>
@@ -59,6 +83,7 @@
     <servlet-name>PaymentDetailsServlet</servlet-name>
     <url-pattern>/paymentDetails</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>AddPaymentServlet</servlet-name>
     <servlet-class>uts.isd.model.controller.AddPaymentServlet</servlet-class>
@@ -67,6 +92,7 @@
       <servlet-name>AddPaymentServlet</servlet-name>
       <url-pattern>/addPayment</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>RemovePaymentServlet</servlet-name>
     <servlet-class>uts.isd.model.controller.RemovePaymentServlet</servlet-class>
@@ -75,6 +101,7 @@
     <servlet-name>RemovePaymentServlet</servlet-name>
     <url-pattern>/removePayment</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>UpdatePaymentServlet</servlet-name>
     <servlet-class>uts.isd.model.controller.UpdatePaymentServlet</servlet-class>
@@ -83,6 +110,7 @@
     <servlet-name>UpdatePaymentServlet</servlet-name>
     <url-pattern>/updatePayment</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>PaymentHistoryServlet</servlet-name>
     <servlet-class>uts.isd.model.controller.PaymentHistoryServlet</servlet-class>
@@ -91,6 +119,7 @@
     <servlet-name>PaymentHistoryServlet</servlet-name>
     <url-pattern>/paymentHistory</url-pattern>
   </servlet-mapping>
+  
   <servlet>
       <servlet-name>ProductServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.ProductServlet</servlet-class>
@@ -99,6 +128,7 @@
       <servlet-name>ProductServlet</servlet-name>
       <url-pattern>/ProductServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
       <servlet-name>CreateProductServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.CreateProductServlet</servlet-class>
@@ -107,6 +137,7 @@
       <servlet-name>CreateProductServlet</servlet-name>
       <url-pattern>/CreateProductServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
       <servlet-name>UpdateProductServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.UpdateProductServlet</servlet-class>
@@ -115,6 +146,7 @@
       <servlet-name>UpdateProductServlet</servlet-name>
       <url-pattern>/UpdateProductServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
       <servlet-name>DeleteProductServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.DeleteProductServlet</servlet-class>
@@ -123,6 +155,7 @@
       <servlet-name>DeleteProductServlet</servlet-name>
       <url-pattern>/DeleteProductServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
       <servlet-name>OrderServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.OrderServlet</servlet-class>
@@ -131,6 +164,7 @@
       <servlet-name>OrderServlet</servlet-name>
       <url-pattern>/OrderServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet>
       <servlet-name>CartServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.CartServlet</servlet-class>
@@ -139,6 +173,33 @@
       <servlet-name>CartServlet</servlet-name>
       <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
+  
+    <servlet>
+      <servlet-name>NewCustomerRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.NewCustomerRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>NewCustomerRecordServlet</servlet-name>
+      <url-pattern>/NewCustomerRecordServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>UpdateCustomerRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.UpdateCustomerRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UpdateCustomerRecordServlet</servlet-name>
+      <url-pattern>/UpdateCustomerRecordServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>DeleteCustomerRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.DeleteCustomerRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>DeleteCustomerRecordServlet</servlet-name>
+      <url-pattern>/DeleteCustomerRecordServlet</url-pattern>
+  </servlet-mapping>
 
   <session-config>
     <session-timeout>

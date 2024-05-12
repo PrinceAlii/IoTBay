@@ -1,4 +1,3 @@
-
 -- ** PASTE THIS TABLE IN FIRST ** --
 
 -- IOTBAY.PaymentDetails definition
