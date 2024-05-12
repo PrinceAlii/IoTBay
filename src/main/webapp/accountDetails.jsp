@@ -15,6 +15,7 @@
         <body class="text-center">
         
             <% User user=(User) session.getAttribute("user"); %>
+
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="main.jsp">IotBay</a>
@@ -62,19 +63,19 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="text-align: left;">Name:</th>
-                                <td style="text-align: left;"><%= user.getName() %></td>
+                                <td style="text-align: left;"><%=user.getName()%></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Email:</th>
-                                <td style="text-align: left;"><%= user.getEmail() %></td>
+                                <td style="text-align: left;"><%=user.getEmail()%></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Password:</th>
-                                <td style="text-align: left;"><%= user.getPassword() %></td>
+                                <td style="text-align: left;"><%=user.getPassword()%></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Contact Number:</th>
-                                <td style="text-align: left;"><%= user.getPhone() %></td>
+                                <td style="text-align: left;"><%=user.getPhone()%></td>
                             </tr>
                         </tbody>
                     </table>

@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("CHDXKIFNFDNDDMD");
 
         try {
             // check if user login details for User exsists 

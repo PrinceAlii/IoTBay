@@ -19,6 +19,7 @@ public class DeleteServlet extends HttpServlet {
     @Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		response.setContentType("text/html;charset=UTF-8");
 
 		try{
 			String email = request.getParameter("email");

@@ -56,12 +56,6 @@ public class updateAccDetailsServlet extends HttpServlet {
 
 
 
-				// }else{
-				// 	session.setAttribute("emailUsed", "Email has already been used please use a different one!");
-				// 	request.getRequestDispatcher("updateAccDetails.jsp").include(request, response);
-				// }
-
-
 
 
 

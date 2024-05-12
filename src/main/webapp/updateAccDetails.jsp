@@ -5,7 +5,7 @@
 
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>Update Account Details</title>
+            <title>Main Page</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -73,7 +73,7 @@
                                 <label for="email" style="font-weight: bold;" class="form-label">Email:</label>
                             </div>
                         </div>
-                        <input class="form-control" type="email" name="email" id="email" placeholder=<%= user.getEmail() %> required/>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="<%= user.getEmail() %>" required/>
                     </div>
                     <div class="mb-3">
                         <div class="row justify-content-start">
@@ -81,7 +81,7 @@
                                 <label for="name" style="font-weight: bold;" class="form-label">Name:</label>
                             </div>
                         </div>
-                        <input class="form-control" name="name" id="name" placeholder=<%= user.getName() %>  required/>
+                        <input class="form-control" name="name" id="name" placeholder="<%= user.getName() %>" required/>
                     </div>
                     <div class="mb-3">
                         <div class="row justify-content-start">
@@ -97,7 +97,7 @@
                                 <label for="phone" style="font-weight: bold;" class="form-label">Phone:</label>
                             </div>
                         </div>
-                        <input class="form-control" type="tel" name="phone" id="phone" placeholder=<%= user.getPhone() %>  required/>
+                        <input class="form-control" type="tel" name="phone" id="phone" placeholder="<%= user.getPhone() %>" required/>
                     </div>
                     <br/>
                     <input type="hidden" name="submitted" id="submitted" value="true"/>

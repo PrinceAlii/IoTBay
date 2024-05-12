@@ -5,7 +5,7 @@
 
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>Delete Account</title>
+            <title>Main Page</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -13,7 +13,7 @@
         </head>
 
         <body class="text-center">
-        
+
             <% User user=(User) session.getAttribute("user"); %>
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                     <div class="container-fluid">
@@ -23,7 +23,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-                            
+
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-iten">
                                     <a class="btn" class ="nav-link" href="main.jsp">Home</a>
@@ -51,7 +51,7 @@
                             <h2 class="text-center">Please confirm</h2>
                             <p class="text-center">Are you sure you want to delete this user?</p>
 
-                            <form method="POST" action="DeleteServlet?email=<%=user.getEmail()%>" class="d-flex justify-content-center">
+                            <form method="POST" action="DeleteServlet?email=<%=email%>" class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-danger mx-2">Delete</button>
                                 <a class="btn btn-outline-secondary" href="accountDetails.jsp">Cancel</a>  
                             </form>
