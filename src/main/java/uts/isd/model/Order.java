@@ -1,63 +1,84 @@
 package uts.isd.model;
 
 import java.io.Serializable;
+import java.util.Date; 
 
 public class Order implements Serializable {
 
-  private String orderID;
-  private int userID;
-  private String paymentID;
-  private int orderAmount;
-  private String orderDate;
+    private int orderID;
+    private int userID;
+    private int productID;
+    private int orderAmount;
+    private Date orderLogTimestamp;
+    private int productQuantity;
+    private int paymentID;
 
-  public Order() {
-  }
+    public Order() {
+    }
 
-  public Order(String _orderID, int _userID, String _paymentID, int _orderAmount, String _orderDate) {
-    this.orderID = _orderID;
-    this.userID = _userID;
-    this.paymentID = _paymentID;
-    this.orderAmount = _orderAmount;
-    this.orderDate = _orderDate;
-  }
+    public Order(int _orderID, int _userID, int _productID, int _orderAmount, Date _orderLogTimestamp, int _productQuantity) {
+        this.orderID = _orderID;
+        this.userID = _userID;
+        this.productID = _productID;
+        this.orderAmount = _orderAmount;
+        this.orderLogTimestamp = _orderLogTimestamp;
+        this.productQuantity = _productQuantity;
+    }
 
-  public String getOrderID() {
-    return orderID;
-  }
+    public int getOrderID() {
+        return orderID;
+    }
 
-  public void setOrderID(String orderID) {
-    this.orderID = orderID;
-  }
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
 
-  public int getUserID() {
-    return userID;
-  }
+    public int getUserID() {
+        return userID;
+    }
 
-  public void setUserID(int userID) {
-    this.userID = userID;
-  }
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 
-  public String getPaymentID() {
-    return paymentID;
-  }
+    public int getProductID() {
+        return productID;
+    }
 
-  public void setPaymentID(String paymentID) {
-    this.paymentID = paymentID;
-  }
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
 
-  public int getOrderAmount() {
-    return orderAmount;
-  }
 
-  public void setOrderAmount(int orderAmount) {
-    this.orderAmount = orderAmount;
-  }
+    public void setPaymentID(int paymentID) {
+        this.paymentID = paymentID;
+    }
 
-  public String getOrderDate() {
-    return orderDate;
-  }
+    public int getPaymentID() {
+        return paymentID;
+    }
 
-  public void setOrderDate(String orderDate) {
-    this.orderDate = orderDate;
-  }
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public Date getOrderLogTimestamp() {
+        return orderLogTimestamp;
+    }
+
+    public void setOrderLogTimestamp(Date orderLogTimestamp) {
+        this.orderLogTimestamp = orderLogTimestamp;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
+    }
 }
