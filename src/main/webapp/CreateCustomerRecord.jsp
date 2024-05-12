@@ -76,7 +76,7 @@
             <input type="submit" value="Submit">
         </form>
         
-        <form action="updateCustomerRecord.jsp">
+        <form action="UpdateCustomerRecord.jsp">
             <input type="submit" value="Update">
         </form>
     </div>
