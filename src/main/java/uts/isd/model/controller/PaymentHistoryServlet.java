@@ -41,32 +41,38 @@ public class PaymentHistoryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-
+    
         try {
             if (user == null) {
                 response.sendRedirect("login.jsp");
                 return;
             }
-
-
+    
             int paymentID = 0;
-            String paymentIDParam = request.getParameter("paymentID");
-            
+            String paymentIDParam = request.getParameter("searchPaymentID");
+
             if (paymentIDParam != null && !paymentIDParam.isEmpty()) {
                 paymentID = Integer.parseInt(paymentIDParam);
             }
-            
-            List<Order> orders = paymentDAO.getPaymentHistoryUser(user.getUserID());
-            
+    
+            // if searching with paymentID
+            List<Order> orders;
+            if (paymentID != 0) {
+                orders = paymentDAO.getPaymentHistory(user.getUserID(), paymentID);
+            } else {
+                // if not searching with payment ID
+                orders = paymentDAO.getPaymentHistory(user.getUserID(), 0);
+            }
+    
             request.setAttribute("orders", orders);
-            
+    
             request.getRequestDispatcher("paymentHistory.jsp").forward(request, response);
-
-    } catch (SQLException ex) {
-        Logger.getLogger(PaymentHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
-        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment history");
+    
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment history");
+        }
     }
-
-    }
+    
 
 }
