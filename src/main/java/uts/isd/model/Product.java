@@ -10,12 +10,13 @@ public class Product implements Serializable {
   private String productType;
   private String productDescription;
   private int stockLevel;
+  private String imageUrl;
 
   public Product() {
   }
 
   public Product(int _productID, String _productName, double _productPrice, String _productType,
-                 String _productDescription, int _stockLevel) {
+    String _productDescription, int _stockLevel) {
     this.productID = _productID;
     this.productName = _productName;
     this.productPrice = _productPrice;
@@ -23,7 +24,6 @@ public class Product implements Serializable {
     this.productDescription = _productDescription;
     this.stockLevel = _stockLevel;
   }
-
 
   public int getProductID() {
     return productID;
@@ -71,5 +71,13 @@ public class Product implements Serializable {
 
   public void setStockLevel(int stockLevel) {
     this.stockLevel = stockLevel;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+      this.imageUrl = imageUrl;
   }
 }

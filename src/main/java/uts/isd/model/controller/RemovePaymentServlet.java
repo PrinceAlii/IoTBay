@@ -16,8 +16,9 @@ import uts.isd.model.PaymentDetails;
 import uts.isd.model.User;
 import uts.isd.model.dao.PaymentDAO;
 
-public class PaymentDetailsServlet extends HttpServlet {
 
+public class RemovePaymentServlet extends HttpServlet {
+    
     private PaymentDAO paymentDAO;
 
     @Override
@@ -48,17 +49,24 @@ public class PaymentDetailsServlet extends HttpServlet {
         }
     
         try {
+
+            String paymentIdToRemove = request.getParameter("paymentIdToRemove");
+            if (paymentIdToRemove != null && !paymentIdToRemove.isEmpty()) {
+
+                paymentDAO.deletePayment(Integer.parseInt(paymentIdToRemove));
+                response.sendRedirect("paymentDetails?action=removed");
+            }
+
             // get all saved payment methods for user
             List<PaymentDetails> paymentMethods = paymentDAO.findPaymentByUser(user.getUserID());
-
-
             request.setAttribute("paymentMethods", paymentMethods);
-            request.getRequestDispatcher("paymentDetails.jsp").forward(request, response);
+
+            request.getRequestDispatcher("removePayment.jsp").forward(request, response);
     
         } catch (SQLException ex) {
             Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment details");
         }
     }
-    
+
 }

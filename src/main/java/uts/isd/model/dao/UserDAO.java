@@ -16,6 +16,7 @@ import uts.isd.model.User;
 public class UserDAO {
  
     private Statement st;
+    private Connection conn; // (ALI)
 
 
     public UserDAO (Connection connection) throws SQLException {
@@ -23,6 +24,15 @@ public class UserDAO {
         st = connection.createStatement();
 
     }
+
+    // (ALI)
+    public UserDAO() throws ClassNotFoundException, SQLException { 
+        DBConnector dbConnector = new DBConnector();
+        conn = dbConnector.openConnection();
+        conn.setAutoCommit(true);
+        st = conn.createStatement();
+    }
+    
 
     //check if user is already in the database. Return if user is already in database
     public boolean checkUser(String email, String password) throws SQLException {
@@ -186,6 +196,10 @@ public class UserDAO {
         }
         return logList;
     }
+
+    public void updateUserPaymentID(int userID, int paymentID) throws SQLException {
+        st.executeUpdate("UPDATE user SET paymentID = " + paymentID + " WHERE userID = " + userID);
+        }
 }
 
 

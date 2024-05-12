@@ -1,3 +1,6 @@
+
+-- ** PASTE THIS TABLE IN FIRST ** --
+
 -- IOTBAY.PaymentDetails definition
 
 CREATE TABLE `PaymentDetails` (
@@ -7,20 +10,10 @@ CREATE TABLE `PaymentDetails` (
   `savedPaymentDetails` tinyint(1) NOT NULL,
   `userID` int NOT NULL,
   PRIMARY KEY (`paymentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
--- IOTBAY.Product definition
-
-CREATE TABLE `Product` (
-  `productID` int NOT NULL AUTO_INCREMENT,
-  `productName` varchar(200) NOT NULL,
-  `productPrice` decimal(10,0) NOT NULL,
-  `productType` varchar(200) NOT NULL,
-  `productDescription` varchar(1000) NOT NULL,
-  `stockLevel` int NOT NULL,
-  PRIMARY KEY (`productID`)
-) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- ** THEN PASTE THIS TABLE IN SECOND ** --
 
 
 -- IOTBAY.`User` definition
@@ -39,7 +32,22 @@ CREATE TABLE `User` (
   PRIMARY KEY (`userID`),
   KEY `User_PaymentDetails_FK` (`paymentID`),
   CONSTRAINT `User_PaymentDetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `PaymentDetails` (`paymentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- ** THEN YOU CAN PASTE THE NEXT 5 TABLES IN TOGETHER ** --
+
+-- IOTBAY.Product definition
+
+CREATE TABLE `Product` (
+  `productID` int NOT NULL AUTO_INCREMENT,
+  `productName` varchar(200) NOT NULL,
+  `productPrice` decimal NOT NULL,
+  `productType` varchar(200) NOT NULL,
+  `productDescription` varchar(1000) NOT NULL,
+  `stockLevel` int NOT NULL,
+  PRIMARY KEY (`productID`)
+) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.UserAccessLogs definition
@@ -73,22 +81,7 @@ CREATE TABLE `Order` (
   CONSTRAINT `Order_paymentdetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `paymentdetails` (`paymentID`),
   CONSTRAINT `Order_Product_FK` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
   CONSTRAINT `Order_User_FK` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
--- IOTBAY.OrderLineItem definition
-
-CREATE TABLE `OrderLineItem` (
-  `orderLineItemID` int NOT NULL AUTO_INCREMENT,
-  `orderID` int NOT NULL,
-  `productID` int NOT NULL,
-  `productQuantity` int NOT NULL,
-  PRIMARY KEY (`orderLineItemID`),
-  KEY `OrderLineItem_Order_FK` (`orderID`),
-  KEY `OrderLineItem_Product_FK` (`productID`),
-  CONSTRAINT `OrderLineItem_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`),
-  CONSTRAINT `OrderLineItem_Product_FK` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.Invoice definition
@@ -101,6 +94,20 @@ CREATE TABLE `Invoice` (
   PRIMARY KEY (`invoiceID`),
   KEY `Invoice_Order_FK` (`orderID`),
   CONSTRAINT `Invoice_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- IOTBAY.OrderLineItem definition
+
+CREATE TABLE `OrderLineItem` (
+  `orderLineItemID` int NOT NULL AUTO_INCREMENT,
+  `orderID` int NOT NULL,
+  `productID` int NOT NULL,
+  `productQuantity` int NOT NULL,
+  PRIMARY KEY (`orderLineItemID`),
+  KEY `OrderLineItem_Order_FK` (`orderID`),
+  KEY `OrderLineItem_Product_FK` (`productID`),
+  CONSTRAINT `OrderLineItem_Product_FK` FOREIGN KEY (`productID`) REFERENCES `Product` (`productID`),
+  CONSTRAINT `OrderLineItem_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ** NOW PASTE THIS SEPARATELY **--
@@ -192,8 +199,6 @@ INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,`Date`,`Time`) VALUES
 
 -- ** NOW PASTE THIS SEPARATELY **--
 
--- Product details
-
 INSERT INTO IOTBAY.Product (productID, productName, productPrice, productType, productDescription, stockLevel) VALUES
     (101, 'Wooden Chair', 30, 'chair', 'A wooden chair for dining room', 30),
     (102, 'Plastic Chair', 20, 'chair', 'A plastic chair for outside', 30),
@@ -261,3 +266,4 @@ INSERT INTO `Order` (orderID, orderAmount, orderLogTimestamp, productQuantity, u
   (24, 800, '2023-05-19 01:05:00', 2, 13, 502, 35),
   (23, 800, '2023-05-20 02:20:00', 2, 14, 503, 36),
   (22, 1998, '2023-05-21 03:35:00', 2, 15, 504, 37);
+

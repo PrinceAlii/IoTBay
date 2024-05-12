@@ -12,14 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import uts.isd.model.Order;
 import uts.isd.model.PaymentDetails;
 import uts.isd.model.User;
 import uts.isd.model.dao.PaymentDAO;
 
-public class PaymentDetailsServlet extends HttpServlet {
+public class PaymentHistoryServlet extends HttpServlet {
 
     private PaymentDAO paymentDAO;
-
+    
     @Override
     public void init() throws ServletException {
         try {
@@ -41,24 +42,37 @@ public class PaymentDetailsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
     
-        // login check
-        if (user == null) {
-            response.sendRedirect("login.jsp");
-            return;
-        }
-    
         try {
-            // get all saved payment methods for user
-            List<PaymentDetails> paymentMethods = paymentDAO.findPaymentByUser(user.getUserID());
+            if (user == null) {
+                response.sendRedirect("login.jsp");
+                return;
+            }
+    
+            int paymentID = 0;
+            String paymentIDParam = request.getParameter("searchPaymentID");
 
-
-            request.setAttribute("paymentMethods", paymentMethods);
-            request.getRequestDispatcher("paymentDetails.jsp").forward(request, response);
+            if (paymentIDParam != null && !paymentIDParam.isEmpty()) {
+                paymentID = Integer.parseInt(paymentIDParam);
+            }
+    
+            // if searching with paymentID
+            List<Order> orders;
+            if (paymentID != 0) {
+                orders = paymentDAO.getPaymentHistory(user.getUserID(), paymentID);
+            } else {
+                // if not searching with payment ID
+                orders = paymentDAO.getPaymentHistory(user.getUserID(), 0);
+            }
+    
+            request.setAttribute("orders", orders);
+    
+            request.getRequestDispatcher("paymentHistory.jsp").forward(request, response);
     
         } catch (SQLException ex) {
-            Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment details");
+            Logger.getLogger(PaymentHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment history");
         }
     }
     
+
 }
