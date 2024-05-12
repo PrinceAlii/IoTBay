@@ -131,6 +131,30 @@
       <servlet-name>CartServlet</servlet-name>
       <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+      <servlet-name>NewCustomerRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.NewCustomerRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>NewCustomerRecordServlet</servlet-name>
+      <url-pattern>/NewCustomerRecordServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>UpdateCustomerRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.UpdateCustomerRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UpdateCustomerRecordServlet</servlet-name>
+      <url-pattern>/UpdateCustomerRecordServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>DeleteCustomerRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.DeleteCustomerRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>DeleteCustomerRecordServlet</servlet-name>
+      <url-pattern>/DeleteCustomerRecordServlet</url-pattern>
+  </servlet-mapping>
 
   <session-config>
     <session-timeout>

@@ -158,9 +158,9 @@
                             System Admin Options
                         </button>
                         <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                            <a class="dropdown-item" href="createUser.jsp">Create User</a>
-                            <a class="dropdown-item" href="updateUser.jsp">Update User</a>
-                            <a class="dropdown-item" href="deleteUser.jsp">Delete User</a>
+                            <a class="dropdown-item" href="createCustomerRecord.jsp">Create User</a>
+                            <a class="dropdown-item" href="updateCustomerRecord.jsp">Update User</a>
+                            <a class="dropdown-item" href="deleteCustomerRecord.jsp">Delete User</a>
                             <a class="dropdown-item" href="#">Create Staff</a>
                             <a class="dropdown-item" href="#">Update Staff</a>
                             <a class="dropdown-item" href="#">Delete Staff</a>
