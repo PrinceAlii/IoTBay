@@ -38,7 +38,7 @@ public class UserDAOTest {
 
     @Test
     public void testAdd() throws SQLException {
-        userDAO.addUser("alex","alex@jj.com","Pass123","123452254");
+        userDAO.addUser("John","John@jj.com","Pass123","123452254");
     }
 
 
@@ -62,10 +62,10 @@ public class UserDAOTest {
         userDAO.checkUser("John@jj.com","pAss11");
     }
 
-    // @Test
-    // public void testDelete() throws SQLException {
-    //     userDAO.deleteUser("John@jj.com");
-    // }
+    @Test
+    public void testDelete() throws SQLException {
+        userDAO.deleteUser("John@jj.com");
+    }
 
 
 

@@ -17,6 +17,7 @@
         </head>
 
         <body class="text-center">
+
         
             <% User user=(User) session.getAttribute("user"); %>
 
@@ -52,12 +53,26 @@
             <%
             String noLog = (String) session.getAttribute("noLogsFound");
             %>
-
+        <br>
+            <h1>Access Logs</h1>
+            <a><%= user.getName() %></a>
+            <label><% %></label>
+        <br>
         <br>
             <label style="color: red;"><%= (noLog != null ? noLog : "") %></label>
         <br>
 
+            <div class="row" style="padding-left: 50px; padding-right: 50px;">
+                <div class="col-11 d-flex search-bar-container">  
+                    <form class="d-flex" action="ProductServlet" method="get">
+                        <input id="searchInput" class="form-control me-2 w-100" type="search" placeholder="YYYY-MM-DD" aria-label="Search" name="search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                <br>
+
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <br>
             <table class="table table-bordered table-striped mb-0 log-table">
                 <thead>
                     <tr>
