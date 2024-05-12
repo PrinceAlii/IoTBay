@@ -84,19 +84,20 @@
             <tr>
                 <td><%= order.getOrderID() %></td>
                 <td><%= order.getPaymentID() %></td>
-                <td>$<%= order.getOrderAmount() %></td>
+                <td><%= order.getOrderAmount() %></td>
                 <td><%= order.getProductID() %></td>
                 <td><%= order.getOrderLogTimestamp() %></td>
 
-            </tr>
-            <%    }
-               } else { %>
-            <tr>
-                <td colspan="2">No orders found.</td>
-            </tr>
-            <% } %>
-        </tbody>
-        </table>
+                    </tr>
+                    <%    }
+                    } else { %>
+                    <tr>
+                    <td colspan="2">No orders found.</td>
+                    </tr>
+                    <% } %>
+                </tbody>
+                
+            </table>
 
             
             <br>

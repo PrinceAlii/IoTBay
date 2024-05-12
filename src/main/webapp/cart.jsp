@@ -38,7 +38,7 @@
                             <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                             <li><a class="dropdown-item" href="paymentDetails">Payment Details</a></li>
                             <li><a class="dropdown-item" href="#">Access Logs</a></li>
-                            <li><a class="dropdown-item active" href="OrderServlet">Order Details</a></li>
+                            <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -73,7 +73,7 @@
                             <form action="CartServlet" method="post">
                                 <input type="hidden" name="action" value="update">
                                 <input type="hidden" name="productId" value="<%= item.getProductID() %>">
-                                <input type="number" name="quantity" value="<%= item.getOrderQuantity() %>" min="1">
+                                <input style="width: 100px; margin-right: 10px; height: 38px; padding: 5px 10px" type="number" name="quantity" value="<%= item.getOrderQuantity() %>" min="1">
                                 <button type="submit" class="btn btn-info">Update</button>
                             </form>
                         </td>

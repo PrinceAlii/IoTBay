@@ -52,8 +52,7 @@
                                 Profile
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark">
-
-                                <li><a class="dropdown-item href="accountDetails.jsp">Account Details</a></li>
+                                <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                                 <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
                                 <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
                                 <li><a class="dropdown-item" href="#">Access Logs</a></li>
@@ -137,7 +136,7 @@
                 <div class="col">
                     <div class="btn-group dropup">
                         <button class="btn btn-secondary dropdown-toggle 
-                                <% if (user == null || !user.getUserAccount().equals("Staff")) { %>
+                                <% if (user == null || (user.getUserAccount() == null) || !user.getUserAccount().equals("Staff")) { %>
                                     disabled
                                 <% } %>
                                 " type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -153,16 +152,16 @@
                 <div class="col">
                     <div class="btn-group dropup">
                         <button class="btn btn-secondary dropdown-toggle 
-                                <% if (user == null || !user.getUserAccount().equals("System Admin")) { %>
+                                <% if (user == null || (user.getUserAccount() == null) || !user.getUserAccount().equals("System Admin")) { %>
                                     disabled
                                 <% } %>
                                 " type="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             System Admin Options
                         </button>
                         <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                            <a class="dropdown-item" href="createUser.jsp">Create User</a>
-                            <a class="dropdown-item" href="updateUser.jsp">Update User</a>
-                            <a class="dropdown-item" href="deleteUser.jsp">Delete User</a>
+                            <a class="dropdown-item" href="CreateCustomerRecord.jsp">Create User</a>
+                            <a class="dropdown-item" href="UpdateCustomerRecord.jsp">Update User</a>
+                            <a class="dropdown-item" href="DeleteCustomerRecord.jsp">Delete User</a>
                             <a class="dropdown-item" href="#">Create Staff</a>
                             <a class="dropdown-item" href="#">Update Staff</a>
                             <a class="dropdown-item" href="#">Delete Staff</a>

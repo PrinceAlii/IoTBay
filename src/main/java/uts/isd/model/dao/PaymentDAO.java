@@ -84,25 +84,33 @@ public class PaymentDAO {
     }
     
 
-      public List<Order> getPaymentHistoryUser(int userID) throws SQLException {
+    public List<Order> getPaymentHistory(int userID, int paymentID) throws SQLException {
         List<Order> orders = new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+    
         try {
             String query;
+    
+            // if paymentID provided, then saerch with that and userID
+            if (paymentID != 0) {
+                query = "SELECT * FROM IOTBAY.order WHERE userID = ? AND paymentID = ?";
+                stmt = conn.prepareStatement(query);
+                stmt.setInt(1, userID);
+                stmt.setInt(2, paymentID);
+            } else {
 
-  
-            query = "SELECT * FROM IOTBAY.order WHERE userID = ?";
-            stmt = conn.prepareStatement(query);
-            stmt.setInt(1, userID);
+                // if no paymentID provided, search only by user ID
+                query = "SELECT * FROM IOTBAY.order WHERE userID = ?";
+                stmt = conn.prepareStatement(query);
+                stmt.setInt(1, userID);
+            }
     
             rs = stmt.executeQuery();
             
             while (rs.next()) {
-
                 Order order = new Order();
-
+    
                 order.setOrderID(rs.getInt("orderID"));
                 order.setUserID(rs.getInt("userID"));
                 order.setPaymentID(rs.getInt("paymentID"));
@@ -115,11 +123,11 @@ public class PaymentDAO {
             }
         } catch (SQLException ex) {
             throw ex; 
-        } finally {
-        }
-
+        } finally {}
+    
         return orders;
     }
+    
     
 
     public void closeConnection() throws SQLException {
