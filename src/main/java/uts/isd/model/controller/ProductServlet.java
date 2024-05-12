@@ -30,17 +30,32 @@ public class ProductServlet extends HttpServlet {
     throws ServletException, IOException {
         try {
             String searchKeyword = request.getParameter("search");
+            String filter = request.getParameter("filter");
             List<Product> products;
-            if (searchKeyword != null && !searchKeyword.isEmpty()) {
-                products = productDAO.searchProductsByName(searchKeyword);
+
+            if ((searchKeyword != null && !searchKeyword.isEmpty()) || (filter != null && !filter.isEmpty())) {
+                if (filter != null && !filter.isEmpty()) {
+
+                    products = productDAO.searchProductsByKeywordAndFilter(searchKeyword, filter);
+
+                } else {
+                    
+                    products = productDAO.searchProductsByName(searchKeyword);
+                }
             } else {
                 products = productDAO.getAllProducts();
             }
+
+            for (Product product : products) {
+                product.setImageUrl("https://static.vecteezy.com/system/resources/previews/032/447/246/non_2x/a-modern-kitchen-and-dining-area-with-a-view-of-the-mountains-ai-generated-free-photo.jpg");
+            }
+
             if (products.isEmpty()) {
                 request.setAttribute("error", "No products found.");
             } else {
                 request.setAttribute("products", products);
             }
+
             request.getRequestDispatcher("main.jsp").forward(request, response);
         } catch (SQLException ex) {
             throw new ServletException(ex);

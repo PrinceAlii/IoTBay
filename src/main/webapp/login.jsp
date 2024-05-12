@@ -12,8 +12,6 @@
     </head>
 
     <body class="text-center">
-
-        <%-- Navagation bar style --%>
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.jsp">IotBay</a>
@@ -26,7 +24,15 @@
             </div>
         </nav>
 
+
+        <%
+            String incorrectLogin = (String) session.getAttribute("incorrectLogin");
+        %>
+
         <h1>Login</h1>
+        <br>
+        <label style="color: red;"><%= (incorrectLogin != null ? incorrectLogin : "") %></label>
+        <br>
         <br>
         <div class="container-sm d-flex justify-content-center" >
 
@@ -57,64 +63,7 @@
             </form>
         </div>
     </body> 
-
-
-
-
-
 </html>
 
-
-            <%-- <%
-            String email = request.getParameter("email");
-            String name = request.getParameter("name");
-            String password = request.getParameter("password");
-
-            public 
-
-            if (){
-                User user = new User(email, password, name);
-
-                session.setAttribute("user", user);
-
-                response.sendRedirect("welcome.jsp");
-
-            } else { %> --%>
-
-        <%-- <h1>Login</h1>
-        <br>
-        <div class="container-sm d-flex justify-content-center" >
-
-            <form action="login.jsp" method="post" style="width: 20%;">
-            <div class="mb-3">
-                <div class="row justify-content-start">
-                    <div class="col-3">
-                        <label class="form-label" style="font-weight: bold;" for="email">Email:</label>
-                        </div>
-                    </div>
-                <input class="form-control" type="email" name="email" id="email" placeholder="email" required/>
-            </div>
-            <br>
-            <div class="mb-3">
-                <div class="row justify-content-start">
-                    <div class="col-3">
-                        <label class="form-label" style="font-weight: bold;" for="password">Password:</label>
-                    </div>
-            </div>
-                <input class="form-control" type="password" name="password" id="password" placeholder="password" required/>
-            </div>
-            <br/>
-            <div class="mb-3">
-                <input type="hidden" name="submitted" id="submitted" value="true" />
-            </div>
-                <button class="btn btn-primary" type="submit">Login</button>
-                <a class="btn btn-outline-secondary"  id="cancel" href="index.jsp">Cancel Login</a>
-            </form>
-        </div>
-
-            <% } %>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-            </body> --%>
 
 

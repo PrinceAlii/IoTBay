@@ -28,19 +28,16 @@ public class updateAccDetailsServlet extends HttpServlet {
 
 		UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
 
-		//Check if inputted regsitration details are correctly inputted
 		Validator validate = new Validator();
         session.setAttribute("inputtedNameErr", validate.validateEmail(email));
         session.setAttribute("inputtedNameErr", validate.validateName(name));
 		session.setAttribute("inputtedPassErr", validate.validatePassword(password));
         session.setAttribute("inputtedPhoneErr", validate.validatePhone(phone));
 
-		//if there are no errors and all validations return null then add use
 		if((validate.validateEmail(email)==null) && (validate.validateName(name)==null) && (validate.validatePassword(password)==null) 
 			&& (validate.validatePhone(phone)==null)){
 			try { 
 				userDAO.updateUser(name, email, password, phone);
-				// Fetch updated user details from the database
 				User updatedUser = userDAO.findUser(email, password);
 				session.setAttribute("user", updatedUser);
 				session.setAttribute("update", "the update was successful");
@@ -54,12 +51,6 @@ public class updateAccDetailsServlet extends HttpServlet {
 	}
 }
 
-
-
-				// }else{
-				// 	session.setAttribute("emailUsed", "Email has already been used please use a different one!");
-				// 	request.getRequestDispatcher("updateAccDetails.jsp").include(request, response);
-				// }
 
 
 

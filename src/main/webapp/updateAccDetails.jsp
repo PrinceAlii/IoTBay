@@ -52,7 +52,6 @@
             String inputtedPhoneErr = (String) session.getAttribute("inputtedPhoneErr");
             %>
 
-            <%-- Update Details form --%>
             <br>
             <h1>Account registration</h1>
             <br>
