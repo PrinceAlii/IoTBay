@@ -52,7 +52,6 @@
             String inputtedPhoneErr = (String) session.getAttribute("inputtedPhoneErr");
             %>
 
-            <%-- Update Details form --%>
             <br>
             <h1>Account registration</h1>
             <br>
@@ -73,7 +72,7 @@
                                 <label for="email" style="font-weight: bold;" class="form-label">Email:</label>
                             </div>
                         </div>
-                        <input class="form-control" type="email" name="email" id="email" placeholder="<%= user.getEmail() %>" required/>
+                        <input class="form-control" type="email" name="email" id="email" placeholder=<%= user.getEmail() %> required/>
                     </div>
                     <div class="mb-3">
                         <div class="row justify-content-start">
@@ -81,7 +80,7 @@
                                 <label for="name" style="font-weight: bold;" class="form-label">Name:</label>
                             </div>
                         </div>
-                        <input class="form-control" name="name" id="name" placeholder="<%= user.getName() %>" required/>
+                        <input class="form-control" name="name" id="name" placeholder=<%= user.getName() %>  required/>
                     </div>
                     <div class="mb-3">
                         <div class="row justify-content-start">
@@ -97,7 +96,7 @@
                                 <label for="phone" style="font-weight: bold;" class="form-label">Phone:</label>
                             </div>
                         </div>
-                        <input class="form-control" type="tel" name="phone" id="phone" placeholder="<%= user.getPhone() %>" required/>
+                        <input class="form-control" type="tel" name="phone" id="phone" placeholder=<%= user.getPhone() %>  required/>
                     </div>
                     <br/>
                     <input type="hidden" name="submitted" id="submitted" value="true"/>

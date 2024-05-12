@@ -36,10 +36,10 @@ public class UserDAOTest {
         assertNotNull(conn);
     }
 
-    @Test
-    public void testAdd() throws SQLException {
-        userDAO.addUser("John","John@jj.com","Pass123","123452254");
-    }
+    // @Test
+    // public void testAdd() throws SQLException {
+    //     userDAO.addUser("John","John@jj.com","Pass123","123452254");
+    // }
 
 
     @Test

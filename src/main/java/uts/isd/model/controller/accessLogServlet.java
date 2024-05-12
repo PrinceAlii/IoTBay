@@ -28,21 +28,22 @@ public class accessLogServlet extends HttpServlet {
 
 		User user = (User) session.getAttribute("user");
 		int userID = user.getUserID();
+		String searchLogAccessDate = request.getParameter("search");
 		ArrayList<UserAccessLogs> logs = new ArrayList<UserAccessLogs>();
 		
 		try{
-			logs = userDAO.getLogs(userID);
-			
-		
-			if(!logs.isEmpty()){
+			if (searchLogAccessDate != null && !searchLogAccessDate.isEmpty()) {
+				logs = userDAO.searchLogByDate(searchLogAccessDate,userID);
+			}else{
+				logs = userDAO.getAllLogs(userID);
+			}if(!logs.isEmpty()){
 				session.setAttribute("logs", logs);
 				request.getRequestDispatcher("userAccessLogs.jsp").include(request, response);
 			}else{
-                //else throws Incorrect Email or Password
+				logs = userDAO.getAllLogs(userID);
                 session.setAttribute("noLogsFound", "No logs were found");
                 request.getRequestDispatcher("userAccessLogs.jsp").include(request, response);
             } 
-
 		} catch (SQLException ex) {
 			Logger.getLogger(accessLogServlet.class.getName()).log(Level.SEVERE, null, ex);
 		}	

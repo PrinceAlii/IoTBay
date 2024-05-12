@@ -14,6 +14,16 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.1/js/bootstrap.min.js"></script>
+            <script>
+                function validateSearch() {
+                    var searchKeyword = document.getElementById("searchInput").value.trim();
+                    if (searchKeyword === "") {
+                        alert("Please enter a search keyword.");
+                        return false; // Prevent form submission
+                    }
+                    return true; // Allow form submission
+                }
+        </script>
         </head>
 
         <body class="text-center">
@@ -64,7 +74,7 @@
 
             <div class="row" style="padding-left: 50px; padding-right: 50px;">
                 <div class="col-11 d-flex search-bar-container">  
-                    <form class="d-flex" action="ProductServlet" method="get">
+                    <form class="d-flex" action="accessLogServlet" method="get" onsubmit="return validateSearch()">
                         <input id="searchInput" class="form-control me-2 w-100" type="search" placeholder="YYYY-MM-DD" aria-label="Search" name="search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
@@ -76,8 +86,9 @@
             <table class="table table-bordered table-striped mb-0 log-table">
                 <thead>
                     <tr>
+                        <th>Date</th>
+                        <th>Time</th>
                         <th>Action</th>
-                        <th> Date and Time </th>
 
                     </tr>
                 </thead>
@@ -86,7 +97,8 @@
                 <c:if test="${logs != null}">
                     <c:forEach items="${logs}" var="accessLog">
                     <tr>
-                        <td>${accessLog.getLogAccessTimestamp()}</td>
+                        <td>${accessLog.getLogAccessDate()}</td>
+                        <td>${accessLog.getLogAccessTime()}</td>
                         <td>${accessLog.getLogStatus()}</td>
                     </tr>
                     </c:forEach>

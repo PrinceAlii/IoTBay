@@ -5,7 +5,7 @@
 
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>Account Details</title>
+            <title>Main Page</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -15,7 +15,6 @@
         <body class="text-center">
         
             <% User user=(User) session.getAttribute("user"); %>
-
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="main.jsp">IotBay</a>
@@ -29,14 +28,19 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="main.jsp">Home</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="cart.jsp">Cart</a>
+                                </li>
                                 <li class="nav-item dropdown" style="padding-right: 40px;">
                                     <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                         Profile
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
-                                        <li><a class="dropdown-item" href="paymentDetails">Payment Details</a></li>
-                                        <li><a class="dropdown-item" href="/accessLogServlet">Access Logs</a></li>
+                                        <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
+                                        <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
+                                        <li><a class="dropdown-item" href="userAccessLogs.jsp">Access Logs</a></li>
+                                        <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
                                     </ul>
@@ -63,19 +67,19 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="text-align: left;">Name:</th>
-                                <td style="text-align: left;"><%=user.getName()%></td>
+                                <td style="text-align: left;"><%= user.getName() != null ? user.getName() : name %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Email:</th>
-                                <td style="text-align: left;"><%=user.getEmail()%></td>
+                                <td style="text-align: left;"><%= user.getEmail() != null ? user.getEmail() : email %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Password:</th>
-                                <td style="text-align: left;"><%=user.getPassword()%></td>
+                                <td style="text-align: left;"><%= user.getPassword() != null ? user.getPassword() : password %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Contact Number:</th>
-                                <td style="text-align: left;"><%=user.getPhone()%></td>
+                                <td style="text-align: left;"><%= user.getPhone() != null ? user.getPhone() : phone %></td>
                             </tr>
                         </tbody>
                     </table>
