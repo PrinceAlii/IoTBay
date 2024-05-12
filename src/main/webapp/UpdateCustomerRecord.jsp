@@ -78,7 +78,7 @@
             <input type="submit" value="Update">
         </form>
         
-        <form action="deleteCustomerRecord.jsp">
+        <form action="DeleteCustomerRecord.jsp">
             <input type="submit" class="delete-btn" value="Delete">
         </form>
     </div>
