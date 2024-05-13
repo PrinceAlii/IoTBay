@@ -28,25 +28,28 @@ public class RegisterServlet extends HttpServlet {
 
 		UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
 
-
 		Validator validate = new Validator();
-        session.setAttribute("emailUsed", validate.validateEmail(email));
-        session.setAttribute("inputtedNameErr", validate.validateName(name));
+    session.setAttribute("emailUsed", validate.validateEmail(email));
+    session.setAttribute("inputtedNameErr", validate.validateName(name));
 		session.setAttribute("inputtedPassErr", validate.validatePassword(password));
-        session.setAttribute("inputtedPhoneErr", validate.validatePhone(phone));
+    session.setAttribute("inputtedPhoneErr", validate.validatePhone(phone));
 
 
 		if((validate.validateEmail(email)==null) && (validate.validateName(name)==null) && (validate.validatePassword(password)==null) 
 			&& (validate.validatePhone(phone)==null)){
+
 			try {
 				if(!userDAO.checkEmail(email)) {
-					userDAO.addUser(name, email, password, phone);
+					userDAO.addUser(name, email, password, phone);	
+					int userID = userDAO.getUserID(email, password);
+					userDAO.addlogsregister(userID);	
 
 					User user = new User();
 					user.setName(name);
 					user.setEmail(email);
 					user.setPassword(password);
 					user.setPhone(phone);
+
 					session.setAttribute("user", user);
 	
 					request.getRequestDispatcher("welcome.jsp").include(request, response);

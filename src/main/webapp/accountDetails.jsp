@@ -39,7 +39,7 @@
                                         <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
                                         <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
                                         <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
-                                        <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                                        <li><a class="dropdown-item" href="userAccessLogs.jsp">Access Logs</a></li>
                                         <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
@@ -67,19 +67,19 @@
                         <tbody>
                             <tr>
                                 <th scope="row" style="text-align: left;">Name:</th>
-                                <td style="text-align: left;"><%= user.getName() %></td>
+                                <td style="text-align: left;"><%= user.getName() != null ? user.getName() : name %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Email:</th>
-                                <td style="text-align: left;"><%= user.getEmail() %></td>
+                                <td style="text-align: left;"><%= user.getEmail() != null ? user.getEmail() : email %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Password:</th>
-                                <td style="text-align: left;"><%= user.getPassword() %></td>
+                                <td style="text-align: left;"><%= user.getPassword() != null ? user.getPassword() : password %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Contact Number:</th>
-                                <td style="text-align: left;"><%= user.getPhone() %></td>
+                                <td style="text-align: left;"><%= user.getPhone() != null ? user.getPhone() : phone %></td>
                             </tr>
                         </tbody>
                     </table>

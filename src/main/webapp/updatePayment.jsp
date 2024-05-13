@@ -34,6 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="main.jsp">Home</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="cart.jsp">Cart</a>
+                    </li>
                     <li class="nav-item dropdown" style="padding-right: 40px;">
                         <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -54,7 +57,6 @@
             </div>
         </div>
     </nav>
-
    
     <div class="container d-flex h-100 align-items-center justify-content-center">
         <div class="text-center">
@@ -62,7 +64,11 @@
             <br>
             <h1>Update a payment method</h1>
             <br>
-
+            <p>Updating your default payment method will change which payment method is selected by default for all future orders</p>
+            <br>
+            <p>Updating a specific payment ID will update the payment details for all current orders linked to the selected payment ID</p>
+            <br>
+            
             <form action="updatePayment" method="post">
                 <table class="table table-bordered">
                     <thead>
@@ -81,7 +87,7 @@
                             for (PaymentDetails payment : paymentMethods) {
                         %>
                         <tr>
-                            <td><input type="radio" name="paymentIdToUpdate" value="<%= payment.getPaymentID() %>"></td>
+                            <td><input type="radio" name="paymentIDToUpdate" value="<%= payment.getPaymentID() %>"></td>
                             <td><%= payment.getPaymentID() %></td>
                             <td><%= payment.getPaymentMethod() %></td>
                             <td><%= payment.getPaymentCardDetails() %></td>
@@ -99,7 +105,7 @@
                 </table>
                 <br>
                 <a href="paymentDetails" class="btn btn-secondary me-2">Cancel</a>
-                <%-- <button type="submit" name="action" value="update" class="btn btn-warning me-2">Update selected payment method</button> --%>
+                <button type="submit" name="action" value="update" class="btn btn-warning me-2">Update selected payment method</button>
                 <button type="submit" name="action" value="setDefault" class="btn btn-info">Make selected payment default</button>
             </form>
 
