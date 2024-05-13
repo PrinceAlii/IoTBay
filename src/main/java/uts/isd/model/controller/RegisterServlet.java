@@ -27,14 +27,14 @@ public class RegisterServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 
 		UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
-
+		//user input validation
 		Validator validate = new Validator();
-    session.setAttribute("emailUsed", validate.validateEmail(email));
-    session.setAttribute("inputtedNameErr", validate.validateName(name));
+    	session.setAttribute("emailUsed", validate.validateEmail(email));
+    	session.setAttribute("inputtedNameErr", validate.validateName(name));
 		session.setAttribute("inputtedPassErr", validate.validatePassword(password));
-    session.setAttribute("inputtedPhoneErr", validate.validatePhone(phone));
+    	session.setAttribute("inputtedPhoneErr", validate.validatePhone(phone));
 
-
+		// if user input validation passes, add user to the data base.
 		if((validate.validateEmail(email)==null) && (validate.validateName(name)==null) && (validate.validatePassword(password)==null) 
 			&& (validate.validatePhone(phone)==null)){
 
@@ -49,11 +49,12 @@ public class RegisterServlet extends HttpServlet {
 					user.setEmail(email);
 					user.setPassword(password);
 					user.setPhone(phone);
+					user.setUserID(userID);
 
 					session.setAttribute("user", user);
 	
 					request.getRequestDispatcher("welcome.jsp").include(request, response);
-				} else{
+				} else{ //if the email is already in database send an error msg
 					session.setAttribute("emailUsed", "Email has already been used please sign in");
 					request.getRequestDispatcher("register.jsp").include(request, response);
 				}

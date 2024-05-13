@@ -15,7 +15,7 @@ public class Validator implements Serializable{
     private String phonePattern = "[0-9]{8,10}";
             
     public Validator(){    } 
-    
+    //email validation
     public String validateEmail(String input){   
         Pattern regEx = Pattern.compile(emailPattern);       
         Matcher match = regEx.matcher(input); 
@@ -26,7 +26,7 @@ public class Validator implements Serializable{
            return "Email: Ensure it has a similar layout to the provided example e.g. johnsmith@email.com";
         } 
     } 
-
+    //name validation
     public String validateName(String input){   
         Pattern regEx = Pattern.compile(namePattern);       
         Matcher match = regEx.matcher(input); 
@@ -37,7 +37,7 @@ public class Validator implements Serializable{
            return "Name: Please enter a valid name";
         } 
     } 
-
+    //password validation
     public String validatePassword(String input){   
         Pattern regEx = Pattern.compile(passwordPattern);       
         Matcher match = regEx.matcher(input); 
@@ -48,7 +48,7 @@ public class Validator implements Serializable{
            return "Password: Miniumn one digit, one uppercase, one lowercase and is 3-10 characters long.";
         } 
     } 
-
+    //phone validation
     public String validatePhone(String input){   
         Pattern regEx = Pattern.compile(phonePattern);       
         Matcher match = regEx.matcher(input); 
