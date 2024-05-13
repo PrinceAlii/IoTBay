@@ -35,15 +35,16 @@
                                     <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                         Profile
                                     </button>
-                                    <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item active" href="accountDetails.jsp">Account Details</a></li>
-                                        <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
-                                        <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
-                                        <li><a class="dropdown-item" href="userAccessLogs.jsp">Access Logs</a></li>
-                                        <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
-                                    </ul>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+
+                                    <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
+                                    <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
+                                    <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
+                                    <li><a class="dropdown-item" href="accessLogServlet">Access Logs</a></li>
+                                    <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
+                                </ul>
                                 </li>
                         </ul>
                     </div>
