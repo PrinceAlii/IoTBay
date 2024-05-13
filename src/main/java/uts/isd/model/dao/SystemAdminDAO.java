@@ -58,13 +58,15 @@ public class SystemAdminDAO {
         return null;
     }
 
-    public void addUser(String name, String email, String password, String phone) throws SQLException {
-        String query = "INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber) VALUES (?, ?, ?, ?)";
+    public void addUser(String name, String email, String password, String phone, String userType, String userAccount) throws SQLException {
+        String query = "INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber, userType, userAccount) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, name);
             statement.setString(2, email);
             statement.setString(3, password);
             statement.setString(4, phone);
+            statement.setString(5, userType);
+            statement.setString(6, userAccount);
             statement.executeUpdate();
         }
     }
@@ -108,5 +110,9 @@ public class SystemAdminDAO {
             }
         }
         return users;
+    }
+
+    public void close() {
+        // TODO: Implement closing connection
     }
 }

@@ -1,16 +1,22 @@
+// NewCustomerRecordServlet.java
+
 package uts.isd.model.controller;
 
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import java.io.IOException;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import uts.isd.model.dao.SystemAdminDAO;
+import uts.isd.model.dao.DBConnector;
 
 public class NewCustomerRecordServlet extends HttpServlet {
     private SystemAdminDAO systemAdminDAO;
 
     @Override
     public void init() throws ServletException {
-        systemAdminDAO = new SystemAdminDAO((Connection) getServletContext().getAttribute("connection"));
+        systemAdminDAO = new SystemAdminDAO(DBConnector.getConnection());
     }
 
     @Override
@@ -32,17 +38,11 @@ public class NewCustomerRecordServlet extends HttpServlet {
         }
 
         // Forward the request to the JSP page
-        RequestDispatcher dispatcher = request.getRequestDispatcher("createCustomerRecord.jsp");
-        dispatcher.forward(request, response);
+        request.getRequestDispatcher("createCustomerRecord.jsp").forward(request, response);
     }
 
     @Override
     public void destroy() {
-        try {
-            systemAdminDAO.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        systemAdminDAO.close();
     }
-}
 }
