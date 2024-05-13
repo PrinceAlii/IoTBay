@@ -64,13 +64,11 @@
             <br>
             <h1>Update a payment method</h1>
             <br>
-            <b>Updating your default payment method will change which payment method is selected by default for all future orders</b>
+            <p>Updating your default payment method will change which payment method is selected by default for all future orders</p>
             <br>
+            <p>Updating a specific payment ID will update the payment details for all current orders linked to the selected payment ID</p>
             <br>
-            <b>Updating a specific payment ID will update the payment details for all current orders linked to the selected payment ID</b>
-            <br>
-            <br>
-
+            
             <form action="updatePayment" method="post">
                 <table class="table table-bordered">
                     <thead>

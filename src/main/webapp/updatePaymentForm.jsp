@@ -46,58 +46,75 @@
                 </div>
         </div>
     </nav>
-    
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h2 class="mt-5 mb-4">Update your payment method</h2>
-            <b>Updating your payment method here will update your payment details for any current order you have linked to this payment ID.</b>
 
-            <h5 class="mt-5 mb-4">Card Issuer</h5>
-            <form action="updatePaymentForm" method="post">
+            <%
+                if ("POST".equals(request.getMethod()) && request.getAttribute("errors") != null) {
+                    List<String> errors = (List<String>) request.getAttribute("errors");
+                    if (!errors.isEmpty()) {
+            %>
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                <% for (String error : errors) { %>
+                                    <li><%= error %></li>
+                                <% } %>
+                            </ul>
+                        </div>
+            <%
+                    }
+                }
+            %>
+        
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="mt-5 mb-4">Update your payment method</h2>
+                    <p>Updating your payment method here will update your payment details for any current order you have linked to this payment ID.</p>
 
-                    <div class="mb-3">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="paymentMethod" id="mastercard" value="MasterCard">
-                            <label class="form-check-label" for="mastercard">MasterCard</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="paymentMethod" id="visa" value="Visa">
-                            <label class="form-check-label" for="visa">Visa</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="paymentMethod" id="americanexpress" value="AmericanExpress">
-                            <label class="form-check-label" for="americanexpress">American Express</label>
-                        </div>
-                    </div>
+                    <h5 class="mt-5 mb-4">Card Issuer</h5>
+                    <form action="updatePaymentForm" method="post">
 
-                <div class="mb-3 form-group" style="width: 100%;">
-                    <label for="cardNumber" class="form-label">Card Number</label>
-                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number">
+                            <div class="mb-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="mastercard" value="MasterCard">
+                                    <label class="form-check-label" for="mastercard">MasterCard</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="visa" value="Visa">
+                                    <label class="form-check-label" for="visa">Visa</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="americanexpress" value="AmericanExpress">
+                                    <label class="form-check-label" for="americanexpress">American Express</label>
+                                </div>
+                            </div>
+
+                        <div class="mb-3 form-group" style="width: 100%;">
+                            <label for="cardNumber" class="form-label">Card Number</label>
+                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number">
+                        </div>
+
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-6 mb-3 form-group" style="width: 100%;">
+                                    <label for="expiryDate" class="form-label">Expiry Date</label>
+                                    <input type="text" class="form-control" name="expiryDate" id="expiryDate" placeholder="MM/YYYY">
+                                </div>
+                                <div class="col-md-6 mb-3 form-group" style="width: 100%;">
+                                    <label for="cvv" class="form-label">CVV</label>
+                                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV">
+                                </div>
+                            </div>
+
+                        <input type="hidden" name="paymentIDToUpdate" value="<%= session.getAttribute("paymentIDToUpdate") %>">
+
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary me-2">Update Payment Method</button>
+                        <a href="updatePayment" class="btn btn-danger">Cancel</a>
+                    </form>
                 </div>
-
-                <div class="row">
-                    <div class="row">
-                        <div class="col-md-6 mb-3 form-group" style="width: 100%;">
-                            <label for="expiryDate" class="form-label">Expiry Date</label>
-                            <input type="text" class="form-control" name="expiryDate" id="expiryDate" placeholder="MM/YYYY">
-                        </div>
-                        <div class="col-md-6 mb-3 form-group" style="width: 100%;">
-                            <label for="cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV">
-                        </div>
-                    </div>
-
-                   <input type="hidden" name="paymentIDToUpdate" value="<%= session.getAttribute("paymentIDToUpdate") %>">
-
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary me-2">Update Payment Method</button>
-                <a href="updatePayment" class="btn btn-danger">Cancel</a>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
 
 
 
