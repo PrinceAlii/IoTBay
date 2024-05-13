@@ -65,7 +65,7 @@
                             <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                             <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
                             <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
-                            <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                            <li><a class="dropdown-item" href="/accessLogServlet">Access Logs</a></li>  
                             <li><a class="dropdown-item active" href="OrderServlet">Order Details</a></li>
                             <li>
                                 <hr class="dropdown-divider">

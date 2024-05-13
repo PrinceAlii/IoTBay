@@ -23,7 +23,7 @@
     <% User user = (User) session.getAttribute("user");%>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">IotBay</a>
+            <a class="navbar-brand" href="main.jsp">IotBay</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -44,8 +44,8 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                             <li><a class="dropdown-item" href="paymentDetails">PaymentDetails</a></li>  
-                            <li><a class="dropdown-item active" href="paymentHistory">Payment History</a></li>                
-                            <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                            <li><a class="dropdown-item active" href="paymentHistory">Payment History</a></li>  
+                            <li><a class="dropdown-item" href="/accessLogServlet">Access Logs</a></li>              
                             <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -67,13 +67,21 @@
 
         <form action="paymentHistory" method="post">
             <input type="text" name="searchPaymentID" placeholder="Enter Payment ID">
+            <input type="date" name="searchDate" placeholder="Select Date">
             <button type="submit" class="btn btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>
-             Search</button>
+                Search
+            </button>
         </form>
         <br>
+        <%! 
+            public String formatDate(java.util.Date date) {
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                return sdf.format(date);
+            }
+        %>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -94,7 +102,7 @@
                     <td><%= order.getOrderID() %></td>
                     <td><%= order.getPaymentID() %></td>
                     <td><%= order.getOrderAmount() %></td>
-                    <td><%= order.getOrderLogTimestamp() %></td>
+                    <td><%= formatDate(order.getOrderLogTimestamp()) %></td>
 
                     </tr>
                     <%    }

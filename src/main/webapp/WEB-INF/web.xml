@@ -75,16 +75,6 @@
       <servlet-name>updateAccDetailsServlet</servlet-name>
       <url-pattern>/updateAccDetailsServlet</url-pattern>
   </servlet-mapping>
-  
-      <servlet>
-      <servlet-name>DeleteServlet</servlet-name>
-      <servlet-class>uts.isd.model.controller.DeleteServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>DeleteServlet</servlet-name>
-      <url-pattern>/DeleteServlet</url-pattern>
-  </servlet-mapping>
-  
   <servlet>
     <servlet-name>PaymentDetailsServlet</servlet-name>
     <servlet-class>uts.isd.model.controller.PaymentDetailsServlet</servlet-class>
