@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="main.jsp">Home</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="cart.jsp">Cart</a>
+                    </li>
                     <li class="nav-item dropdown" style="padding-right: 40px;">
                         <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">

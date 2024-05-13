@@ -96,6 +96,16 @@
 
     <% } %>
 
+    <%
+        String successParam = request.getParameter("success");
+        if (successParam != null && successParam.equals("true")) {
+        %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Payment details updated successfully!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% } %>
+
     
     <div class="container d-flex h-100 align-items-center justify-content-center">
         <div class="text-center">

@@ -18,7 +18,7 @@ import uts.isd.model.dao.PaymentDAO;
 import uts.isd.model.dao.UserDAO;
 
 
-public class UpdatePaymentServlet extends HttpServlet {
+public class UpdatePaymentIDServlet extends HttpServlet {
     
     private PaymentDAO paymentDAO;
     private UserDAO userDAO;
@@ -59,34 +59,35 @@ public class UpdatePaymentServlet extends HttpServlet {
         }
     
         try {
-            String paymentIDToUpdate = request.getParameter("paymentIDToUpdate");
+
+            String paymentMethod = request.getParameter("paymentMethod");
+            String cardNumber = request.getParameter("cardNumber");
+
+            Object attributeValue = session.getAttribute("paymentIDToUpdate");
+            String sessionPaymentID = (String) attributeValue;
             
-            if (paymentIDToUpdate != null && !paymentIDToUpdate.isEmpty()) {
-                String action = request.getParameter("action");
-                if ("update".equals(action)) {
- 
-                    session.setAttribute("paymentIDToUpdate", paymentIDToUpdate);
 
-                    response.sendRedirect("updatePaymentForm.jsp?paymentID=" + paymentIDToUpdate);
+            int paymentID = Integer.parseInt(sessionPaymentID);
 
-                } else if ("setDefault".equals(action)) {
-
-                    userDAO.updateUserPaymentID(user.getUserID(), Integer.parseInt(paymentIDToUpdate));
-                    response.sendRedirect("paymentDetails?updateDefault=true");
-                }
-                return;
-            }
+                
+            System.out.println("Extracted paymentID: " + paymentID);
     
 
+            paymentDAO.updatePayment(paymentID, paymentMethod, cardNumber);
+    
             List<PaymentDetails> paymentMethods = paymentDAO.findPaymentByUser(user.getUserID());
             request.setAttribute("paymentMethods", paymentMethods);
-    
-            request.getRequestDispatcher("updatePayment.jsp").forward(request, response);
-    
-        } catch (SQLException ex) {
-            Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment details");
+
+            request.getRequestDispatcher("paymentDetails?action=success").forward(request, response);
+            
+        } catch (NumberFormatException | SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(UpdatePaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing the request");
         }
     }
+    
+    
+    
     
 }
