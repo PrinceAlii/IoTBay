@@ -119,6 +119,16 @@
     <servlet-name>PaymentHistoryServlet</servlet-name>
     <url-pattern>/paymentHistory</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UpdatePaymentIDServlet</servlet-name>
+    <servlet-class>uts.isd.model.controller.UpdatePaymentIDServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePaymentIDServlet</servlet-name>
+    <url-pattern>/updatePaymentForm</url-pattern>
+  </servlet-mapping>
+  
   
   <servlet>
       <servlet-name>ProductServlet</servlet-name>
