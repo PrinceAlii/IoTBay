@@ -83,9 +83,7 @@ public class UpdatePaymentIDServlet extends HttpServlet {
             
             if (cvv == null || cvv.isEmpty()) {
                 errors.add("You must enter your cards CVV.");
-                System.out.println("Expiry Date (before trimming): '" + request.getParameter("expiryDate") + "'");
-                System.out.println("Expiry Date (after trimming): '" + expiryDate + "'");
-                System.out.println("CVV'" + request.getParameter("cvv") + "'");
+
 
             } else if (!isValidCVV(cvv)) {
                 errors.add("Invalid CVV. Must be 3 digits.");
@@ -114,8 +112,6 @@ public class UpdatePaymentIDServlet extends HttpServlet {
 
             
     }
-
-
     
     // methods for validation
     
