@@ -7,7 +7,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Add Payment</title>
+    <title>Update Saved Payment</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -29,9 +29,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="main.jsp">Home</a>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="cart.jsp">Cart</a>
-                        </li>
                         <li class="nav-item dropdown" style="padding-right: 40px;">
                             <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
@@ -49,31 +46,32 @@
                 </div>
         </div>
     </nav>
-    
-    <div class="container">
+
+            <%
+                if ("POST".equals(request.getMethod()) && request.getAttribute("errors") != null) {
+                    List<String> errors = (List<String>) request.getAttribute("errors");
+                    if (!errors.isEmpty()) {
+            %>
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                <% for (String error : errors) { %>
+                                    <li><%= error %></li>
+                                <% } %>
+                            </ul>
+                        </div>
+            <%
+                    }
+                }
+            %>
+        
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                   <h2 class="mt-5 mb-4">Add New Payment Method</h2>
-                    <%
-                        if ("POST".equals(request.getMethod()) && request.getAttribute("errors") != null) {
-                            List<String> errors = (List<String>) request.getAttribute("errors");
-                            if (!errors.isEmpty()) {
-                    %>
-                                <div class="alert alert-danger" role="alert">
-                                    <ul>
-                                        <% for (String error : errors) { %>
-                                            <li><%= error %></li>
-                                        <% } %>
-                                    </ul>
-                                </div>
-                    <%
-                            }
-                        }
-                    %>
-                    
-                    
+                    <h2 class="mt-5 mb-4">Update your payment method</h2>
+                    <p>Updating your payment method here will update your payment details for any current order you have linked to this payment ID.</p>
+
                     <h5 class="mt-5 mb-4">Card Issuer</h5>
-                    <form action="addPayment" method="post">
+                    <form action="updatePaymentForm" method="post">
 
                             <div class="mb-3">
                                 <div class="form-check form-check-inline">
@@ -90,34 +88,35 @@
                                 </div>
                             </div>
 
-                            <br>
+                        <div class="mb-3 form-group" style="width: 100%;">
+                            <label for="cardNumber" class="form-label">Card Number</label>
+                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number">
+                        </div>
 
-                            <div class="mb-3 form-group" style="width: 100%;">
-                                <label for="cardNumber" class="form-label">Card Number</label>
-                                <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number">
-                            </div>
-
-
+                        <div class="row">
                             <div class="row">
                                 <div class="col-md-6 mb-3 form-group" style="width: 100%;">
                                     <label for="expiryDate" class="form-label">Expiry Date</label>
                                     <input type="text" class="form-control" name="expiryDate" id="expiryDate" placeholder="MM/YYYY">
                                 </div>
-
-
                                 <div class="col-md-6 mb-3 form-group" style="width: 100%;">
                                     <label for="cvv" class="form-label">CVV</label>
-                                    <input type="text" class="form-control" id="cvv"name="cvv" placeholder="CVV">
+                                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV">
                                 </div>
                             </div>
 
+                        <input type="hidden" name="paymentIDToUpdate" value="<%= session.getAttribute("paymentIDToUpdate") %>">
 
-                            <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="paymentDetails" class="btn btn-danger">Cancel</a>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary me-2">Update Payment Method</button>
+                        <a href="updatePayment" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>
         </div>
+
+
 
 
 

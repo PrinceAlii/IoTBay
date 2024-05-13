@@ -115,6 +115,7 @@ public class PaymentDAO {
     public List<Order> getPaymentHistoryByPaymentIDAndDate(int userID, int paymentID, Date searchDate) throws SQLException {
         List<Order> orders = new ArrayList<>();
         PreparedStatement stmt = null;
+        @SuppressWarnings("unused")
         ResultSet rs = null;
         try {
             StringBuilder queryBuilder = new StringBuilder("SELECT * FROM IOTBAY.order WHERE userID = ?");
@@ -204,6 +205,24 @@ public class PaymentDAO {
         } finally {}
         return orders;
     }
+
+    public void updatePayment(int paymentID, String paymentMethod, String cardNumber) throws SQLException {
+        PreparedStatement stmt = null;
+        try {
+
+            String last4Digits = cardNumber.substring(cardNumber.length() - 4);
+
+            String query = "UPDATE IOTBAY.paymentdetails SET paymentMethod = ?, paymentCardDetails = ? WHERE paymentID = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setString(1, paymentMethod);
+            stmt.setString(2, last4Digits);
+            stmt.setInt(3, paymentID);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            throw ex;
+        } finally {}
+    }
+    
     
     
     

@@ -48,6 +48,7 @@
                                     <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                         Profile
                                     </button>
+
                                 <ul class="dropdown-menu dropdown-menu-dark">
 
                                     <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
@@ -59,6 +60,10 @@
                                     <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
                                 </ul>
                                 </li>
+                                 <li>
+                                <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
                         </ul>
                     </div>
                 </div>
