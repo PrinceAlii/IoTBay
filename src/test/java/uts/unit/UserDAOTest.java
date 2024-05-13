@@ -38,66 +38,66 @@ public class UserDAOTest {
 
     @Test
     public void testAdd() throws SQLException {
-        userDAO.addUser("John","John@jj.com","Pass123","123452254");
+        userDAO.addUser("John","JohnSmith@email.com","P@ssw0rd!2024","123452254");
     }
 
     @Test
     public void testUpdate() throws SQLException {
-        userDAO.updateUser("John","John@jj.com","pAss11","33333333",1);
+        userDAO.updateUser("John","JohnSmith@email.com","P@ssw0rd!2024","0471986253",23);
     }
 
     @Test
     public void testFindUser() throws SQLException {
-        userDAO.findUser("John@jj.com", "pAss11");
+        userDAO.findUser("JohnSmith@email.com", "P@ssw0rd!2024");
     }
 
     @Test
     public void testCheckEmail() throws SQLException {
-        userDAO.checkEmail("John@jj.com");
+        userDAO.checkEmail("JohnSmith@email.com");
     }
 
     @Test
     public void testCheckUser() throws SQLException {
-        userDAO.checkUser("John@jj.com","pAss11");
+        userDAO.checkUser("JohnSmith@email.com","P@ssw0rd!2024");
     }
 
     @Test
     public void testGetUserID() throws SQLException {
-        userDAO.getUserID("John@jj.com","pAss11");
+        userDAO.getUserID("JohnSmith@email.com","P@ssw0rd!2024");
     }
 
     @Test
     public void testAddlogslogin() throws SQLException {
-        userDAO.addlogslogin(1);
+        userDAO.addlogslogin(22);
     }
 
     @Test
     public void testAddlogslogout() throws SQLException {
-        userDAO.addlogslogout(1);
+        userDAO.addlogslogout(22);
     }
 
     @Test
     public void testAddlogsregister() throws SQLException {
-        userDAO.addlogsregister(1);
+        userDAO.addlogsregister(22);
     }
 
     @Test
     public void testGetAllLogs() throws SQLException {
-        userDAO.getAllLogs(1);
+        userDAO.getAllLogs(22);
     }
 
     @Test
     public void testSearchLogByDat() throws SQLException {
-        userDAO.searchLogByDate("2024-05-14",1);
+        userDAO.searchLogByDate("2024-05-14",22);
     }
 
     @Test
     public void testDeleteAllLogs() throws SQLException {
-        userDAO.deleteAllLogs(1);
+        userDAO.deleteAllLogs(22);
     }
 
     @Test
     public void testDelete() throws SQLException {
-        userDAO.deleteUser("John@jj.com");
+        userDAO.deleteUser("JohnSmith@email.com");
     }
 }

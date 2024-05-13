@@ -27,9 +27,10 @@ public class LogoutServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-                int userID = userDAO.getUserID(email, password);
-                userDAO.addlogslogout(userID);
-                request.getRequestDispatcher("logout.jsp").include(request,response);
+            int userID = userDAO.getUserID(email, password);
+            userDAO.addlogslogout(userID); //add to accessLog
+            request.getRequestDispatcher("logout.jsp").include(request,response);
+
         }catch (SQLException ex) {
             Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

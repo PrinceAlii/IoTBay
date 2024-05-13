@@ -172,7 +172,7 @@ public class UserDAO {
         return logList;
     }
 
-
+    //delete all user Logs.
     public void deleteAllLogs(int userID) throws SQLException {
         st.executeUpdate("DELETE FROM IOTBAY.UserAccessLogs WHERE UserID =" + userID);
     }

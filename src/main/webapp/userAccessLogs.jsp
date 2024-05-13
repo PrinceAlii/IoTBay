@@ -66,6 +66,7 @@
             <%
             String noLog = (String) session.getAttribute("noLogsFound");
             %>
+        <!-- Loop through logs using -->
         <br>
             <h1>Access Logs</h1>
             <a><%= user.getName() %></a>
@@ -74,7 +75,7 @@
         <br>
             <label style="color: red;"><%= (noLog != null ? noLog : "") %></label>
         <br>
-
+        <!-- Search Bar -->
             <div class="row" style="padding-left: 50px; padding-right: 50px;">
                 <div class="col-11 d-flex search-bar-container">  
                     <form class="d-flex" action="accessLogServlet" method="get" onsubmit="return validateSearch()">
@@ -83,7 +84,7 @@
                     </form>
                 </div>
                 <br>
-
+       <!-- Access Logs Table -->
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <br>
             <table class="table table-bordered table-striped mb-0 log-table">
