@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="main.jsp">Home</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="cart.jsp">Cart</a>
+                    </li>
                     <li class="nav-item dropdown" style="padding-right: 40px;">
                         <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -43,7 +46,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
-                            <li><a class="dropdown-item" href="paymentDetails">PaymentDetails</a></li>  
+                            <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>  
                             <li><a class="dropdown-item active" href="paymentHistory">Payment History</a></li>  
                             <li><a class="dropdown-item" href="/accessLogServlet">Access Logs</a></li>              
                             <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>

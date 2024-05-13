@@ -52,30 +52,41 @@ public class UpdatePaymentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-
+    
         if (user == null) {
             response.sendRedirect("login.jsp");
             return;
         }
-
+    
         try {
+            String paymentIDToUpdate = request.getParameter("paymentIDToUpdate");
+            
+            if (paymentIDToUpdate != null && !paymentIDToUpdate.isEmpty()) {
+                String action = request.getParameter("action");
+                if ("update".equals(action)) {
+ 
+                    session.setAttribute("paymentIDToUpdate", paymentIDToUpdate);
 
-            String paymentIdToUpdate = request.getParameter("paymentIdToUpdate");
-            if (paymentIdToUpdate != null && !paymentIdToUpdate.isEmpty()) {
+                    response.sendRedirect("updatePaymentForm.jsp?paymentID=" + paymentIDToUpdate);
 
-                userDAO.updateUserPaymentID(user.getUserID(), Integer.parseInt(paymentIdToUpdate));
-                response.sendRedirect("paymentDetails?updateDefault=true");
+                } else if ("setDefault".equals(action)) {
+
+                    userDAO.updateUserPaymentID(user.getUserID(), Integer.parseInt(paymentIDToUpdate));
+                    response.sendRedirect("paymentDetails?updateDefault=true");
+                }
+                return;
             }
+    
 
             List<PaymentDetails> paymentMethods = paymentDAO.findPaymentByUser(user.getUserID());
             request.setAttribute("paymentMethods", paymentMethods);
-
+    
             request.getRequestDispatcher("updatePayment.jsp").forward(request, response);
     
         } catch (SQLException ex) {
             Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while retrieving payment details");
         }
-
     }
+    
 }
