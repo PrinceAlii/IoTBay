@@ -36,14 +36,14 @@ public class UserDAOTest {
         assertNotNull(conn);
     }
 
-    // @Test
-    // public void testAdd() throws SQLException {
-    //     userDAO.addUser("alex","alex@jj.com","Pass123","123452254");
-    // }
+    @Test
+    public void testAdd() throws SQLException {
+        userDAO.addUser("John","John@jj.com","Pass123","123452254");
+    }
 
     @Test
     public void testUpdate() throws SQLException {
-        userDAO.updateUser("John","John@jj.com","pAss11","124452254");
+        userDAO.updateUser("John","John@jj.com","pAss11","33333333");
     }
 
     @Test
@@ -62,8 +62,42 @@ public class UserDAOTest {
     }
 
     @Test
+    public void testGetUserID() throws SQLException {
+        userDAO.getUserID("John@jj.com","pAss11");
+    }
+
+    @Test
+    public void testAddlogslogin() throws SQLException {
+        userDAO.addlogslogin(1);
+    }
+
+    @Test
+    public void testAddlogslogout() throws SQLException {
+        userDAO.addlogslogout(1);
+    }
+
+    @Test
+    public void testAddlogsregister() throws SQLException {
+        userDAO.addlogsregister(1);
+    }
+
+    @Test
+    public void testGetAllLogs() throws SQLException {
+        userDAO.getAllLogs(1);
+    }
+
+    @Test
+    public void testSearchLogByDat() throws SQLException {
+        userDAO.searchLogByDate("2024-05-14",1);
+    }
+
+    @Test
+    public void testDeleteAllLogs() throws SQLException {
+        userDAO.deleteAllLogs(1);
+    }
+
+    @Test
     public void testDelete() throws SQLException {
         userDAO.deleteUser("John@jj.com");
     }
-
 }
