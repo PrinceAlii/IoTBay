@@ -48,13 +48,17 @@
                                     <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                         Profile
                                     </button>
-                                    <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
-                                        <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>  
-                                        <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>  
-                                        <li><a class="dropdown-item active" href="/accessLogServlet">Access Logs</a></li>              
-                                        <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
-                                    </ul>
+
+                                <ul class="dropdown-menu dropdown-menu-dark">
+
+                                    <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
+                                    <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
+                                    <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
+                                    <li><a class="dropdown-item" href="accessLogServlet">Access Logs</a></li>
+                                    <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
+                                </ul>
                                 </li>
                                  <li>
                                 <hr class="dropdown-divider">
@@ -67,6 +71,7 @@
             <%
             String noLog = (String) session.getAttribute("noLogsFound");
             %>
+        <!-- Loop through logs using -->
         <br>
             <h1>Access Logs</h1>
             <a><%= user.getName() %></a>
@@ -75,7 +80,7 @@
         <br>
             <label style="color: red;"><%= (noLog != null ? noLog : "") %></label>
         <br>
-
+        <!-- Search Bar -->
             <div class="row" style="padding-left: 50px; padding-right: 50px;">
                 <div class="col-11 d-flex search-bar-container">  
                     <form class="d-flex" action="accessLogServlet" method="get" onsubmit="return validateSearch()">
@@ -84,7 +89,7 @@
                     </form>
                 </div>
                 <br>
-
+       <!-- Access Logs Table -->
         <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <br>
             <table class="table table-bordered table-striped mb-0 log-table">
