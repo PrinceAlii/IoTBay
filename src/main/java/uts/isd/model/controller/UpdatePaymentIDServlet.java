@@ -15,13 +15,11 @@ import javax.servlet.http.HttpSession;
 import uts.isd.model.PaymentDetails;
 import uts.isd.model.User;
 import uts.isd.model.dao.PaymentDAO;
-import uts.isd.model.dao.UserDAO;
 
 
 public class UpdatePaymentIDServlet extends HttpServlet {
     
     private PaymentDAO paymentDAO;
-    private UserDAO userDAO;
     
     @Override
     public void init() throws ServletException {
@@ -33,12 +31,6 @@ public class UpdatePaymentIDServlet extends HttpServlet {
             throw new ServletException("Failed to initialize PaymentDAO", ex);
         }
 
-        try {
-            userDAO = new UserDAO();
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(UpdatePaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServletException("Failed to initialize UserDAO", ex);
-        }
     }
 
     @Override

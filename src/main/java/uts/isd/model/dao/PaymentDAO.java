@@ -115,6 +115,7 @@ public class PaymentDAO {
     public List<Order> getPaymentHistoryByPaymentIDAndDate(int userID, int paymentID, Date searchDate) throws SQLException {
         List<Order> orders = new ArrayList<>();
         PreparedStatement stmt = null;
+        @SuppressWarnings("unused")
         ResultSet rs = null;
         try {
             StringBuilder queryBuilder = new StringBuilder("SELECT * FROM IOTBAY.order WHERE userID = ?");
