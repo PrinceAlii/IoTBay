@@ -194,8 +194,33 @@ INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNu
 -- User Access Logs
 
 INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,`Date`,`Time`) VALUES
-	 (1,'Registered','2024-05-14','15:00:00');
-
+	 (1,'Registered','2024-05-14','19:19:22'),
+	 (1,'Logout','2024-05-14','19:19:22'),
+	 (1,'Login','2024-05-18','19:19:22'),
+	 (1,'Logout','2024-05-18','19:19:22'),
+	 (2,'Login','2024-05-18','19:19:22'),
+	 (3,'Registered','2024-05-18','19:19:22'),
+	 (4,'Registered','2024-05-14','19:19:22'),
+	 (5,'Logout','2024-05-14','19:19:22'),
+	 (6,'Login','2024-05-18','19:19:22'),
+	 (7,'Login','2024-05-14','19:19:22');
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,`Date`,`Time`) VALUES
+	 (8,'Logout','2024-05-14','19:19:22'),
+	 (9,'Registered','2024-05-14','19:19:22'),
+	 (10,'Registered','2024-05-14','19:19:22'),
+	 (11,'Logout','2024-05-14','19:19:22'),
+	 (12,'Login','2024-05-18','19:19:22'),
+	 (13,'Registered','2024-05-14','19:19:22'),
+	 (14,'Logout','2024-05-18','19:19:22'),
+	 (15,'Login','2024-05-18','19:19:22'),
+	 (16,'Registered','2024-05-18','19:19:22'),
+	 (17,'Registered','2024-05-18','19:19:22');
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,`Date`,`Time`) VALUES
+	 (18,'Registered','2024-05-14','19:19:22'),
+	 (19,'Registered','2024-05-18','19:19:22'),
+	 (20,'Login','2024-05-14','19:19:22'),
+	 (21,'Registered','2024-05-18','19:19:22'),
+	 (22,'Login','2024-05-18','19:19:22');
    
 -- ** NOW PASTE THIS SEPARATELY **--
 

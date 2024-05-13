@@ -103,7 +103,6 @@ public class UserDAO {
 
     //update a user-data into the database
     public void updateUser(String name, String email, String password, String phone, int userID) throws SQLException {
-        System.err.println("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + phone + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userID ='"+ userID +"'" );
         st.executeUpdate("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + phone + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userID ='"+ userID +"'" );
     }
 
