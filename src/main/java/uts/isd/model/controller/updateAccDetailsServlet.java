@@ -37,7 +37,10 @@ public class updateAccDetailsServlet extends HttpServlet {
 		if((validate.validateEmail(email)==null) && (validate.validateName(name)==null) && (validate.validatePassword(password)==null) 
 			&& (validate.validatePhone(phone)==null)){
 			try { 
-				userDAO.updateUser(name, email, password, phone);
+				User user = (User) session.getAttribute("user");
+				int userID = user.getUserID();
+				
+				userDAO.updateUser(name, email, password, phone, userID);
 				User updatedUser = userDAO.findUser(email, password);
 				session.setAttribute("user", updatedUser);
 				session.setAttribute("update", "the update was successful");

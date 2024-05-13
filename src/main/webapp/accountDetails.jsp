@@ -51,40 +51,37 @@
                 </div>
             </nav>
 
-            <%
-                String name = request.getParameter("name");
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
-                String phone = request.getParameter("phone");  
-            %>
-
             <div class="container d-flex h-100 align-items-center justify-content-center">
                 <div class="text-center">
                 <br>
                 <br>
+                <% if(user!= null){ %>
                     <h1>Registration Details</h1>
                     <br>
                     <table class="table table-borderless">
                         <tbody>
                             <tr>
                                 <th scope="row" style="text-align: left;">Name:</th>
-                                <td style="text-align: left;"><%= user.getName() != null ? user.getName() : name %></td>
+                                <td style="text-align: left;"><%= user.getName() %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Email:</th>
-                                <td style="text-align: left;"><%= user.getEmail() != null ? user.getEmail() : email %></td>
+                                <td style="text-align: left;"><%= user.getEmail() %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Password:</th>
-                                <td style="text-align: left;"><%= user.getPassword() != null ? user.getPassword() : password %></td>
+                                <td style="text-align: left;"><%= user.getPassword() %></td>
                             </tr>
                             <tr>
                                 <th scope="row" style="text-align: left;">Contact Number:</th>
-                                <td style="text-align: left;"><%= user.getPhone() != null ? user.getPhone() : phone %></td>
+                                <td style="text-align: left;"><%= user.getPhone() %></td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
+
+               <% }%>
+                    
                     <div>
                         <a id="updateRegistration" href="updateAccDetails.jsp" class="btn btn-success">Update</a>
                         <a id="deleteRegistration" href="deleteUser.jsp" class="btn btn-danger">Delete</a>

@@ -49,6 +49,7 @@ public class RegisterServlet extends HttpServlet {
 					user.setEmail(email);
 					user.setPassword(password);
 					user.setPhone(phone);
+					user.setUserID(userID);
 
 					session.setAttribute("user", user);
 	

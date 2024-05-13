@@ -43,7 +43,7 @@ public class UserDAOTest {
 
     @Test
     public void testUpdate() throws SQLException {
-        userDAO.updateUser("John","John@jj.com","pAss11","33333333");
+        userDAO.updateUser("John","John@jj.com","pAss11","33333333",1);
     }
 
     @Test
