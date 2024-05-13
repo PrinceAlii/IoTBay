@@ -5,33 +5,108 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import uts.isd.model.User;
 
 public class SystemAdminDAO {
 
-    private Connection conn;
+    private Connection connection;
 
-    public SystemAdminDAO(Connection conn) {
-        this.conn = conn;
+    public SystemAdminDAO(Connection connection) {
+        this.connection = connection;
     }
 
-    public void updateUser(int userID, String name, String email, String phone, String userType, String userAccount, boolean userStatus) throws SQLException {
-        String updateQuery = "UPDATE User SET userName=?, userEmail=?, userContactNumber=?, userType=?, userAccount=?, userStatus=? WHERE userID=?";
-        try (PreparedStatement ps = conn.prepareStatement(updateQuery)) {
-            ps.setString(1, name);
-            ps.setString(2, email);
-            ps.setString(3, phone);
-            ps.setString(4, userType);
-            ps.setString(5, userAccount);
-            ps.setBoolean(6, userStatus);
-            ps.setInt(7, userID);
-            ps.executeUpdate();
+    public boolean checkUser(String email, String password) throws SQLException {
+        String query = "SELECT * FROM IOTBAY.User WHERE userEmail = ? AND userPassword = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+            statement.setString(2, password);
+            try (ResultSet rs = statement.executeQuery()) {
+                return rs.next();
+            }
         }
     }
 
-    public ArrayList<User> fetchUsers(String name, String phone) {
-        throw new UnsupportedOperationException("Unimplemented method 'fetchUsers'");
+    public boolean checkEmail(String email) throws SQLException {
+        String query = "SELECT * FROM IOTBAY.User WHERE userEmail = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+            try (ResultSet rs = statement.executeQuery()) {
+                return rs.next();
+            }
+        }
     }
 
+    public User findUser(String email, String password) throws SQLException {
+        String query = "SELECT * FROM IOTBAY.User WHERE userEmail = ? AND userPassword = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+            statement.setString(2, password);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    int userID = rs.getInt("userID");
+                    String userName = rs.getString("userName");
+                    String userContactNumber = rs.getString("userContactNumber");
+                    String userType = rs.getString("userType");
+                    String userAccount = rs.getString("userAccount");
+                    boolean userStatus = rs.getBoolean("userStatus");
+                    String userPosition = rs.getString("userPosition");
+                    String paymentID = rs.getString("paymentID");
+                    return new User(userID, userName, email, password, userContactNumber, userType, userAccount, userStatus, userPosition, paymentID);
+                }
+            }
+        }
+        return null;
+    }
+
+    public void addUser(String name, String email, String password, String phone) throws SQLException {
+        String query = "INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, name);
+            statement.setString(2, email);
+            statement.setString(3, password);
+            statement.setString(4, phone);
+            statement.executeUpdate();
+        }
+    }
+
+    public void updateUser(String name, String email, String password, String phone) throws SQLException {
+        String query = "UPDATE IOTBAY.User SET userName = ?, userPassword = ?, userContactNumber = ? WHERE userEmail = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, name);
+            statement.setString(2, password);
+            statement.setString(3, phone);
+            statement.setString(4, email);
+            statement.executeUpdate();
+        }
+    }
+
+    public void deleteUser(String email) throws SQLException {
+        String query = "DELETE FROM IOTBAY.User WHERE userEmail = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+            statement.executeUpdate();
+        }
+    }
+
+    public ArrayList<User> fetchUsers() throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM IOTBAY.User";
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                int userID = rs.getInt("userID");
+                String userName = rs.getString("userName");
+                String userEmail = rs.getString("userEmail");
+                String userPassword = rs.getString("userPassword");
+                String userContactNumber = rs.getString("userContactNumber");
+                String userType = rs.getString("userType");
+                String userAccount = rs.getString("userAccount");
+                boolean userStatus = rs.getBoolean("userStatus");
+                String userPosition = rs.getString("userPosition");
+                String paymentID = rs.getString("paymentID");
+                users.add(new User(userID, userName, userEmail, userPassword, userContactNumber, userType, userAccount, userStatus, userPosition, paymentID));
+            }
+        }
+        return users;
+    }
 }

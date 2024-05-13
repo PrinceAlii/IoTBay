@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
 					int userID = userDAO.getUserID(email, password);
 					userDAO.addlogsregister(userID);	
 
-					User user = new User();
+					User user = new User(userID, phone, phone, phone, phone, phone, phone, false, phone, phone);
 					user.setName(name);
 					user.setEmail(email);
 					user.setPassword(password);
