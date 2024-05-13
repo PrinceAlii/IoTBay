@@ -18,7 +18,7 @@ public class AddStaffRecordServlet extends HttpServlet {
         System.out.println("Address: " + address);
 
     
-        RequestDispatcher dispatcher = request.getRequestDispatcher("createStaffRecord.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("CreateStaffRecord.jsp");
         dispatcher.forward(request, response);
     }
 }

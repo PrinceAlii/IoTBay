@@ -20,7 +20,7 @@ public class UpdateStaffRecordServlet extends HttpServlet {
         System.out.println("Address: " + address);
 
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("updateStaffRecord.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("UpdateStaffRecord.jsp");
         dispatcher.forward(request, response);
     }
 }

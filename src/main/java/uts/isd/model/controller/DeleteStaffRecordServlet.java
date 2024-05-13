@@ -6,15 +6,31 @@ import javax.servlet.http.*;
 
 public class DeleteStaffRecordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Retrieve staff ID from the request
+        
         String staffId = request.getParameter("staffId");
 
-        // Delete the staff record (in this example, just printing the information)
-        System.out.println("Staff record deleted:");
-        System.out.println("Staff ID: " + staffId);
+        
+        boolean success = deleteStaffRecordFromDatabase(staffId);
 
-        // Forward the request to the JSP page
-        RequestDispatcher dispatcher = request.getRequestDispatcher("deleteStaffRecord.jsp");
-        dispatcher.forward(request, response);
+        if (success) {
+            
+            System.out.println("Staff record deleted:");
+            System.out.println("Staff ID: " + staffId);
+
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("DeleteStaffRecord.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            
+            System.out.println("Failed to delete staff record.");
+        
+            RequestDispatcher dispatcher = request.getRequestDispatcher("errorPage.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
+
+    private boolean deleteStaffRecordFromDatabase(String staffId) {
+        
+        return true; 
     }
 }
