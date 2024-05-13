@@ -1,7 +1,7 @@
 # IoTBay Release 1
 ### 41025 Introduction To Software Development
 
-## Table of contents:(#41025-introduction-to-software-development)
+## Table of contents
   - [Introduction:](#introduction)
   - [Software Requirements](#software-requirements)
   - [Deployment Instructions](#deployment-instructions)
