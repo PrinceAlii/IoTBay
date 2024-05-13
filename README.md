@@ -1,30 +1,36 @@
-# Database Management
+# IoTBay Release 1
+### 41025 Introduction To Software Development
 
-When you modify the database, copy all the SQL code that is generated when you Ctrl + S and add it to the database.sql file in the database schema folder
+## Table of contents:(#41025-introduction-to-software-development)
+  - [Introduction:](#introduction)
+  - [Software Requirements](#software-requirements)
+  - [Deployment Instructions](#deployment-instructions)
 
-# Database Management
+## Introduction:
+This repository contains release one for our groups submission of the IotBay website for Assignment 2 of 41025 Introduction To Software Development.
 
-When you modify the database, copy all the SQL code that is generated when you Ctrl + S and add it to the database.sql file in the database schema folder
 
-This repo contains the code for the labs in Jacks classes each week. This repo is for VsCode users, if you wish to use Netbeans, please visit this repo: https://github.com/jiak1/ISDAutLab-Netbeans
+## Software Requirements
+- [JDK 1.8](https://www.oracle.com/au/java/technologies/javase/javase8-archive-downloads.html) 
+- [Apache Maven 3.9.6](https://maven.apache.org/download.cgi)
+- [MySQL 8.0.37](https://dev.mysql.com/downloads/windows/installer/8.0.html)
+- [DBeaver](https://dbeaver.io/download/) (Or equivelent)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Extention pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+- [Maven for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven)
 
-Make sure you first install:
+## Deployment Instructions
+- Clone the repository or download the ZIP from GitHub and extract it.
+- Setup your MySQL admin credentials.
+- Open DBeaver and create a new MySQL connection.
+  - The projects default DB name is `IOTBAY`
+  - The projects default DB Username is `root`
+  - The projects default DB Password is `password`
+  - Either set your DBeaver connection up with the above credentials, or enter your own credentials in the DB.java file located in `java/uts/isd/model/dao`
 
-- Java JDK 8 (https://www.oracle.com/au/java/technologies/javase/javase8-archive-downloads.html)
-- Maven (https://maven.apache.org/download.cgi)
+- Click on the insert SQL button in DBeaver's toolbar. Now copy, paste and run *each statement **separately*** in the script editor.
 
-To Run The Project:
-
-Open 2 terminals, side by side in VsCode:
-
-Every time you make a change, run:
-
-mvn package
-
-In the other terminal, just run the following & leave it open for as long as you are developing:
-
-mvn jetty:run
-
-Then, open a web browser & visit: `http://localhost:8080`
-
-if error with port. Change number '8080'
+- Open a terminal in VSCode (Ctrl + Shift + P - then type create new terminal)
+- For the first time, run `mvn package`
+- Then run `mvn jetty:run`
+- To open the website, enter `localhost:8080` into your browser.
