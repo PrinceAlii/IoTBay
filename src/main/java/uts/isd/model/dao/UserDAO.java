@@ -101,8 +101,8 @@ public class UserDAO {
     }
 
     //update a user-data into the database
-    public void updateUser(String name, String email, String password, String phone) throws SQLException {
-        st.executeUpdate("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + phone + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userEmail ='"+ email +"'" );
+    public void updateUser(String name, String email, String password, String phone, int userID) throws SQLException {
+        st.executeUpdate("UPDATE IOTBAY.User SET userName='" + name + "', userContactNumber='" + phone + "', userEmail='" + email + "', userPassword='"+ password +"' WHERE userID ='"+ userID +"'" );
     }
 
     //delete a user-data from the database
@@ -171,7 +171,7 @@ public class UserDAO {
         return logList;
     }
 
-
+    //delete all user Logs.
     public void deleteAllLogs(int userID) throws SQLException {
         st.executeUpdate("DELETE FROM IOTBAY.UserAccessLogs WHERE UserID =" + userID);
     }

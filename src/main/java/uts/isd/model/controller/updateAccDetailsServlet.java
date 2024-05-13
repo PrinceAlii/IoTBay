@@ -28,16 +28,21 @@ public class updateAccDetailsServlet extends HttpServlet {
 
 		UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
 
+
 		Validator validate = new Validator();
         session.setAttribute("inputtedNameErr", validate.validateEmail(email));
         session.setAttribute("inputtedNameErr", validate.validateName(name));
 		session.setAttribute("inputtedPassErr", validate.validatePassword(password));
         session.setAttribute("inputtedPhoneErr", validate.validatePhone(phone));
 
+		// if user input validation passes, update the user to the database.
 		if((validate.validateEmail(email)==null) && (validate.validateName(name)==null) && (validate.validatePassword(password)==null) 
 			&& (validate.validatePhone(phone)==null)){
 			try { 
-				userDAO.updateUser(name, email, password, phone);
+				User user = (User) session.getAttribute("user");
+				int userID = user.getUserID();
+				
+				userDAO.updateUser(name, email, password, phone, userID);
 				User updatedUser = userDAO.findUser(email, password);
 				session.setAttribute("user", updatedUser);
 				session.setAttribute("update", "the update was successful");
