@@ -110,6 +110,7 @@ public class StaffDAO {
         return users;
     }
 
+    @SuppressWarnings("rawtypes")
     public ArrayList<Stack> fetchStaff() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'fetchStaff'");
