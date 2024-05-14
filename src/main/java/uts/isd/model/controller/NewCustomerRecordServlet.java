@@ -50,7 +50,7 @@ public class NewCustomerRecordServlet extends HttpServlet {
         }
 
         // Forward the request to the JSP page
-        request.getRequestDispatcher("createCustomerRecord.jsp").forward(request, response);
+        request.getRequestDispatcher("CreateCustomerRecord.jsp").forward(request, response);
     }
 
     @Override

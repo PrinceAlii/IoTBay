@@ -113,6 +113,19 @@ public class SystemAdminDAO {
     }
 
     public void close() {
-        
+        // You can add any necessary cleanup code here
+    }
+
+    public void addUser(User newUser) throws SQLException {
+        String query = "INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber, userType, userAccount) VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, newUser.getName());
+            statement.setString(2, newUser.getEmail());
+            statement.setString(3, newUser.getPassword());
+            statement.setString(4, newUser.getPhone());
+            statement.setString(5, newUser.getUserType());
+            statement.setString(6, newUser.getUserAccount());
+            statement.executeUpdate();
+        }
     }
 }
