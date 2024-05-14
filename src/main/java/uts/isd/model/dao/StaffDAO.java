@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import uts.isd.model.User;
 
@@ -15,6 +16,11 @@ public class StaffDAO {
     public StaffDAO(Connection connection) throws SQLException {
         connection.setAutoCommit(true);
         st = connection.createStatement();
+    }
+
+    public StaffDAO(int staffID, String staffName, String staffEmail, String staffPassword, String staffContactNumber,
+            String staffType, boolean staffStatus, String staffPosition) {
+        //TODO Auto-generated constructor stub
     }
 
     // Check if user is already in the database. Return if user is already in database
@@ -104,8 +110,33 @@ public class StaffDAO {
         return users;
     }
 
-    public ArrayList<StaffDAO> fetchStaff() {
+    public ArrayList<Stack> fetchStaff() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'fetchStaff'");
+    }
+
+    public String getEmail() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEmail'");
+    }
+
+    public String getName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+    }
+
+    public String getPhone() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPhone'");
+    }
+
+    public String getPassword() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+    }
+
+    public String getStaffType() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getStaffType'");
     }
 }

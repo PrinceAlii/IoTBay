@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uts.isd.model.Staff;
-import uts.isd.model.dao.StaffDAO;
 
-public class ViewStaffServlet extends HttpServlet {
+import uts.isd.model.dao.StaffDAO;
+//import uts.isd.model.Staff;
+import uts.isd.model.dao.SystemAdminStaffDAO;
+
+public class ViewStaffServlet<Staff> extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -20,11 +22,11 @@ public class ViewStaffServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Connection conn = (Connection) session.getAttribute("conn");
 
-        StaffDAO staffDAO = new StaffDAO(conn);
+        SystemAdminStaffDAO dao = new SystemAdminStaffDAO(conn);
 
         try {
             // Fetch the staff members
-            ArrayList<Staff> staffList = staffDAO.fetchStaff();
+            ArrayList<StaffDAO> staffList = dao.fetchStaff();
 
             // Set the staff list as a request attribute
             request.setAttribute("staffList", staffList);
