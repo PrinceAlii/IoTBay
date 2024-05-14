@@ -1,4 +1,3 @@
-
 -- ** PASTE THIS TABLE IN FIRST ** --
 
 -- IOTBAY.PaymentDetails definition
@@ -49,16 +48,18 @@ CREATE TABLE `Product` (
 ) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
--- IOTBAY.AccessLog definition
+-- IOTBAY.UserAccessLogs definition
 
-CREATE TABLE `AccessLog` (
-  `logAccessTimestamp` datetime NOT NULL,
-  `logStatus` tinyint(1) NOT NULL,
-  `userID` int DEFAULT NULL,
-  PRIMARY KEY (`logAccessTimestamp`),
-  KEY `AccessLog_User_FK` (`userID`),
-  CONSTRAINT `AccessLog_User_FK` FOREIGN KEY (`userID`) REFERENCES `User` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `UserAccessLogs` (
+  `AccessLogID` int NOT NULL AUTO_INCREMENT,
+  `UserID` int DEFAULT NULL,
+  `STATUS` varchar(15) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `Time` time DEFAULT NULL,
+  PRIMARY KEY (`AccessLogID`),
+  KEY `fk_UserAccessLogs_UserID` (`UserID`),
+  CONSTRAINT `fk_UserAccessLogs_UserID` FOREIGN KEY (`UserID`) REFERENCES `User` (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.`Order` definition
@@ -78,7 +79,7 @@ CREATE TABLE `Order` (
   CONSTRAINT `Order_paymentdetails_FK` FOREIGN KEY (`paymentID`) REFERENCES `paymentdetails` (`paymentID`),
   CONSTRAINT `Order_Product_FK` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
   CONSTRAINT `Order_User_FK` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 -- IOTBAY.Invoice definition
@@ -188,6 +189,39 @@ INSERT INTO IOTBAY.`User` (userType,userAccount,userName,userEmail,userContactNu
 	 ('User','Registered User','Dick Smith','DickSmith@email.com','0471986253',0,'P@ssw0rd!2024',NULL,22);
 
 
+-- ** NOW PASTE THIS SEPARATELY **--
+
+-- User Access Logs
+
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,`Date`,`Time`) VALUES
+	 (1,'Registered','2024-05-14','19:19:22'),
+	 (1,'Logout','2024-05-14','19:19:22'),
+	 (1,'Login','2024-05-18','19:19:22'),
+	 (1,'Logout','2024-05-18','19:19:22'),
+	 (2,'Login','2024-05-18','19:19:22'),
+	 (3,'Registered','2024-05-18','19:19:22'),
+	 (4,'Registered','2024-05-14','19:19:22'),
+	 (5,'Logout','2024-05-14','19:19:22'),
+	 (6,'Login','2024-05-18','19:19:22'),
+	 (7,'Login','2024-05-14','19:19:22');
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,`Date`,`Time`) VALUES
+	 (8,'Logout','2024-05-14','19:19:22'),
+	 (9,'Registered','2024-05-14','19:19:22'),
+	 (10,'Registered','2024-05-14','19:19:22'),
+	 (11,'Logout','2024-05-14','19:19:22'),
+	 (12,'Login','2024-05-18','19:19:22'),
+	 (13,'Registered','2024-05-14','19:19:22'),
+	 (14,'Logout','2024-05-18','19:19:22'),
+	 (15,'Login','2024-05-18','19:19:22'),
+	 (16,'Registered','2024-05-18','19:19:22'),
+	 (17,'Registered','2024-05-18','19:19:22');
+INSERT INTO IOTBAY.UserAccessLogs (UserID,STATUS,`Date`,`Time`) VALUES
+	 (18,'Registered','2024-05-14','19:19:22'),
+	 (19,'Registered','2024-05-18','19:19:22'),
+	 (20,'Login','2024-05-14','19:19:22'),
+	 (21,'Registered','2024-05-18','19:19:22'),
+	 (22,'Login','2024-05-18','19:19:22');
+   
 -- ** NOW PASTE THIS SEPARATELY **--
 
 -- Product details

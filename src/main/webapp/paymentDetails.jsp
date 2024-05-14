@@ -21,7 +21,7 @@
     <% User user = (User) session.getAttribute("user");%>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">IotBay</a>
+            <a class="navbar-brand" href="main.jsp">IotBay</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -46,7 +46,7 @@
                             <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
                             <li><a class="dropdown-item active" href="paymentDetails">Saved Payments</a></li> 
                             <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>               
-                            <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                            <li><a class="dropdown-item" href="/accessLogServlet">Access Logs</a></li>
                             <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -94,6 +94,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
+    <% } %>
+
+    <%
+        String successParam = request.getParameter("success");
+        if (successParam != null && successParam.equals("true")) {
+        %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Payment details updated successfully!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     <% } %>
 
     

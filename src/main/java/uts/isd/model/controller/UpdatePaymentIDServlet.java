@@ -13,23 +13,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import uts.isd.model.PaymentDetails;
 import uts.isd.model.User;
 import uts.isd.model.dao.PaymentDAO;
 
-public class AddPaymentServlet extends HttpServlet {
+
+public class UpdatePaymentIDServlet extends HttpServlet {
     
     private PaymentDAO paymentDAO;
-
+    
     @Override
     public void init() throws ServletException {
+
         try {
             paymentDAO = new PaymentDAO();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(PaymentDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
             throw new ServletException("Failed to initialize PaymentDAO", ex);
         }
-    }
 
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,32 +40,31 @@ public class AddPaymentServlet extends HttpServlet {
         doPost(request, response);
     }
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
-        
-            if (user == null) {
-                response.sendRedirect("login.jsp");
-                return;
-            }
-
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
     
-            // what we actually need
+        if (user == null) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+    
             String paymentMethod = request.getParameter("paymentMethod");
             String cardNumber = request.getParameter("cardNumber");
-
-            // just here for severside validation
             String expiryDate = request.getParameter("expiryDate");
             String cvv = request.getParameter("cvv");
 
-            System.out.println("Payment Method: " + paymentMethod);
-            System.out.println("Card Number: " + cardNumber);
-            System.out.println("Expiry Date: " + expiryDate);
-            System.out.println("CVV: " + cvv);
+
+            Object attributeValue = session.getAttribute("paymentIDToUpdate");
+            String sessionPaymentID = (String) attributeValue;
+            
+
+            int paymentID = Integer.parseInt(sessionPaymentID);
 
             List<String> errors = new ArrayList<>();
-
+                
             if (paymentMethod == null || paymentMethod.isEmpty()) {
                 errors.add("You must choose your card issuer");
             }
@@ -88,24 +90,29 @@ public class AddPaymentServlet extends HttpServlet {
             }
         
             if (!errors.isEmpty()) {
-                // forward back to page passing through error message
                 request.setAttribute("errors", errors);
-                request.getRequestDispatcher("addPayment.jsp").forward(request, response);
+                request.getRequestDispatcher("updatePaymentForm.jsp").forward(request, response);
                 return;
             }
-        
+
 
             try {
-                paymentDAO.addPayment(paymentMethod, cardNumber, user.getUserID());
-        
-                response.sendRedirect("paymentDetails?paymentAdded=true");
+                paymentDAO.updatePayment(paymentID, paymentMethod, cardNumber);
+    
+                List<PaymentDetails> paymentMethods = paymentDAO.findPaymentByUser(user.getUserID());
+                request.setAttribute("paymentMethods", paymentMethods);
+    
+                request.getRequestDispatcher("paymentDetails?action=success").forward(request, response);
+                
             } catch (SQLException ex) {
                 Logger.getLogger(AddPaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while adding payment details. Please contact our support team.");
             }
+
+
+            
     }
-
-
+    
     // methods for validation
     
     private boolean isValidCardNumber(String cardNumber) {
@@ -133,6 +140,7 @@ public class AddPaymentServlet extends HttpServlet {
         return cvv.matches("\\d{3}");
     }
     
-
-
+    
+    
+    
 }
