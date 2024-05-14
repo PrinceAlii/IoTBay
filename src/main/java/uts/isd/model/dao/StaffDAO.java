@@ -103,4 +103,9 @@ public class StaffDAO {
         }
         return users;
     }
+
+    public ArrayList<StaffDAO> fetchStaff() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'fetchStaff'");
+    }
 }
