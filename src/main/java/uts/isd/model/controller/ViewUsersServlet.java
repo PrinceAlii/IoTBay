@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,23 +16,20 @@ public class ViewUsersServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         HttpSession session = request.getSession();
         Connection conn = (Connection) session.getAttribute("conn");
 
-        try {
-            SystemAdminDAO dao = new SystemAdminDAO(conn);
+        SystemAdminDAO dao = new SystemAdminDAO(conn);
 
-            // Fetch the users
-            ArrayList<User> users = dao.fetchUsers();
+        // Fetch the users
+        ArrayList<User> users = dao.fetchUsers();
 
-            // Set the users list as a request attribute
-            request.setAttribute("users", users);
+        // Set the users list as a request attribute
+        request.setAttribute("users", users);
 
-            // Forward the request to the ViewUsers.jsp
-            request.getRequestDispatcher("ViewUsers.jsp").forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewUsersServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // Forward the request to the ViewUsers.jsp
+        request.getRequestDispatcher("ViewUsers.jsp").forward(request, response);
     }
 }
+

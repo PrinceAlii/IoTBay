@@ -6,5 +6,5 @@
 		"lib\\junit-4.13.2.jar"
 	],
 	"cmake.configureOnOpen": false,
-	"java.configuration.updateBuildConfiguration": "interactive"
+	"java.configuration.updateBuildConfiguration": "automatic"
 }

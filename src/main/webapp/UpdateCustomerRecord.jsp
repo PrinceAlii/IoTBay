@@ -39,6 +39,10 @@
         </div>
     </nav>
 
+    <form action="ViewUsers.jsp">
+    <button type="submit">View Users</button>
+    </form>
+
     <div class="container">
         <h1>Update Customer Record</h1>
         <form action="UpdateCustomerRecordServlet" method="post">
