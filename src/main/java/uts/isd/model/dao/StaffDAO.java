@@ -18,11 +18,16 @@ public class StaffDAO {
         st = connection.createStatement();
     }
 
-    public StaffDAO(String staffName, String staffEmail, String staffPassword) {
+    public StaffDAO(int staffID, String staffName, String staffEmail, String staffPassword, String staffContactNumber, String staffType, boolean staffStatus, String staffPosition) {
         //TODO Auto-generated constructor stub
     }
 
     public StaffDAO(String staffName, String staffEmail, String staffPassword) {
+        //TODO Auto-generated constructor stub
+    }
+
+    public StaffDAO(int staffID, String staffName, String email, String password, String staffContactNumber,
+            String staffType, boolean staffStatus, String staffPosition) {
         //TODO Auto-generated constructor stub
     }
 

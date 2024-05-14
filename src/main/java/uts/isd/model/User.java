@@ -115,4 +115,34 @@ public class User implements Serializable {
   public void setPaymentID(String paymentID) {
     PaymentID = paymentID;
   }
+
+public Object getUserName() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getUserName'");
+}
+
+public Object getUserEmail() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getUserEmail'");
+}
+
+public Object getUserPassword() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getUserPassword'");
+}
+
+public Object getUserContactNumber() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getUserContactNumber'");
+}
+
+public Object getFullName() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getFullName'");
+}
+
+public Object getContactNumber() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getContactNumber'");
+}
 }
