@@ -108,6 +108,22 @@ CREATE TABLE `OrderLineItem` (
   CONSTRAINT `OrderLineItem_Order_FK` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE IF NOT EXISTS `IOTBAY`.`NewUser` (
+  `userID` INT NOT NULL AUTO_INCREMENT,
+  `userName` VARCHAR(45) NOT NULL,
+  `userEmail` VARCHAR(45) NOT NULL UNIQUE,
+  `userPassword` VARCHAR(255) NOT NULL,
+  `userContactNumber` VARCHAR(45) DEFAULT NULL,
+  `userType` VARCHAR(45) DEFAULT NULL,
+  `userAccount` VARCHAR(45) DEFAULT NULL,
+  `userStatus` BOOLEAN NOT NULL DEFAULT TRUE,
+  `userPosition` VARCHAR(45) DEFAULT NULL,
+  `paymentID` VARCHAR(45) DEFAULT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO IOTBAY.User (userName, userEmail, userPassword, userContactNumber, userType, userAccount) VALUES (?, ?, ?, ?, ?, ?)
+
 
 -- ** NOW PASTE THIS SEPARATELY **--
 

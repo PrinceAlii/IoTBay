@@ -17,7 +17,7 @@ public class User implements Serializable {
   private String PaymentID;
 
 
-  public User() {
+  public User(int userId2, String userName2, String userEmail2, String userPhone, String userPassword2, String userType2) {
   }
 
   public User(int _userID, String _userName, String _userEmail, String _userPassword, String _userContactNumber, 
@@ -114,5 +114,9 @@ public class User implements Serializable {
 
   public void setPaymentID(String paymentID) {
     PaymentID = paymentID;
+  }
+
+  public String getnumber() {
+    throw new UnsupportedOperationException("Unimplemented method 'getnumber'");
   }
 }
