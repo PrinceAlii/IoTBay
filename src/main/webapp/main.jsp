@@ -168,9 +168,9 @@
                             <a class="dropdown-item" href="CreateCustomerRecord.jsp">Create User</a>
                             <a class="dropdown-item" href="UpdateCustomerRecord.jsp">Update User</a>
                             <a class="dropdown-item" href="DeleteCustomerRecord.jsp">Delete User</a>
-                            <a class="dropdown-item" href="#">Create Staff</a>
-                            <a class="dropdown-item" href="#">Update Staff</a>
-                            <a class="dropdown-item" href="#">Delete Staff</a>
+                            <a class="dropdown-item" href="CreateStaffRecord.jsp">Create Staff</a>
+                            <a class="dropdown-item" href="UpdateStaffRecord.jsp">Update Staff</a>
+                            <a class="dropdown-item" href="DeleteStaffRecord.jsp">Delete Staff</a>
                         </div>
                     </div>
                 </div>

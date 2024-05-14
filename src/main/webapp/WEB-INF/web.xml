@@ -129,7 +129,6 @@
     <url-pattern>/updatePaymentForm</url-pattern>
   </servlet-mapping>
   
-  
   <servlet>
       <servlet-name>ProductServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.ProductServlet</servlet-class>
@@ -209,6 +208,33 @@
   <servlet-mapping>
       <servlet-name>DeleteCustomerRecordServlet</servlet-name>
       <url-pattern>/DeleteCustomerRecordServlet</url-pattern>
+  </servlet-mapping>
+
+    <servlet>
+      <servlet-name>AddStaffRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.AddStaffRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>AddStaffRecordServlet</servlet-name>
+      <url-pattern>/AddStaffRecordServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>UpdateStaffRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.UpdateStaffRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UpdateStaffRecordServlet</servlet-name>
+      <url-pattern>/UpdateStaffRecordServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>DeleteStaffRecordServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.DeleteStaffRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>DeleteStaffRecordServlet</servlet-name>
+      <url-pattern>/DeleteStaffRecordServlet</url-pattern>
   </servlet-mapping>
 
   <session-config>
