@@ -16,20 +16,26 @@ public class ViewUsersServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         HttpSession session = request.getSession();
         Connection conn = (Connection) session.getAttribute("conn");
 
         SystemAdminDAO dao = new SystemAdminDAO(conn);
 
-        // Fetch the users
-        ArrayList<User> users = dao.fetchUsers();
+        try {
+            // Fetch the users
+            ArrayList<User> users = dao.fetchUsers();
 
-        // Set the users list as a request attribute
-        request.setAttribute("users", users);
+            // Set the users list as a request attribute
+            request.setAttribute("users", users);
 
-        // Forward the request to the ViewUsers.jsp
-        request.getRequestDispatcher("ViewUsers.jsp").forward(request, response);
+            // Forward the request to the ViewUsers.jsp
+            request.getRequestDispatcher("ViewUsers.jsp").forward(request, response);
+        } catch (SQLException e) {
+            // Handle the SQLException here
+            System.err.println("An error occurred while fetching users: " + e.getMessage());
+            // You can also display a user-friendly message to the user on the JSP
+            // by setting a request attribute here
+        }
     }
 }
-
