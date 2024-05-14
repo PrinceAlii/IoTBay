@@ -128,4 +128,76 @@ public class SystemAdminDAO {
             statement.executeUpdate();
         }
     }
+
+    public ArrayList<User> searchUsersByNameAndType(String name, String userType) throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM IOTBAY.User WHERE userName LIKE ? AND userType = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, "%" + name + "%");
+            statement.setString(2, userType);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    int userID = rs.getInt("userID");
+                    String userName = rs.getString("userName");
+                    String userEmail = rs.getString("userEmail");
+                    String userPassword = rs.getString("userPassword");
+                    String userContactNumber = rs.getString("userContactNumber");
+                    String userAccount = rs.getString("userAccount");
+                    boolean userStatus = rs.getBoolean("userStatus");
+                    String userPosition = rs.getString("userPosition");
+                    String paymentID = rs.getString("paymentID");
+                    users.add(new User(userID, userName, userEmail, userPassword, userContactNumber, userType, userAccount, userStatus, userPosition, paymentID));
+                }
+            }
+        }
+        return users;
+    }
+    
+    public ArrayList<User> searchUsersByName(String name) throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM IOTBAY.User WHERE userName LIKE ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, "%" + name + "%");
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    int userID = rs.getInt("userID");
+                    String userName = rs.getString("userName");
+                    String userEmail = rs.getString("userEmail");
+                    String userPassword = rs.getString("userPassword");
+                    String userContactNumber = rs.getString("userContactNumber");
+                    String userType = rs.getString("userType");
+                    String userAccount = rs.getString("userAccount");
+                    boolean userStatus = rs.getBoolean("userStatus");
+                    String userPosition = rs.getString("userPosition");
+                    String paymentID = rs.getString("paymentID");
+                    users.add(new User(userID, userName, userEmail, userPassword, userContactNumber, userType, userAccount, userStatus, userPosition, paymentID));
+                }
+            }
+        }
+        return users;
+    }
+    
+    public ArrayList<User> searchUsersByType(String userType) throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM IOTBAY.User WHERE userType = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, userType);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    int userID = rs.getInt("userID");
+                    String userName = rs.getString("userName");
+                    String userEmail = rs.getString("userEmail");
+                    String userPassword = rs.getString("userPassword");
+                    String userContactNumber = rs.getString("userContactNumber");
+                    String userAccount = rs.getString("userAccount");
+                    boolean userStatus = rs.getBoolean("userStatus");
+                    String userPosition = rs.getString("userPosition");
+                    String paymentID = rs.getString("paymentID");
+                    users.add(new User(userID, userName, userEmail, userPassword, userContactNumber, userType, userAccount, userStatus, userPosition, paymentID));
+                }
+            }
+        }
+        return users;
+    }
+    
 }

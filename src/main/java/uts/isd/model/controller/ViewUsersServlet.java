@@ -24,7 +24,23 @@ public class ViewUsersServlet extends HttpServlet {
 
         try {
             // Fetch the users
-            ArrayList<User> users = dao.fetchUsers();
+            ArrayList<User> users;
+            String name = request.getParameter("searchName");
+            String userType = request.getParameter("searchUserType");
+
+            if (name != null && !name.isEmpty() && userType != null && !userType.isEmpty()) {
+                // Search by both name and user type
+                users = dao.searchUsersByNameAndType(name, userType);
+            } else if (name != null && !name.isEmpty()) {
+                // Search by name only
+                users = dao.searchUsersByName(name);
+            } else if (userType != null && !userType.isEmpty()) {
+                // Search by user type only
+                users = dao.searchUsersByType(userType);
+            } else {
+                // Fetch all users if no search criteria provided
+                users = dao.fetchUsers();
+            }
 
             // Set the users list as a request attribute
             request.setAttribute("users", users);
