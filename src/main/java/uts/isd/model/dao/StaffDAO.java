@@ -18,8 +18,11 @@ public class StaffDAO {
         st = connection.createStatement();
     }
 
-    public StaffDAO(int staffID, String staffName, String staffEmail, String staffPassword, String staffContactNumber,
-            String staffType, boolean staffStatus, String staffPosition) {
+    public StaffDAO(String staffName, String staffEmail, String staffPassword) {
+        //TODO Auto-generated constructor stub
+    }
+
+    public StaffDAO(String staffName, String staffEmail, String staffPassword) {
         //TODO Auto-generated constructor stub
     }
 
@@ -139,5 +142,10 @@ public class StaffDAO {
     public String getStaffType() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getStaffType'");
+    }
+
+    public Object getFullName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFullName'");
     }
 }
