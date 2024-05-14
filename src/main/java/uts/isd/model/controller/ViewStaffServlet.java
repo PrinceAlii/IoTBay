@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.datatype.DatatypeFactory;
-
+import uts.isd.model.Staff;
 import uts.isd.model.dao.StaffDAO;
 
 public class ViewStaffServlet extends HttpServlet {
@@ -21,12 +20,11 @@ public class ViewStaffServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Connection conn = (Connection) session.getAttribute("conn");
 
-        // Create an instance of StaffDao using DatatypeFactory
-        StaffDAO staffDao = DatatypeFactory.getStaffDAO();
+        StaffDAO staffDAO = new StaffDAO(conn);
 
         try {
             // Fetch the staff members
-            ArrayList<StaffDAO>  staffList = staffDao.fetchStaff();
+            ArrayList<Staff> staffList = staffDAO.fetchStaff();
 
             // Set the staff list as a request attribute
             request.setAttribute("staffList", staffList);
