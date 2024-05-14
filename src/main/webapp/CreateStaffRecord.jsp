@@ -70,8 +70,17 @@
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" required><br>
             
-            <label for="address">Address:</label><br>
-            <textarea id="address" name="address" required></textarea><br>
+            <label for="phoneNo">Phone Number:</label><br>
+            <input type="text" id="phoneNo" name="phoneNo" required><br>
+            
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+
+            <label for="userAccount">User Account:</label><br>
+            <input type="text" id="userAccount" name="userAccount" required><br>
+
+            <label for="userType">User Type:</label><br>
+            <input type="text" id="userType" name="userType" required><br>
             
             <input type="submit" value="Submit">
         </form>

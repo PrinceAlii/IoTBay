@@ -9,13 +9,19 @@ public class AddStaffRecordServlet extends HttpServlet {
         
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String address = request.getParameter("address");
+        String phoneNo = request.getParameter("phoneNo");
+        String password = request.getParameter("password");
+        String userAccount = request.getParameter("userAccount");
+        String userType = request.getParameter("userType");
 
         
         System.out.println("New staff record created:");
         System.out.println("Name: " + name);
         System.out.println("Email: " + email);
-        System.out.println("Address: " + address);
+        System.out.println("PhoneNo: " + phoneNo);
+        System.out.println("Password: " + password);
+        System.out.println("User Account: " + userAccount);
+        System.out.println("User Type: " + userType);
 
     
         RequestDispatcher dispatcher = request.getRequestDispatcher("CreateStaffRecord.jsp");
