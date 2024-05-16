@@ -219,7 +219,7 @@
       <url-pattern>/AddStaffRecordServlet</url-pattern>
   </servlet-mapping>
   
-  <servlet>
+  <!-- <servlet>
       <servlet-name>UpdateStaffRecordServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.UpdateStaffRecordServlet</servlet-class>
   </servlet>
@@ -235,7 +235,7 @@
   <servlet-mapping>
       <servlet-name>DeleteStaffRecordServlet</servlet-name>
       <url-pattern>/DeleteStaffRecordServlet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 
   <session-config>
     <session-timeout>

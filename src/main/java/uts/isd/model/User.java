@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-  
   private int userID;
   private String userName;
   private String userEmail;
@@ -16,9 +15,7 @@ public class User implements Serializable {
   private String userPosition;
   private String PaymentID;
 
-
-  public User() {
-  }
+  public User() {}
 
   public User(int _userID, String _userName, String _userEmail, String _userPassword, String _userContactNumber, 
               String _userType, String _userAccount, boolean userStatus, String _userPosition,

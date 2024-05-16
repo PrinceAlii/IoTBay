@@ -77,9 +77,7 @@ public class CreateProductServlet extends HttpServlet {
             errors.add("Error occurred while creating the product: " + ex.getMessage());
         }
 
-
         request.setAttribute("errors", errors);
-
 
         request.getRequestDispatcher("createProduct.jsp").forward(request, response);
     }
