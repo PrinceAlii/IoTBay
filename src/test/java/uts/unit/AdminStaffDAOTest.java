@@ -1,7 +1,11 @@
-package uts.isd.model.dao;
+package uts.unit;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import uts.isd.model.dao.AdminStaffDAO;
+import uts.isd.model.dao.StaffDAO;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Connection;
@@ -17,7 +21,7 @@ public class AdminStaffDAOTest {
     public void setUp() {
         // Set up the connection and AdminStaffDAO object before each test
         connection = // Set up your database connection here
-        adminStaffDAO = new AdminStaffDAO(connection);
+        (Connection) (adminStaffDAO = new AdminStaffDAO(connection));
     }
 
     @Test
