@@ -219,7 +219,7 @@
       <url-pattern>/AddStaffRecordServlet</url-pattern>
   </servlet-mapping>
   
-  <!-- <servlet>
+  <servlet>
       <servlet-name>UpdateStaffRecordServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.UpdateStaffRecordServlet</servlet-class>
   </servlet>
@@ -228,7 +228,7 @@
       <url-pattern>/UpdateStaffRecordServlet</url-pattern>
   </servlet-mapping>
   
-  <servlet>
+  <!-- <servlet>
       <servlet-name>DeleteStaffRecordServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.DeleteStaffRecordServlet</servlet-class>
   </servlet>

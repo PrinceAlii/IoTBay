@@ -31,5 +31,21 @@ public class AdminStaffDAO {
         }
     }
 
-    // You can add more methods here for retrieving, updating, or deleting staff records
+    // Method to update an existing staff record in the database
+    public void updateStaff(User user) throws SQLException {
+        String query = "UPDATE User SET userName=?, userEmail=?, userPassword=?, userContactNumber=?, userType=?, userAccount=?, userPosition=?, userStatus=? WHERE userID=?";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getPhone());
+            statement.setString(5, user.getUserType());
+            statement.setString(6, user.getUserAccount());
+            statement.setString(7, user.getUserPosition());
+            statement.setBoolean(8, user.isUserStatus());
+            statement.setInt(9, user.getUserID());
+            statement.executeUpdate();
+        }
+    }
+
 }
