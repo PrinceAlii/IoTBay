@@ -4,64 +4,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>New Staff Record</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f2f2f2;
-                margin: 0;
-                padding: 20px;
-            }
-            .container {
-                max-width: 600px;
-                margin: 0 auto;
-                background-color: #fff;
-                padding: 30px;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-            h1 {
-                text-align: center;
-                color: #333;
-                font-size: 28px;
-                margin-bottom: 20px;
-            }
-            label {
-                font-weight: bold;
-                font-size: 18px;
-            }
-            input[type="text"],
-            input[type="email"],
-            textarea {
-                width: 100%;
-                padding: 12px;
-                margin-bottom: 20px;
-                box-sizing: border-box;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-                font-size: 16px;
-            }
-            input[type="submit"] {
-                background-color: #3498db;
-                color: white;
-                padding: 12px 20px;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 18px;
-                display: block;
-                width: 100%;
-            }
-            input[type="submit"]:hover {
-                background-color: #2980b9;
-            }
-            .delete-btn {
-                background-color: #e74c3c;
-            }
-            .delete-btn:hover {
-                background-color: #c0392b;
-            }
-        </style>
+        <title>New Staff</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.1/js/bootstrap.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -76,13 +24,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="main.jsp">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="ViewStaffServlet">View Staff</a>
+                        <li class="nav-item dropdown" style="padding-right: 40px;">
+                            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="accountDetails.jsp">Account Details</a></li>
+                                <li><a class="dropdown-item" href="paymentDetails">Saved Payments</a></li>
+                                <li><a class="dropdown-item" href="paymentHistory">Payment History</a></li>
+                                <li><a class="dropdown-item" href="#">Access Logs</a></li>
+                                <li><a class="dropdown-item" href="OrderServlet">Order Details</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="logout.jsp">Logout</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
         <div class="container">
             <h1>Add Staff Record</h1>
             <% if (request.getAttribute("success") != null) { %>
@@ -123,6 +83,7 @@
                 <label for="userPosition">Position:</label><br>
                 <input type="text" id="userPosition" name="userPosition" required><br>
 
+                <br>
                 <button type="submit" class="btn btn-primary">Create Staff</button>
             </form>
         </div>

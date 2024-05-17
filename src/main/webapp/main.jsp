@@ -171,6 +171,7 @@
                             <a class="dropdown-item" href="CreateStaffRecord.jsp">Create Staff</a>
                             <a class="dropdown-item" href="UpdateStaffRecord.jsp">Update Staff</a>
                             <a class="dropdown-item" href="DeleteStaffRecord.jsp">Delete Staff</a>
+                            <a class="dropdown-item" href="ViewStaff.jsp">View Staff</a>
                         </div>
                     </div>
                 </div>

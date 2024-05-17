@@ -48,4 +48,107 @@ public class AdminStaffDAO {
         }
     }
 
+    // Method to delete a staff record from the database
+    public boolean deleteStaff(int userID) throws SQLException {
+        String query = "DELETE FROM User WHERE userID=?";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setInt(1, userID);
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected > 0;
+        }
+    }
+
+    // Method to check if the user with the given user ID exists
+    public boolean checkUserIDExists(int userID) throws SQLException {
+        String query = "SELECT COUNT(*) FROM User WHERE userID=?";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setInt(1, userID);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Method to check if the user account is "staff"
+    public boolean checkUserAccountIsStaff(int userID) throws SQLException {
+        String query = "SELECT userAccount FROM User WHERE userID=?";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setInt(1, userID);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    String userAccount = resultSet.getString("userAccount");
+                    return "staff".equalsIgnoreCase(userAccount);
+                }
+            }
+        }
+        return false;
+    }
+
+    // Method to fetch all staff members from the database
+    public ArrayList<User> fetchStaff() throws SQLException {
+        ArrayList<User> staffList = new ArrayList<>();
+        String query = "SELECT * FROM User WHERE userAccount = 'staff'";
+        try (PreparedStatement statement = conn.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                User user = new User();
+                user.setUserID(resultSet.getInt("userID"));
+                user.setName(resultSet.getString("userName"));
+                user.setEmail(resultSet.getString("userEmail"));
+                user.setPhone(resultSet.getString("userContactNumber"));
+                user.setUserPosition(resultSet.getString("userPosition"));
+                staffList.add(user);
+            }
+        }
+        return staffList;
+    }
+
+    // Method to search staff by name in the database
+    public ArrayList<User> searchStaffByName(String searchKeyword) throws SQLException {
+        ArrayList<User> staffList = new ArrayList<>();
+        String query = "SELECT * FROM User WHERE userAccount = 'staff' AND userName LIKE ?";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setString(1, "%" + searchKeyword + "%");
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setUserID(resultSet.getInt("userID"));
+                    user.setName(resultSet.getString("userName"));
+                    user.setEmail(resultSet.getString("userEmail"));
+                    user.setPhone(resultSet.getString("userContactNumber"));
+                    user.setUserPosition(resultSet.getString("userPosition"));
+                    staffList.add(user);
+                }
+            }
+        }
+        return staffList;
+    }
+
+    // Method to search staff by name and position in the database
+    public ArrayList<User> searchStaffByNameAndPosition(String searchKeyword, String userPosition) throws SQLException {
+        ArrayList<User> staffList = new ArrayList<>();
+        String query = "SELECT * FROM User WHERE userAccount = 'staff' AND userName LIKE ? AND (userPosition = ? OR userPosition = 'Administrator')";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setString(1, "%" + searchKeyword + "%");
+            statement.setString(2, userPosition);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setUserID(resultSet.getInt("userID"));
+                    user.setName(resultSet.getString("userName"));
+                    user.setEmail(resultSet.getString("userEmail"));
+                    user.setPhone(resultSet.getString("userContactNumber"));
+                    user.setUserPosition(resultSet.getString("userPosition"));
+                    staffList.add(user);
+                }
+            }
+        }
+        return staffList;
+}
+
+
 }

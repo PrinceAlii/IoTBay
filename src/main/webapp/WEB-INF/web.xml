@@ -228,14 +228,25 @@
       <url-pattern>/UpdateStaffRecordServlet</url-pattern>
   </servlet-mapping>
   
-  <!-- <servlet>
+  <servlet>
       <servlet-name>DeleteStaffRecordServlet</servlet-name>
       <servlet-class>uts.isd.model.controller.DeleteStaffRecordServlet</servlet-class>
   </servlet>
   <servlet-mapping>
       <servlet-name>DeleteStaffRecordServlet</servlet-name>
       <url-pattern>/DeleteStaffRecordServlet</url-pattern>
-  </servlet-mapping> -->
+  </servlet-mapping>
+
+  <servlet>
+      <servlet-name>ViewStaffServlet</servlet-name>
+      <servlet-class>uts.isd.model.controller.ViewStaffServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>ViewStaffServlet</servlet-name>
+      <url-pattern>/ViewStaffServlet</url-pattern>
+  </servlet-mapping>
+
+
 
   <session-config>
     <session-timeout>

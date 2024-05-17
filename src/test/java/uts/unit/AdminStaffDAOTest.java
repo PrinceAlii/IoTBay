@@ -1,72 +1,72 @@
-// package uts.unit;
+package uts.unit;
 
-// import org.junit.jupiter.api.BeforeEach;
-// import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test;
 
-// import uts.isd.model.dao.AdminStaffDAO;
-// import uts.isd.model.dao.StaffDAO;
+import uts.isd.model.dao.AdminStaffDAO;
+import uts.isd.model.dao.DBConnector;
+import uts.isd.model.Product;
+import uts.isd.model.User;
 
-// import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-// import java.sql.Connection;
-// import java.sql.SQLException;
-// import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-// public class AdminStaffDAOTest {
+import static org.junit.jupiter.api.Assertions.*;
 
-//     private Connection connection;
-//     private AdminStaffDAO adminStaffDAO;
+public class AdminStaffDAOTest {
 
-//     @BeforeEach
-//     public void setUp() {
-//         // Set up the connection and AdminStaffDAO object before each test
-//         connection = // Set up your database connection here
-//         (Connection) (adminStaffDAO = new AdminStaffDAO(connection));
-//     }
+    private DBConnector connector;
+    private Connection conn;
+    private AdminStaffDAO adminStaffDAO;
 
-//     @Test
-//     public void testCheckStaff() throws SQLException {
-//         boolean result = adminStaffDAO.checkStaff("test@example.com", "password");
-//         assertTrue(result, "Staff exists in database");
-//     }
+    @Test
+    public void testAddStaff() throws SQLException {
+        adminStaffDAO.addStaff(new User("staff", "john_doe", "John Doe", "john@example.com", "123456789", "password123", "Manager"));
+        assertTrue(adminStaffDAO.fetchStaff().stream().anyMatch(user -> user.getName().equals("John Doe")));
+    }
 
-//     @Test
-//     public void testCheckEmail() throws SQLException {
-//         boolean result = adminStaffDAO.checkEmail("test@example.com");
-//         assertTrue(result, "Email exists in database");
-//     }
+    @Test
+    public void testUpdateStaff() throws SQLException {
+        User userToUpdate = new User(1, "staff", "john_doe", "John Doe", "john@example.com", "123456789", "newpassword", "Manager", true);
+        adminStaffDAO.updateStaff(userToUpdate);
+        User updatedUser = adminStaffDAO.fetchStaff().stream().filter(u -> u.getUserID() == 1).findFirst().orElse(null);
+        assertNotNull(updatedUser);
+        assertEquals("newpassword", updatedUser.getPassword());
+    }
 
-//     @Test
-//     public void testFindStaff() throws SQLException {
-//         StaffDAO staff = adminStaffDAO.findStaff("test@example.com", "password");
-//         assertNotNull(staff, "Staff exists in database");
-//     }
+    @Test
+    public void testDeleteStaff() throws SQLException {
+        assertTrue(adminStaffDAO.deleteStaff(2));
+    }
 
-//     @Test
-//     public void testAddStaff() throws SQLException {
-//         adminStaffDAO.addStaff("New Staff", "newstaff@example.com", "password", "1234567890", "Regular");
-//         StaffDAO staff = adminStaffDAO.findStaff("newstaff@example.com", "password");
-//         assertNotNull(staff, "New staff added successfully");
-//     }
+    @Test
+    public void testCheckUserIDExists() throws SQLException {
+        assertTrue(adminStaffDAO.checkUserIDExists(3));
+    }
 
-//     @Test
-//     public void testUpdateStaff() throws SQLException {
-//         adminStaffDAO.updateStaff("Updated Staff", "test@example.com", "newpassword", "9876543210");
-//         StaffDAO staff = adminStaffDAO.findStaff("test@example.com", "newpassword");
-//         assertNotNull(staff, "Staff updated successfully");
-//     }
+    @Test
+    public void testCheckUserAccountIsStaff() throws SQLException {
+        assertTrue(adminStaffDAO.checkUserAccountIsStaff(4));
+    }
 
-//     @Test
-//     public void testDeleteStaff() throws SQLException {
-//         adminStaffDAO.deleteStaff("test@example.com");
-//         boolean result = adminStaffDAO.checkEmail("test@example.com");
-//         assertFalse(result, "Staff deleted successfully");
-//     }
+    @Test
+    public void testFetchStaff() throws SQLException {
+        ArrayList<User> staffList = adminStaffDAO.fetchStaff();
+        assertNotNull(staffList);
+    }
 
-//     @Test
-//     public void testFetchStaff() throws SQLException {
-//         ArrayList<StaffDAO> staffList = adminStaffDAO.fetchStaff();
-//         assertNotNull(staffList, "Fetched staff list successfully");
-//     }
+    @Test
+    public void testSearchStaffByName() throws SQLException {
+        ArrayList<User> staffList = adminStaffDAO.searchStaffByName("John");
+        assertNotNull(staffList);
+    }
 
-// }
+    @Test
+    public void testSearchStaffByNameAndPosition() throws SQLException {
+        ArrayList<User> staffList = adminStaffDAO.searchStaffByNameAndPosition("John", "Manager");
+        assertNotNull(staffList);
+    }
+}
